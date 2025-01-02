@@ -49,7 +49,7 @@ const AboutusPage: React.FC = () => {
           </li>
         </ul>
       </div>
-      <div className="flex flex-row items-center justify-between w-full h-auto my-4 paddingX modal-text">
+      <div className="flex flex-col items-start justify-between w-full h-auto my-4 md:items-center md:flex-row paddingX modal-text">
         <p className="flex flex-row items-center gap-2">
           <span>Have any question?</span>
           <Link
