@@ -1,25 +1,57 @@
 import { Link } from "react-router-dom";
-import { Button } from "../components";
+import { Button, ModalHeading } from "../components";
+import { useState } from "react";
 
 const DeleteAccount = () => {
+  const maxMsgInput = 250;
+  const [message, setMessage] = useState("");
   return (
-    <div className="min-h-screen flex justify-center items-center bg-background text-text">
-      <div className="w-96 p-6 bg-secondary rounded-lg shadow-lg">
-        <h1 className="text-2xl font-semibold mb-4">Account Deletion Reason</h1>
+    <div className="flex items-center justify-center min-h-screen bg-background text-text">
+      <div className="modal !p-6 !shadow-lg">
+        <ModalHeading text="Account Deletion Reason" className="text-center" />
+        <p className="modal-text opacity-80 !my-4 text-center !mb-5">
+          Please help us know why you want to delete your account. So we can do
+          better next time!
+        </p>
         <form>
-          <textarea
-            placeholder="Please tell us why you're leaving..."
-            className="w-full py-2 px-4 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            rows={4}
-          ></textarea>
+          <div className="input-row">
+            <label htmlFor="message" className="modal-text">
+              Message
+            </label>
+            <textarea
+              name="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Your Message..."
+              required
+              rows={5}
+              maxLength={maxMsgInput}
+              className="custom-input"
+            />
+            <div
+              className={`flex flex-row items-center justify-between w-full px-2 -mt-3 mb-4 text-sm ${
+                message.length >= maxMsgInput
+                  ? "text-primary-purple-light dark:text-primary-purple-dark"
+                  : "text-gray-500 dark:text-gray-300"
+              }`}
+            >
+              <span>Max</span>
+              <span>
+                {message.length} / {maxMsgInput}
+              </span>
+            </div>
+          </div>
           <Button text="Submit Reason" type="submit" onClick={() => {}} />
         </form>
-        <p className="mt-4 text-sm">
+        <footer className="mt-4 text-center modal-text !text-muted-text">
           Changed your mind?{" "}
-          <Link to="/dashboard" className="text-accent">
+          <Link
+            to="/dashboard"
+            className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline"
+          >
             Go back to Dashboard
           </Link>
-        </p>
+        </footer>
       </div>
     </div>
   );
