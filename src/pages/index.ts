@@ -11,6 +11,8 @@ import SettingsPage from "./SettingsPage";
 import Terms_ConditionsPage from "./Terms_ConditionsPage";
 import SignupPage from "./SignupPage";
 import ErrorPage from "./ErrorPage";
+import DeleteAccount from "./DeleteAccount";
+import ConfirmEmailAddress from "./ConfirmEmail";
 
 export {
   HomePage,
@@ -26,4 +28,6 @@ export {
   SettingsPage,
   Terms_ConditionsPage,
   ErrorPage,
+  DeleteAccount,
+  ConfirmEmailAddress,
 };

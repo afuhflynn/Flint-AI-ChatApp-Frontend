@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { authNavItems, navbarItems } from "../constants/constants";
 import { flintaiLogo } from "../assets/images";
@@ -8,6 +8,7 @@ const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State to handle mobile menu toggle
   // Mobile menu ref
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -30,8 +31,12 @@ const NavBar = () => {
     };
   }, []);
 
+  const handleRouting = (routePath: string) => {
+    navigate(routePath);
+  };
+
   return (
-    <header className="w-full h-[80px] py-[1.5rem] flex flex-row items-center justify-between bg-primary-bg-light dark:bg-primary-bg-dark bg-opacity-50 sticky top-0 left-0 paddingX right-0 z-50">
+    <header className="w-full h-[80px] py-[1.5rem] flex flex-row items-center justify-between bg-primary-bg-light dark:bg-primary-bg-dark bg-opacity-90 sticky top-0 left-0 paddingX right-0 z-50">
       <Link
         to="/"
         className="flex flex-row items-center justify-center gap-[0.5rem] dark:text-text-primary-dark text-text-primary-light"
@@ -72,6 +77,11 @@ const NavBar = () => {
       <div className="md:flex flex-row items-center justify-center gap-[1.5rem] hidden md:visible ">
         {authNavItems.map((item, index) => (
           <button
+            onClick={() =>
+              handleRouting(
+                item.label.toLowerCase() === "login" ? "/log-in" : "/sign-up"
+              )
+            }
             className={`text-[18px] rounded-3xl hover:scale-[1.02] ${
               item.label === "Login"
                 ? "ring-1 ring-primary-bg-dark dark:ring-primary-bg-light bg-transparent dark:text-text-primary-dark text-text-primary-light w-[6rem] h-[2.7rem]"
@@ -89,7 +99,7 @@ const NavBar = () => {
       {isMobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className="md:hidden absolute top-[80px] left-0 right-0 bg-primary-bg-light dark:bg-primary-bg-dark bg-opacity-100 paddingX paddingY"
+          className="md:hidden absolute top-[80px] left-0 right-0 bg-primary-bg-light dark:bg-primary-bg-dark bg-opacity-90 paddingX paddingY"
         >
           <ul className="flex flex-col items-center justify-center gap-[2rem] py-[1rem]">
             {navbarItems.map((item, index) => (
@@ -111,7 +121,14 @@ const NavBar = () => {
                     : "bg-primary-accent-blue-light dark:bg-primary-accent-blue-dark dark:hover:bg-primary-light-blue-dark hover:bg-primary-light-blue-light text-text-primary-dark"
                 }`}
                 key={`${index}-${item.id}-${item.label}`}
-                onClick={toggleMobileMenu}
+                onClick={() => {
+                  handleRouting(
+                    item.label.toLowerCase() === "login"
+                      ? "/log-in"
+                      : "/sign-up"
+                  );
+                  toggleMobileMenu();
+                }}
               >
                 <span>{item.label}</span>
               </button>

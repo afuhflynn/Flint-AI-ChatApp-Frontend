@@ -2,10 +2,16 @@ import React, { useEffect } from "react";
 import {
   AboutusPage,
   ChatRoom,
+  ConfirmEmailAddress,
   ContactusPage,
+  DeleteAccount,
   ErrorPage,
   HomePage,
   LoginPage,
+  PasswordResetPage,
+  PasswordResetRquestPage,
+  SettingsPage,
+  SignupPage,
 } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import { useLocalTheme } from "./hooks";
@@ -14,7 +20,7 @@ const App: React.FC = () => {
   const [theme, setTheme] = useLocalTheme("light");
 
   useEffect(() => {
-    setTheme("dark");
+    setTheme("light");
   }, [setTheme]);
   console.log(theme);
 
@@ -26,7 +32,13 @@ const App: React.FC = () => {
         <Route path="/about-us" element={<AboutusPage />} />
         <Route path="/contact-us" element={<ContactusPage />} />
         <Route path="/chat-bot" element={<ChatRoom />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/log-in" element={<LoginPage />} />
+        <Route path="/sign-up" element={<SignupPage />} />
+        <Route path="/confirm-email" element={<ConfirmEmailAddress />} />
+        <Route path="/forgot-password" element={<PasswordResetRquestPage />} />
+        <Route path="/reset-password/:token" element={<PasswordResetPage />} />
+        <Route path="/delete-account" element={<DeleteAccount />} />
+        <Route path="/user-settings" element={<SettingsPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </main>

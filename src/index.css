@@ -17,7 +17,14 @@
   @apply rounded-full appearance-none dark:bg-neutral-light-grey-light bg-neutral-light-grey-dark;
 }
 
+/* Target all inputs of type number*/
+
+::-webkit-inner-spin-button {
+  @apply appearance-none;
+}
+
 body {
+  transition: all 0.4s ease-in;
   @apply w-screen h-screen bg-primary-bg-light dark:bg-primary-bg-dark;
 }
 header {
@@ -62,4 +69,24 @@ header {
 
 .cta-btn {
   @apply h-[3.6rem] px-6 font-semibold text-blue-500 transition duration-300 bg-white border border-blue-500 rounded-lg shadow-lg hover:bg-blue-100 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700;
+}
+
+.auth-btn {
+  @apply hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  dark:bg-primary-accent-blue-dark bg-primary-accent-blue-light text-text-primary-dark rounded-2xl h-[3rem] w-full outline-none focus:ring-offset-CTA-hover-blue-dark;
+}
+
+.custom-input {
+  @apply w-full px-4 mb-4 border rounded-xl focus:ring-2 border-solid border-neutral-light-grey-light dark:border-neutral-light-grey-dark border-opacity-50 dark:border-opacity-40 py-3 focus:ring-primary-light-blue-light focus:border-transparent bg-transparent outline-none text-text-primary-light dark:text-text-primary-dark dark:placeholder:text-text-secondary-dark placeholder:text-text-secondary-light resize-none;
+}
+
+.modal {
+  @apply max-w-screen-lg mx-auto mt-8 mb-4 p-6 rounded-xl shadow-lg lg:w-[45%] xl:w-[40%] w-[85%] sm:w-[80%] md:w-[50%] bg-transparent dark:bg-neutral-dark-grey-dark dark:shadow-sm;
+}
+
+.modal-text {
+  @apply text-text-primary-light dark:text-text-primary-dark text-body-text;
+}
+
+.input-row {
+  @apply flex flex-col w-full h-auto gap-2;
 }
