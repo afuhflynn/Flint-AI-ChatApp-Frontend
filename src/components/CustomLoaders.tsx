@@ -5,7 +5,7 @@ const CustomLoader1 = () => {
 };
 const CustomLoader2 = () => {
   return (
-    <div className="animate-spin size-[2.5rem] rounded-full border-solid border-t-[3px] border-primary-accent-blue-light" />
+    <div className="animate-spin size-[2.8rem] rounded-full border-solid border-t-[3px] border-primary-accent-blue-light" />
   );
 };
 

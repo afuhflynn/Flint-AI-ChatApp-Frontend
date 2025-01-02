@@ -1,5 +1,6 @@
 import React from "react";
 import { Footer, NavBar } from "../components";
+import { Link } from "react-router-dom";
 
 const AboutusPage: React.FC = () => {
   return (
@@ -47,6 +48,34 @@ const AboutusPage: React.FC = () => {
             of shared knowledge and creativity.
           </li>
         </ul>
+      </div>
+      <div className="flex flex-row items-center justify-between w-full h-auto my-4 paddingX modal-text">
+        <p className="flex flex-row items-center gap-2">
+          <span>Have any question?</span>
+          <Link
+            to="/faqs"
+            className="text-primary-accent-blue-dark hover:underline"
+          >
+            visit our FAQs
+          </Link>
+        </p>
+        <p className="flex flex-row items-center gap-2">
+          <span>Read our</span>
+          <Link
+            to="/terms-conditions"
+            className="text-primary-accent-blue-dark hover:underline"
+          >
+            terms
+          </Link>
+          <span>and</span>
+          <Link
+            to="/terms-conditions"
+            className="text-primary-accent-blue-dark hover:underline"
+          >
+            conditions
+          </Link>
+          <span>of service</span>
+        </p>
       </div>
       <Footer />
     </div>

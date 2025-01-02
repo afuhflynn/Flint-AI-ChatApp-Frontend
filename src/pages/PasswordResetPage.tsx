@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Button, Input, ModalHeading } from "../components";
+import {
+  Button,
+  Input,
+  ModalHeading,
+  PasswordStrengthCriteria,
+  PasswordStrengthMeter,
+} from "../components";
 
 const PasswordResetPage = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +49,24 @@ const PasswordResetPage = () => {
               />
             </div>
           </div>
+          {/* Password confirm validation */}
+          {formData.confirmPassword !== "" &&
+            formData.password !== formData.confirmPassword && (
+              <p className={`text-muted-text text-red-500 mb-4`}>
+                Passwords don't match
+              </p>
+            )}
+          {/* Password strength meter */}
+          {formData.password !== "" && (
+            <PasswordStrengthMeter password={formData.password} />
+          )}
+          {/* Password strength criteria */}
+          {formData.password !== "" && (
+            <>
+              <p className="modal-text">Must contain: </p>
+              <PasswordStrengthCriteria password={formData.password} />
+            </>
+          )}
           <Button text="Update Password" type="submit" onClick={() => {}} />
         </form>
       </div>

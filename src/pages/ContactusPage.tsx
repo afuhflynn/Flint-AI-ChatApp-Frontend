@@ -76,7 +76,7 @@ const ContactusPage: React.FC = () => {
                 className="custom-input"
               />
               <div
-                className={`flex flex-row items-center justify-between w-full px-2 text-sm ${
+                className={`flex flex-row items-center justify-between w-full px-2 -mt-3 mb-4 text-sm ${
                   formData.message.length >= maxMsgInput
                     ? "text-primary-purple-light dark:text-primary-purple-dark"
                     : "text-gray-500 dark:text-gray-300"

@@ -43,7 +43,7 @@ const LoginPage = () => {
                 onChange={(name, value) => handleInputChange(name, value)}
               />
             </div>
-            <div className="flex flex-row items-center justify-end w-full h-auto mb-2 text-end text-primary-accent-blue-light dark:text-primary-accent-blue-dark hover:underline text-muted-text">
+            <div className="flex flex-row items-center justify-end w-full h-auto mb-4 text-end text-primary-accent-blue-light dark:text-primary-accent-blue-dark hover:underline text-muted-text">
               <Link to="/forgot-password">Forgot your password?</Link>
             </div>
           </div>

@@ -8,6 +8,10 @@ import Input from "./Input";
 import Button from "./Button";
 import SocialConnections from "./SocialConnections";
 import ModalHeading from "./ModalHeading";
+import FAQSection from "./FAQSection";
+import PasswordStrengthMeter from "./PasswordStrengthMeter";
+import PasswordStrengthCriteria from "./PasswordStrengthCriteria";
+import LoadingOverlay from "./LoadingOverlay";
 
 export {
   NavBar,
@@ -20,4 +24,8 @@ export {
   Input,
   ModalHeading,
   SocialConnections,
+  FAQSection,
+  PasswordStrengthMeter,
+  PasswordStrengthCriteria,
+  LoadingOverlay,
 };

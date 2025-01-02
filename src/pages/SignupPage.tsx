@@ -1,5 +1,12 @@
 import { Link } from "react-router-dom";
-import { Button, Input, ModalHeading, SocialConnections } from "../components";
+import {
+  Button,
+  Input,
+  ModalHeading,
+  PasswordStrengthCriteria,
+  PasswordStrengthMeter,
+  SocialConnections,
+} from "../components";
 import { useState } from "react";
 
 const SignupPage = () => {
@@ -73,6 +80,25 @@ const SignupPage = () => {
               />
             </div>
           </div>
+          {/* Password confirm validation */}
+          {formData.confirmPassword !== "" &&
+            formData.password !== formData.confirmPassword && (
+              <p className={`text-muted-text text-red-500 mb-4`}>
+                Passwords don't match
+              </p>
+            )}
+          {/* Password strength meter */}
+          {formData.password !== "" && (
+            <PasswordStrengthMeter password={formData.password} />
+          )}
+
+          {/* Password strength criteria */}
+          {formData.password !== "" && (
+            <>
+              <p className="modal-text">Must contain: </p>
+              <PasswordStrengthCriteria password={formData.password} />
+            </>
+          )}
           <Button text="Sign Up" type="submit" onClick={() => {}} />
           <div className="flex flex-row items-center justify-center my-4 h-[3rem] md:h-[2.6rem] w-full relative">
             <div className="absolute flex flex-row items-center justify-center w-auto h-full px-2 text-md bg-primary-bg-light dark:bg-neutral-dark-grey-dark">

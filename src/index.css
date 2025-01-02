@@ -76,11 +76,11 @@ header {
 }
 
 .custom-input {
-  @apply w-full px-4 mb-4 border rounded-xl focus:ring-2 border-solid border-neutral-light-grey-light dark:border-neutral-light-grey-dark border-opacity-50 dark:border-opacity-40 py-3 focus:ring-primary-light-blue-light focus:border-transparent bg-transparent outline-none text-text-primary-light dark:text-text-primary-dark dark:placeholder:text-text-secondary-dark placeholder:text-text-secondary-light resize-none;
+  @apply w-full px-4 py-3 mb-4 bg-transparent border border-opacity-50 border-solid outline-none resize-none rounded-xl focus:ring-2 border-neutral-light-grey-light dark:border-neutral-light-grey-dark dark:border-opacity-40 focus:ring-primary-light-blue-light focus:border-transparent text-text-primary-light dark:text-text-primary-dark dark:placeholder:text-text-secondary-dark placeholder:text-text-secondary-light;
 }
 
 .modal {
-  @apply max-w-screen-lg mx-auto mt-8 mb-4 p-6 rounded-xl shadow-lg lg:w-[45%] xl:w-[40%] w-[85%] sm:w-[80%] md:w-[50%] bg-transparent dark:bg-neutral-dark-grey-dark dark:shadow-sm;
+  @apply max-w-screen-lg mx-auto mt-8 mb-4 p-6 rounded-xl shadow-lg lg:w-[45%] xl:w-[40%] w-[90%] sm:w-[80%] md:w-[50%] bg-transparent dark:bg-neutral-dark-grey-dark dark:shadow-sm;
 }
 
 .modal-text {
