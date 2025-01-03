@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import {
   AboutusPage,
+  AccountDeletionRequestPage,
   ChatRoom,
   ConfirmEmailAddress,
   ContactusPage,
@@ -23,7 +24,7 @@ const App: React.FC = () => {
   const [theme, setTheme] = useLocalTheme("light");
 
   useEffect(() => {
-    setTheme("light");
+    setTheme("dark");
   }, [setTheme]);
   console.log(theme);
   const loading = false;
@@ -37,7 +38,7 @@ const App: React.FC = () => {
           <Route path="/home" element={<HomePage />} />
           <Route path="/about-us" element={<AboutusPage />} />
           <Route path="/contact-us" element={<ContactusPage />} />
-          <Route path="/chat-bot" element={<ChatRoom />} />
+          <Route path="/chat-bot/:chatID" element={<ChatRoom />} />
           <Route path="/log-in" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignupPage />} />
           <Route path="/confirm-email" element={<ConfirmEmailAddress />} />
@@ -49,7 +50,14 @@ const App: React.FC = () => {
             path="/reset-password/:token"
             element={<PasswordResetPage />}
           />
-          <Route path="/delete-account" element={<DeleteAccount />} />
+          <Route
+            path="/delete-account/:userID/:token"
+            element={<DeleteAccount />}
+          />
+          <Route
+            path="/account-delete-notice"
+            element={<AccountDeletionRequestPage />}
+          />
           <Route path="/user-settings" element={<SettingsPage />} />
           <Route path="/faqs" element={<FAQPage />} />
           <Route path="/terms-conditions" element={<Terms_ConditionsPage />} />

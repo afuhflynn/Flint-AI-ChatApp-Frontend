@@ -13,6 +13,7 @@ import SignupPage from "./SignupPage";
 import ErrorPage from "./ErrorPage";
 import DeleteAccount from "./DeleteAccount";
 import ConfirmEmailAddress from "./ConfirmEmail";
+import AccountDeletionRequestPage from "./AccountDeletionRequestPage";
 
 export {
   HomePage,
@@ -30,4 +31,5 @@ export {
   ErrorPage,
   DeleteAccount,
   ConfirmEmailAddress,
+  AccountDeletionRequestPage,
 };
