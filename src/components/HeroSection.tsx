@@ -51,7 +51,7 @@ const HeroSection = () => {
       <div className="flex flex-row justify-start items-center w-full md:h-[13%] h-[20%] gap-6 mt-12 md:flex-row md:justify-start">
         {/* Search Section */}
         <form className="flex flex-col items-start justify-center w-full md:h-full h-[9rem] gap-4 px-3 md:gap-6 md:flex-row md:items-center md:paddingX mb-8 md:mb-0">
-          <div className="flex flex-row items-center h-full md:w-[60%] w-full overflow-hidden bg-white border border-gray-300 shadow-lg dark:bg-gray-800 dark:text-white dark:border-gray-600 rounded-2xl ">
+          <div className="flex flex-row items-center h-full md:w-[60%] w-full overflow-hidden bg-transparent border border-opacity-20 border-solid shadow-lg dark:bg-neutral-dark-grey-dark dark:shadow-sm text-text-primary-light dark:text-text-primary-dark border-neutral-light-grey-light dark:border-neutral-light-grey-dark dark:border-opacity-30 rounded-2xl ">
             <input
               type="text"
               required

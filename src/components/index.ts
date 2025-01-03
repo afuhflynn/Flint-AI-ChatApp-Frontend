@@ -12,6 +12,9 @@ import FAQSection from "./FAQSection";
 import PasswordStrengthMeter from "./PasswordStrengthMeter";
 import PasswordStrengthCriteria from "./PasswordStrengthCriteria";
 import LoadingOverlay from "./LoadingOverlay";
+import NewConversationPage from "./NewConversationPage";
+import ConversationPage from "./ConversationPage";
+import SideBar from "./SideBar";
 
 export {
   NavBar,
@@ -28,4 +31,7 @@ export {
   PasswordStrengthMeter,
   PasswordStrengthCriteria,
   LoadingOverlay,
+  NewConversationPage,
+  ConversationPage,
+  SideBar,
 };

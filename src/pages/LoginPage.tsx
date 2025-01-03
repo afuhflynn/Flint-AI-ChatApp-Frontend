@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
-    user: "",
+    username: "",
     password: "",
   });
 
@@ -17,15 +17,15 @@ const LoginPage = () => {
         <ModalHeading text="Welcome Back" className="text-center" />
         <form>
           <div className="input-row">
-            <label htmlFor="user" className="modal-text">
+            <label htmlFor="username" className="modal-text">
               Username or Email
             </label>
             <div>
               <Input
-                type="email"
+                type="text"
                 placeholder="Username or Email"
-                value={formData.user}
-                name="user"
+                value={formData.username}
+                name="username"
                 onChange={(name, value) => handleInputChange(name, value)}
               />
             </div>

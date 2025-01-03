@@ -9,14 +9,14 @@ const AccountDeletionRequestPage: React.FC = () => {
       <div className="modal !p-6 !shadow-lg">
         <ModalHeading
           text="Account Flagged for delete"
-          className="text-center text-red-500"
+          className="text-center !text-red-500"
         />
         <p className="modal-text opacity-80 !my-4 text-center !mb-5">
           An email has been sent to your inbox that will guide you through the
           account delete process. Check your mail inbox to proceed.
           <br />
           <span className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light font-sub-headings">
-            See you nex time!
+            See you next time!
           </span>
         </p>
         <footer className="mt-2 text-center modal-text !text-muted-text flex flex-col gap-2">

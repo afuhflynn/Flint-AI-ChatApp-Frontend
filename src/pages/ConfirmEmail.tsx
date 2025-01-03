@@ -9,7 +9,7 @@ const ConfirmEmailAddress = () => {
       <div className="modal !p-6 !shadow-lg !h-[60%]">
         <ModalHeading text="Reset Password" className="text-center" />
         <p className="modal-text opacity-80 !my-4 text-center !mb-5">
-          Enter the 6 digit verification sent to your email below
+          Enter the 6 digit verification code sent to your email below
         </p>
         <form>
           <div className="input-row">

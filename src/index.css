@@ -40,7 +40,7 @@ header {
 }
 
 .card {
-  @apply p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800 h-[18rem] md:h-[18rem] flex flex-col items-start justify-start gap-4 md:gap-6;
+  @apply p-6 bg-white rounded-lg shadow-lg dark:bg-neutral-dark-grey-dark h-[18rem] md:h-[18rem] flex flex-col items-start justify-start gap-4 md:gap-6;
 }
 
 .card-heading {
@@ -68,7 +68,7 @@ header {
 }
 
 .cta-btn {
-  @apply h-[3.6rem] px-6 font-semibold text-blue-500 transition duration-300 bg-white border border-blue-500 rounded-lg shadow-lg hover:bg-blue-100 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700;
+  @apply h-[3.6rem] px-6 font-semibold text-blue-500 transition duration-300 bg-white border border-blue-500 rounded-lg shadow-lg hover:bg-blue-100 dark:bg-neutral-dark-grey-dark dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700;
 }
 
 .auth-btn {
