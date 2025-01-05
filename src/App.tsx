@@ -48,10 +48,7 @@ const App: React.FC = () => {
           {/* User specific routes */}
           <Route path="/log-in" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignupPage />} />
-          <Route
-            path="/confirm-email/:token"
-            element={<ConfirmEmailAddress />}
-          />
+          <Route path="/confirm-email" element={<ConfirmEmailAddress />} />
           <Route
             path="/forgot-password"
             element={<PasswordResetRquestPage />}

@@ -8,7 +8,6 @@ const ContactusPage: React.FC = () => {
     email: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({
@@ -19,16 +18,14 @@ const ContactusPage: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Here you can handle the form submission logic, such as sending the form data to a backend.
-    setIsSubmitted(true);
   };
 
   return (
     <div className="flex flex-col min-h-screen pb-4 bg-primary-bg-light dark:bg-primary-bg-dark">
       <NavBar />
-      <div className="w-full h-full paddingX">
+      <div className="w-full h-full paddingX relative">
         {/* Card with different background colors for light and dark modes */}
-        <div className="modal">
+        <div className="max-w-screen-lg mx-auto mt-8 mb-4 p-6 rounded-xl shadow-lg md:w-96 w-[96%] bg-transparent dark:bg-neutral-dark-grey-dark dark:shadow-sm">
           <ModalHeading text="Send Us a Message" />
           <form onSubmit={handleSubmit}>
             <div className="input-row">
@@ -89,18 +86,24 @@ const ContactusPage: React.FC = () => {
               </div>
             </div>
             <div>
-              <Button type="submit" text="Send Message..." onClick={() => {}} />
+              <Button
+                type="submit"
+                text="Send Message"
+                className={`${
+                  (formData.email.trim() === "" ||
+                    formData.message.trim() === "" ||
+                    formData.name.trim() === "") &&
+                  "opacity-50"
+                }`}
+                disabled={
+                  formData.email.trim() === "" ||
+                  formData.message.trim() === "" ||
+                  formData.name.trim() === ""
+                }
+                onClick={() => {}}
+              />
             </div>
           </form>
-
-          {isSubmitted && (
-            <div className="mt-6 text-lg text-center text-text-primary-light dark:text-text-primary-dark">
-              <p>
-                Thank you for reaching out! We'll get back to you as soon as
-                possible.
-              </p>
-            </div>
-          )}
         </div>
       </div>
       <Footer />

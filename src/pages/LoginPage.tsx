@@ -50,8 +50,15 @@ const LoginPage = () => {
           <Button
             text="Login"
             type="submit"
-            className="text-body-text"
+            className={`text-body-text ${
+              (formData.password.trim() === "" ||
+                formData.username.trim() === "") &&
+              "opacity-50"
+            }`}
             onClick={() => {}}
+            disabled={
+              formData.password.trim() === "" || formData.username.trim() === ""
+            }
           />
           <div className="flex flex-row items-center justify-center my-4 h-[3rem] md:h-[2.6rem] w-full relative">
             <div className="absolute flex flex-row items-center justify-center w-auto h-full px-2 text-md bg-primary-bg-light dark:bg-neutral-dark-grey-dark">

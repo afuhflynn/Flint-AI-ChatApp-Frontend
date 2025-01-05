@@ -41,12 +41,20 @@ const DeleteAccount = () => {
               </span>
             </div>
           </div>
-          <Button text="Submit Reason" type="submit" onClick={() => {}} />
+          <Button
+            text="Submit Reason"
+            type="submit"
+            onClick={() => {}}
+            disabled={message.trim() === ""}
+            className={`text-body-text ${
+              message.trim() === "" && "opacity-50"
+            }`}
+          />
         </form>
         <footer className="mt-4 text-center modal-text !text-muted-text">
           Changed your mind?{" "}
           <Link
-            to="/dashboard"
+            to="/chat-bot/:chatID"
             className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline"
           >
             Go back to Dashboard

@@ -24,6 +24,7 @@ const Input = ({
     className={`custom-input !${className}`}
     max={maxLength}
     required
+    spellCheck={"true"}
   />
 );
 

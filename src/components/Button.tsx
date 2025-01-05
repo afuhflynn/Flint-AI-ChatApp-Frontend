@@ -3,14 +3,21 @@ const Button = ({
   onClick,
   type = "button",
   className,
+  disabled,
 }: {
   text: string;
   onClick: () => void;
   type: "button" | "submit" | "reset" | undefined;
   className?: string;
+  disabled?: boolean;
 }) => {
   return (
-    <button type={type} className={`auth-btn !${className}`} onClick={onClick}>
+    <button
+      disabled={disabled}
+      type={type}
+      className={`auth-btn !${className}`}
+      onClick={onClick}
+    >
       {text}
     </button>
   );

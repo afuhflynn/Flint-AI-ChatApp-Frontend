@@ -26,7 +26,13 @@ const PasswordResetRquestPage = () => {
               />
             </div>
           </div>
-          <Button text="Reset Password" type="submit" onClick={() => {}} />
+          <Button
+            text="Reset Password"
+            type="submit"
+            onClick={() => {}}
+            disabled={email.trim() === ""}
+            className={`text-body-text ${email.trim() === "" && "opacity-50"}`}
+          />
         </form>
       </div>
     </div>

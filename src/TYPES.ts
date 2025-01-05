@@ -2,6 +2,8 @@
 export interface appStoreTypes {
   appTheme: string;
   setAppTheme: (value: string) => void;
+  isPasswordValid: boolean;
+  setIsPasswordValid: (value: boolean) => void;
 }
 
 // user types

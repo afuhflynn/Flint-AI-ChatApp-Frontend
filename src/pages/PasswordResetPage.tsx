@@ -6,8 +6,10 @@ import {
   PasswordStrengthCriteria,
   PasswordStrengthMeter,
 } from "../components";
+import globalAppStore from "../store/app.store";
 
 const PasswordResetPage = () => {
+  const { isPasswordValid } = globalAppStore();
   const [formData, setFormData] = useState({
     password: "",
     confirmPassword: "",
@@ -16,6 +18,7 @@ const PasswordResetPage = () => {
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
   };
+  console.log(isPasswordValid);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal !p-6 !shadow-lg !h-[60%]">
@@ -67,7 +70,24 @@ const PasswordResetPage = () => {
               <PasswordStrengthCriteria password={formData.password} />
             </>
           )}
-          <Button text="Update Password" type="submit" onClick={() => {}} />
+          <Button
+            text="Update Password"
+            type="submit"
+            className={`text-body-text ${
+              (formData.confirmPassword.trim() === "" ||
+                formData.password.trim() === "" ||
+                !isPasswordValid ||
+                formData.confirmPassword !== formData.password) &&
+              "opacity-50"
+            }`}
+            onClick={() => {}}
+            disabled={
+              formData.confirmPassword.trim() === "" ||
+              formData.password.trim() === "" ||
+              !isPasswordValid ||
+              formData.confirmPassword !== formData.password
+            }
+          />
         </form>
       </div>
     </div>

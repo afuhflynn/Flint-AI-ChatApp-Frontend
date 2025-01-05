@@ -8,8 +8,10 @@ import {
   SocialConnections,
 } from "../components";
 import { useState } from "react";
+import globalAppStore from "../store/app.store";
 
 const SignupPage = () => {
+  const { isPasswordValid } = globalAppStore();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -19,6 +21,9 @@ const SignupPage = () => {
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
   };
+
+  // TODO: Trim username before submitting to backend
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
@@ -99,7 +104,28 @@ const SignupPage = () => {
               <PasswordStrengthCriteria password={formData.password} />
             </>
           )}
-          <Button text="Sign Up" type="submit" onClick={() => {}} />
+          <Button
+            text="Sign Up"
+            type="submit"
+            onClick={() => {}}
+            className={`text-body-text ${
+              (formData.password.trim() === "" ||
+                formData.username.trim() === "" ||
+                formData.email.trim() === "" ||
+                formData.confirmPassword === "" ||
+                !isPasswordValid ||
+                formData.confirmPassword !== formData.password) &&
+              "opacity-50"
+            }`}
+            disabled={
+              formData.password.trim() === "" ||
+              formData.username.trim() === "" ||
+              formData.email.trim() === "" ||
+              formData.confirmPassword === "" ||
+              !isPasswordValid ||
+              formData.confirmPassword !== formData.password
+            }
+          />
           <div className="flex flex-row items-center justify-center my-4 h-[3rem] md:h-[2.6rem] w-full relative">
             <div className="absolute flex flex-row items-center justify-center w-auto h-full px-2 text-md bg-primary-bg-light dark:bg-neutral-dark-grey-dark">
               <span className="modal-text !text-muted-text">
