@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import {
   AboutusPage,
   AccountDeletionRequestPage,
@@ -25,10 +26,16 @@ const App: React.FC = () => {
   useEffect(() => {
     setTheme("dark");
   }, [setTheme]);
-  console.log(theme);
   const loading = false;
   return (
     <main className="w-screen h-screen overflow-x-hidden bg-primary-bg-light dark:bg-primary-bg-dark">
+      {/* toast container */}
+      <ToastContainer
+        autoClose={2000}
+        hideProgressBar={true}
+        theme={theme}
+        closeButton={false}
+      />
       {/* Loading overlay when checking user auth state */}
       {loading ? (
         <LoadingOverlay />

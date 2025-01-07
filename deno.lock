@@ -1,8 +1,6 @@
 {
   "version": "4",
   "specifiers": {
-    "npm:@clerk/clerk-react@^5.21.0": "5.21.0_react@18.3.1_react-dom@18.3.1__react@18.3.1",
-    "npm:@clerk/themes@^2.2.3": "2.2.3",
     "npm:@emotion/react@^11.14.0": "11.14.0_react@18.3.1",
     "npm:@emotion/styled@^11.14.0": "11.14.0_@emotion+react@11.14.0__react@18.3.1_react@18.3.1",
     "npm:@eslint/js@^9.13.0": "9.16.0",
@@ -13,7 +11,6 @@
     "npm:@vitejs/plugin-react-swc@^3.5.0": "3.7.2_vite@5.4.11",
     "npm:autoprefixer@^10.4.20": "10.4.20_postcss@8.4.49",
     "npm:axios@^1.7.9": "1.7.9",
-    "npm:date-fns@^4.1.0": "4.1.0",
     "npm:eslint-plugin-react-hooks@5": "5.1.0_eslint@9.16.0",
     "npm:eslint-plugin-react-refresh@~0.4.14": "0.4.16_eslint@9.16.0",
     "npm:eslint@^9.13.0": "9.16.0",
@@ -107,42 +104,6 @@
         "@babel/helper-validator-identifier"
       ]
     },
-    "@clerk/clerk-react@5.21.0_react@18.3.1_react-dom@18.3.1__react@18.3.1": {
-      "integrity": "sha512-WGIYKeXA/cpvWj2NiMsWYJfRq4Npy6bM9ZrcTENXVox9jpk6iGggoX9zFJG9NBx5LDHBV2kgvpRdhnF/cnrJ+w==",
-      "dependencies": [
-        "@clerk/shared",
-        "@clerk/types",
-        "react",
-        "react-dom",
-        "tslib@2.4.1"
-      ]
-    },
-    "@clerk/shared@2.20.4_react@18.3.1_react-dom@18.3.1__react@18.3.1": {
-      "integrity": "sha512-1ndGEO+NejIMFkl47DCeSpVv3nmKh9BHD6wt2Sl3X1wv7sj3eWzSVC14Exkag7D8Og2VcN4LXOFLErsCXHS+YQ==",
-      "dependencies": [
-        "@clerk/types",
-        "dequal",
-        "glob-to-regexp",
-        "js-cookie",
-        "react",
-        "react-dom",
-        "std-env",
-        "swr"
-      ]
-    },
-    "@clerk/themes@2.2.3": {
-      "integrity": "sha512-pDA5P9IUTLVKYviEtm7BgB+1rcJINDuP9F4LJ5ZH3f/6+LdG09EaVM/9nvGLnNqDJ7XvldzcKes1BpPJuGSCew==",
-      "dependencies": [
-        "@clerk/types",
-        "tslib@2.4.1"
-      ]
-    },
-    "@clerk/types@4.40.0": {
-      "integrity": "sha512-9QdllXYujsjYLbvPg9Kq1rWOemX5FB0r6Ijy8HOxwjKN+TPlxUnGcs+t7IwU+M5gdmZ2KV6aA6d1a2q2FlSoiA==",
-      "dependencies": [
-        "csstype@3.1.1"
-      ]
-    },
     "@emotion/babel-plugin@11.13.5": {
       "integrity": "sha512-pxHCpT2ex+0q+HH91/zsdHkw/lXd468DIN2zvfvLtPKLLMo6gQj7oLObq8PhkrxOZb/gGCq03S3Z7PDhS8pduQ==",
       "dependencies": [
@@ -202,7 +163,7 @@
         "@emotion/memoize",
         "@emotion/unitless",
         "@emotion/utils",
-        "csstype@3.1.3"
+        "csstype"
       ]
     },
     "@emotion/sheet@1.4.0": {
@@ -441,7 +402,7 @@
         "@types/react",
         "@types/react-transition-group",
         "clsx",
-        "csstype@3.1.3",
+        "csstype",
         "prop-types",
         "react",
         "react-dom",
@@ -468,7 +429,7 @@
         "@emotion/serialize",
         "@emotion/sheet",
         "@emotion/styled",
-        "csstype@3.1.3",
+        "csstype",
         "prop-types",
         "react"
       ]
@@ -485,7 +446,7 @@
         "@mui/utils",
         "@types/react",
         "clsx",
-        "csstype@3.1.3",
+        "csstype",
         "prop-types",
         "react"
       ]
@@ -676,7 +637,7 @@
       "integrity": "sha512-NzahNKvjNhVjuPBQ+2G7WlxstQ+47kXZNHlUvFakDViuIEfGY926GqhMueQFZ7woG+sPiQKlF36XfrIUVSUfFg==",
       "dependencies": [
         "@types/prop-types",
-        "csstype@3.1.3"
+        "csstype"
       ]
     },
     "@typescript-eslint/eslint-plugin@8.17.0_@typescript-eslint+parser@8.17.0__eslint@9.16.0__typescript@5.6.3_eslint@9.16.0_typescript@5.6.3": {
@@ -957,14 +918,8 @@
     "cssesc@3.0.0": {
       "integrity": "sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg=="
     },
-    "csstype@3.1.1": {
-      "integrity": "sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw=="
-    },
     "csstype@3.1.3": {
       "integrity": "sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw=="
-    },
-    "date-fns@4.1.0": {
-      "integrity": "sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg=="
     },
     "debug@4.4.0": {
       "integrity": "sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==",
@@ -984,9 +939,6 @@
     "delayed-stream@1.0.0": {
       "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
     },
-    "dequal@2.0.3": {
-      "integrity": "sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA=="
-    },
     "didyoumean@1.2.2": {
       "integrity": "sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw=="
     },
@@ -997,7 +949,7 @@
       "integrity": "sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==",
       "dependencies": [
         "@babel/runtime",
-        "csstype@3.1.3"
+        "csstype"
       ]
     },
     "eastasianwidth@0.2.0": {
@@ -1227,7 +1179,7 @@
         "motion-utils",
         "react",
         "react-dom",
-        "tslib@2.8.1"
+        "tslib"
       ]
     },
     "fsevents@2.3.3": {
@@ -1247,9 +1199,6 @@
       "dependencies": [
         "is-glob"
       ]
-    },
-    "glob-to-regexp@0.4.1": {
-      "integrity": "sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw=="
     },
     "glob@10.4.5": {
       "integrity": "sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==",
@@ -1350,9 +1299,6 @@
     },
     "jiti@1.21.7": {
       "integrity": "sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A=="
-    },
-    "js-cookie@3.0.5": {
-      "integrity": "sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw=="
     },
     "js-tokens@4.0.0": {
       "integrity": "sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ=="
@@ -1829,9 +1775,6 @@
     "source-map@0.5.7": {
       "integrity": "sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ=="
     },
-    "std-env@3.8.0": {
-      "integrity": "sha512-Bc3YwwCB+OzldMxOXJIIvC6cPRWr/LxOp48CdQTOkPyk/t4JWWJbrilwBd7RJzKV8QW7tJkcgAmeuLLJugl5/w=="
-    },
     "string-width@4.2.3": {
       "integrity": "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==",
       "dependencies": [
@@ -1889,14 +1832,6 @@
     },
     "swiper@11.1.15": {
       "integrity": "sha512-IzWeU34WwC7gbhjKsjkImTuCRf+lRbO6cnxMGs88iVNKDwV+xQpBCJxZ4bNH6gSrIbbyVJ1kuGzo3JTtz//CBw=="
-    },
-    "swr@2.3.0_react@18.3.1": {
-      "integrity": "sha512-NyZ76wA4yElZWBHzSgEJc28a0u6QZvhb6w0azeL2k7+Q1gAzVK+IqQYXhVOC/mzi+HZIozrZvBVeSeOZNR2bqA==",
-      "dependencies": [
-        "dequal",
-        "react",
-        "use-sync-external-store"
-      ]
     },
     "tailwindcss@3.4.17_postcss@8.4.49": {
       "integrity": "sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==",
@@ -1966,9 +1901,6 @@
     "ts-interface-checker@0.1.13": {
       "integrity": "sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA=="
     },
-    "tslib@2.4.1": {
-      "integrity": "sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA=="
-    },
     "tslib@2.8.1": {
       "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
     },
@@ -2008,12 +1940,6 @@
       "integrity": "sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==",
       "dependencies": [
         "punycode"
-      ]
-    },
-    "use-sync-external-store@1.4.0_react@18.3.1": {
-      "integrity": "sha512-9WXSPC5fMv61vaupRkCKCxsPxBocVnwakBEkMIHHpkTTg6icbJtg6jzgtLDm4bl3cSHAca52rYWih0k4K3PfHw==",
-      "dependencies": [
-        "react"
       ]
     },
     "util-deprecate@1.0.2": {
@@ -2073,8 +1999,6 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
-        "npm:@clerk/clerk-react@^5.21.0",
-        "npm:@clerk/themes@^2.2.3",
         "npm:@emotion/react@^11.14.0",
         "npm:@emotion/styled@^11.14.0",
         "npm:@eslint/js@^9.13.0",
@@ -2085,7 +2009,6 @@
         "npm:@vitejs/plugin-react-swc@^3.5.0",
         "npm:autoprefixer@^10.4.20",
         "npm:axios@^1.7.9",
-        "npm:date-fns@^4.1.0",
         "npm:eslint-plugin-react-hooks@5",
         "npm:eslint-plugin-react-refresh@~0.4.14",
         "npm:eslint@^9.13.0",

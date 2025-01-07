@@ -9,7 +9,7 @@ const PasswordResetRquestPage = () => {
         <ModalHeading text="Forgot Password" className="text-center" />
         <p className="modal-text opacity-80 !my-4 text-center !mb-5">
           Enter your email address below. <br />
-          And a reset link will be sent to your email
+          And a reset link will be sent to your inbox
         </p>
         <form>
           <div className="input-row">
