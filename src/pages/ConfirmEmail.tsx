@@ -29,7 +29,7 @@ const ConfirmEmailAddress = () => {
   return (
     <div className="flex items-center flex-col justify-center min-h-screen bg-background text-text">
       <div className="modal !p-6 !shadow-lg !h-[60%]">
-        <ModalHeading text="Confirm Email" className="text-center" />
+        <ModalHeading text="Confirm Email Address" className="text-center" />
         <p className="modal-text opacity-80 !my-4 text-center !mb-5">
           Enter the 6 digit verification code sent to your email below
         </p>
@@ -41,7 +41,7 @@ const ConfirmEmailAddress = () => {
             <div>
               <Input
                 type="number"
-                placeholder="Code"
+                placeholder="e.g 472913"
                 value={code}
                 name="code"
                 maxLength={6}

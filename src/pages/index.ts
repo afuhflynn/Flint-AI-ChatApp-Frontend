@@ -14,6 +14,8 @@ import ErrorPage from "./ErrorPage";
 import DeleteAccount from "./DeleteAccount";
 import ConfirmEmailAddress from "./ConfirmEmail";
 import AccountDeletionRequestPage from "./AccountDeletionRequestPage";
+import ConfirmEmailWithLink from "./ConfirmEmailWithLink";
+import EmailVerifiedSuccessfully from "./EmailVerifiedSuccessfully";
 
 export {
   HomePage,
@@ -32,4 +34,6 @@ export {
   DeleteAccount,
   ConfirmEmailAddress,
   AccountDeletionRequestPage,
+  EmailVerifiedSuccessfully,
+  ConfirmEmailWithLink,
 };

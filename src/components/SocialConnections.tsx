@@ -24,7 +24,7 @@ const SocialConnections: React.FC = () => {
         onClick={() => handleBtnClick("github")}
       >
         <GitHub className="text-primary-text" />{" "}
-        <span className="modal-text">GitHub</span>
+        <span className="modal-text">Sign in with GitHub</span>
       </button>
       <button
         type="button"
@@ -32,7 +32,7 @@ const SocialConnections: React.FC = () => {
         onClick={() => handleBtnClick("google")}
       >
         <Google className="text-primary-text" />{" "}
-        <span className="modal-text">Google</span>
+        <span className="modal-text">Sign in with Google</span>
       </button>
     </div>
   );

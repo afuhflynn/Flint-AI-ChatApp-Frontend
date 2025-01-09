@@ -8,22 +8,22 @@ const PasswordStrengthCriteria = ({ password }: { password: string }) => {
       met: password.length >= 8,
     },
     {
-      id: 1,
+      id: 2,
       label: "At least 1 lowercase character",
       met: /[a-z]/.test(password),
     },
     {
-      id: 1,
+      id: 3,
       label: "At least 1 uppercase character",
       met: /[A-Z]/.test(password),
     },
     {
-      id: 1,
+      id: 4,
       label: "At least 1 numeric character",
       met: /[0-9]/.test(password),
     },
     {
-      id: 1,
+      id: 5,
       label: "At least 1 special character",
       met: /[^A-Za-z0-9]/.test(password),
     },

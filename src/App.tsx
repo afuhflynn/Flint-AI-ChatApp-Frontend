@@ -5,8 +5,10 @@ import {
   AccountDeletionRequestPage,
   ChatRoom,
   ConfirmEmailAddress,
+  ConfirmEmailWithLink,
   ContactusPage,
   DeleteAccount,
+  EmailVerifiedSuccessfully,
   ErrorPage,
   FAQPage,
   HomePage,
@@ -55,7 +57,15 @@ const App: React.FC = () => {
           {/* User specific routes */}
           <Route path="/log-in" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignupPage />} />
-          <Route path="/confirm-email" element={<ConfirmEmailAddress />} />
+          <Route path="/confirm-email-code" element={<ConfirmEmailAddress />} />
+          <Route
+            path="/confirm-email-link/:token"
+            element={<ConfirmEmailWithLink />}
+          />
+          <Route
+            path="/email-verified"
+            element={<EmailVerifiedSuccessfully />}
+          />
           <Route
             path="/forgot-password"
             element={<PasswordResetRquestPage />}

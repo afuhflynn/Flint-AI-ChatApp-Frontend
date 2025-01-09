@@ -36,7 +36,7 @@ const SignupPage = () => {
             <div>
               <Input
                 type="text"
-                placeholder="Username"
+                placeholder="e.g JohnDoe"
                 value={formData.username}
                 name="username"
                 onChange={(name, value) => handleInputChange(name, value)}
@@ -50,7 +50,7 @@ const SignupPage = () => {
             <div>
               <Input
                 type="email"
-                placeholder="Email Address"
+                placeholder="e.g example@example.com"
                 value={formData.email}
                 name="email"
                 onChange={(name, value) => handleInputChange(name, value)}
@@ -64,7 +64,7 @@ const SignupPage = () => {
             <div>
               <Input
                 type="password"
-                placeholder="Password"
+                placeholder="e.g PA5$W08D"
                 value={formData.password}
                 name="password"
                 onChange={(name, value) => handleInputChange(name, value)}
@@ -78,7 +78,7 @@ const SignupPage = () => {
             <div>
               <Input
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="e.g PA5$W08D"
                 value={formData.confirmPassword}
                 name="confirmPassword"
                 onChange={(name, value) => handleInputChange(name, value)}

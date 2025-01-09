@@ -9,7 +9,7 @@ const PasswordResetRquestPage = () => {
         <ModalHeading text="Forgot Password" className="text-center" />
         <p className="modal-text opacity-80 !my-4 text-center !mb-5">
           Enter your email address below. <br />
-          And a reset link will be sent to your inbox
+          And a password reset link will be sent to your inbox
         </p>
         <form>
           <div className="input-row">
@@ -19,7 +19,7 @@ const PasswordResetRquestPage = () => {
             <div>
               <Input
                 type="email"
-                placeholder="Email Address"
+                placeholder="e.g example@example.com"
                 value={email}
                 name="email"
                 onChange={(_, value) => setEmail(value)}

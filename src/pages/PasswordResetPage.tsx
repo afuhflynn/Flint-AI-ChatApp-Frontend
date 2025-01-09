@@ -31,7 +31,7 @@ const PasswordResetPage = () => {
             <div>
               <Input
                 type="password"
-                placeholder="New Password"
+                placeholder="e.g PA5$W08D"
                 value={formData.password}
                 name="password"
                 onChange={(name, value) => handleInputChange(name, value)}
@@ -45,7 +45,7 @@ const PasswordResetPage = () => {
             <div>
               <Input
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="e.g PA5$W08D"
                 value={formData.confirmPassword}
                 name="confirmPassword"
                 onChange={(name, value) => handleInputChange(name, value)}

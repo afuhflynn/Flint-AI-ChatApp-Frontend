@@ -23,7 +23,7 @@ const LoginPage = () => {
             <div>
               <Input
                 type="text"
-                placeholder="Username or Email"
+                placeholder="e.g JohnDoe or example@example.com"
                 value={formData.username}
                 name="username"
                 onChange={(name, value) => handleInputChange(name, value)}
@@ -37,7 +37,7 @@ const LoginPage = () => {
             <div>
               <Input
                 type="password"
-                placeholder="Password"
+                placeholder="e.g PA5$W08D"
                 value={formData.password}
                 name="password"
                 onChange={(name, value) => handleInputChange(name, value)}
@@ -48,7 +48,7 @@ const LoginPage = () => {
             </div>
           </div>
           <Button
-            text="Login"
+            text="Login Securely"
             type="submit"
             className={`text-body-text ${
               (formData.password.trim() === "" ||
