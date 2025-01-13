@@ -14,7 +14,7 @@ const LoginPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
-        <ModalHeading text="Welcome Back" className="text-center" />
+        <ModalHeading text="Sign in to Flint AI" className="text-center" />
         <form>
           <div className="input-row">
             <label htmlFor="username" className="modal-text">

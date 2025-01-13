@@ -18,8 +18,16 @@ const SignupPage = () => {
     password: "",
     confirmPassword: "",
   });
+  const [passwordType, setPasswordType] = useState("password");
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleShowPassword = () => {
+    setPasswordType(passwordType === "password" ? "string" : "password");
+    setTimeout(() => {
+      setPasswordType("password");
+    }, 10000); // Toggle back after 10s
   };
 
   // TODO: Trim username before submitting to backend
@@ -27,7 +35,7 @@ const SignupPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
-        <ModalHeading text="Create an Account" className="text-center" />
+        <ModalHeading text="Sign up for Flint AI" className="text-center" />
         <form>
           <div className="input-row">
             <label htmlFor="username" className="modal-text">
@@ -58,12 +66,26 @@ const SignupPage = () => {
             </div>
           </div>
           <div className="input-row">
-            <label htmlFor="password" className="modal-text">
-              Password
+            <label
+              htmlFor="password"
+              className="modal-text flex flex-row items-center justify-between w-full h-auto"
+            >
+              <span>Password</span>
+              <button
+                type="button"
+                className="text-sm cta-btn !h-[1.8rem] !w-[3.3rem] !p-0 !shadow-none !flex !flex-row !items-center !justify-center !font-medium"
+                onClick={handleShowPassword}
+                disabled={
+                  formData.password.trim().length < 1 &&
+                  formData.confirmPassword.trim().length < 1
+                }
+              >
+                {passwordType === "password" ? "Show" : "Hide"}
+              </button>
             </label>
             <div>
               <Input
-                type="password"
+                type={passwordType}
                 placeholder="e.g PA5$W08D"
                 value={formData.password}
                 name="password"
@@ -77,7 +99,7 @@ const SignupPage = () => {
             </label>
             <div>
               <Input
-                type="password"
+                type={passwordType}
                 placeholder="e.g PA5$W08D"
                 value={formData.confirmPassword}
                 name="confirmPassword"

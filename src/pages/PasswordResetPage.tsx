@@ -14,9 +14,17 @@ const PasswordResetPage = () => {
     password: "",
     confirmPassword: "",
   });
+  const [passwordType, setPasswordType] = useState("password");
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleShowPassword = () => {
+    setPasswordType(passwordType === "password" ? "string" : "password");
+    setTimeout(() => {
+      setPasswordType("password");
+    }, 10000); // Toggle back after 10s
   };
   console.log(isPasswordValid);
   return (
@@ -25,12 +33,26 @@ const PasswordResetPage = () => {
         <ModalHeading text="Reset Password" className="text-center" />
         <form>
           <div className="input-row">
-            <label htmlFor="password" className="modal-text">
-              New Password
+            <label
+              htmlFor="password"
+              className="modal-text flex flex-row items-center justify-between w-full h-auto"
+            >
+              <span>Password</span>
+              <button
+                type="button"
+                className="text-sm cta-btn !h-[1.8rem] !w-[3.3rem] !p-0 !shadow-none !flex !flex-row !items-center !justify-center !font-medium"
+                onClick={handleShowPassword}
+                disabled={
+                  formData.password.trim().length < 1 &&
+                  formData.confirmPassword.trim().length < 1
+                }
+              >
+                {passwordType === "password" ? "Show" : "Hide"}
+              </button>
             </label>
             <div>
               <Input
-                type="password"
+                type={passwordType}
                 placeholder="e.g PA5$W08D"
                 value={formData.password}
                 name="password"
@@ -44,7 +66,7 @@ const PasswordResetPage = () => {
             </label>
             <div>
               <Input
-                type="password"
+                type={passwordType}
                 placeholder="e.g PA5$W08D"
                 value={formData.confirmPassword}
                 name="confirmPassword"
