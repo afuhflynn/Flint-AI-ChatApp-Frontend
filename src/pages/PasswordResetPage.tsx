@@ -37,7 +37,7 @@ const PasswordResetPage = () => {
               htmlFor="password"
               className="modal-text flex flex-row items-center justify-between w-full h-auto"
             >
-              <span>Password</span>
+              <span>New Password</span>
               <button
                 type="button"
                 className="text-sm cta-btn !h-[1.8rem] !w-[3.3rem] !p-0 !shadow-none !flex !flex-row !items-center !justify-center !font-medium"
