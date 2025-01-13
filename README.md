@@ -1,7 +1,7 @@
 # Welcome to the Flint AI ChatApp frontend! 
 
-<div style="display:flex; flex-direction: row; align-items: center; justify-content: center; width: 100dvw; height: auto;">
-  <img src="./public/fav_logo_nbg.png" alt="Flint ai logo" />
+<div align="center">
+  <img src="./public/fav_logo_nbg.png" alt="Flint ai logo" width="200"/>
 </div>
 
  This section of the project contains all the code and resources needed to run the client-side of the application. Below you will find instructions on how to set up and run the frontend locally.
