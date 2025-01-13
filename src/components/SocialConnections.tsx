@@ -1,6 +1,7 @@
 import React from "react";
 import { GitHub, Google } from "@mui/icons-material";
 import { toast } from "react-toastify";
+import { backendBaseUrl } from "../constants/constants";
 
 const SocialConnections: React.FC = () => {
   const handleBtnClick = (btnType: string | "github" | "google") => {
@@ -9,7 +10,7 @@ const SocialConnections: React.FC = () => {
         toast.info("Sorry service not available at the moment!");
         break;
       case "github":
-        window.location.href = "http://localhost:3000/api/auth/users/github";
+        window.location.href = `${backendBaseUrl}/api/auth/users/github`;
         break;
       default:
         toast.success("Login with what you want");

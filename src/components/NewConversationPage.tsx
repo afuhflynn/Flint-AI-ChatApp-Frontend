@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { startUpPrompts } from "../constants/constants";
+import { ChatRoomInput } from "./";
 
 const NewConversationPage: React.FC = () => {
   const [greetings, setGreetings] = useState<string>("");
@@ -25,19 +27,34 @@ const NewConversationPage: React.FC = () => {
     const time = handleCurrentTime();
     handleSetGreetings(time);
   });
+
   return (
     <section className="flex flex-col items-center justify-between w-full h-full">
-      <nav>Nav</nav>
-      <div className="flex flex-row items-center justify-center w-full h-full text-gray-900 dark:text-white bg-primary-bg-light dark:bg-primary-bg-dark">
+      <div className="flex flex-row items-center justify-center w-full h-full">
         <div className="w-[60%] h-full flex flex-col items-center justify-center">
-          <div>
-            <h1 className="text-4xl leading-tight sm:text-5xl font-headings md:text-7xl capitalize">
+          <div className="text-primary-bg-dark dark:text-primary-bg-light">
+            <h1 className="leading-tight font-headings text-header capitalize">
               {greetings}!
             </h1>
-            <h2 className="text-sub-header">Alex Wang</h2>
+            {/*TODO: To be replaced by user name */}
+            <h2 className="text-2xl">Alex Wang</h2>
           </div>
-          <div>Start up prompts</div>
-          <div>Input section</div>
+          <div className="text-primary-bg-dark dark:text-primary-bg-light">
+            <h1 className="text-body-text">
+              Don't have anything in mind? Try:
+            </h1>
+            {startUpPrompts.map((item, index) => (
+              <button
+                className="cta-btn !shadow-none !rounded-[40px]"
+                key={`${item.id}-${index}`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+          <div>
+            <ChatRoomInput />
+          </div>
         </div>
       </div>
     </section>

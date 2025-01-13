@@ -15,6 +15,10 @@ import LoadingOverlay from "./LoadingOverlay";
 import NewConversationPage from "./NewConversationPage";
 import ConversationPage from "./ConversationPage";
 import SideBar from "./SideBar";
+import ChatRoomNav from "./ChatRoomNav";
+import ChatRoomFooter from "./ChatRoomFooter";
+import ChatRoomInput from "./ChatRoomInput";
+import FilePicker from "./FilePicker";
 
 export {
   NavBar,
@@ -34,4 +38,8 @@ export {
   NewConversationPage,
   ConversationPage,
   SideBar,
+  ChatRoomFooter,
+  ChatRoomNav,
+  ChatRoomInput,
+  FilePicker,
 };

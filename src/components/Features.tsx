@@ -1,5 +1,6 @@
 import React from "react";
 import CTAButton from "./CTAButton";
+import { FeaturesData } from "../constants/constants";
 
 const Features: React.FC = () => {
   return (
@@ -13,32 +14,13 @@ const Features: React.FC = () => {
         {/* Feature List */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {/* Feature Item */}
-          <div className="card">
-            <h3 className="card-heading">Automation</h3>
-            <p className="card-p">
-              Save time by automating repetitive tasks with advanced AI models
-              tailored to your needs.
-            </p>
-            <CTAButton />
-          </div>
-
-          <div className="card">
-            <h3 className="card-heading">Study Advice</h3>
-            <p className="card-p">
-              Receive personalized study guidance to optimize learning and
-              improve productivity.
-            </p>
-            <CTAButton />
-          </div>
-
-          <div className="card">
-            <h3 className="card-heading">Virtual Friend</h3>
-            <p className="card-p">
-              Enjoy engaging, interactive conversations with a highly
-              intelligent virtual companion.
-            </p>
-            <CTAButton />
-          </div>
+          {FeaturesData.map((item, index) => (
+            <div key={`item-${item.id}-${index}`} className="card">
+              <h3 className="card-heading !capitalize">{item.title}</h3>
+              <p className="card-p">{item.p}</p>
+              <CTAButton />
+            </div>
+          ))}
         </div>
       </div>
     </section>

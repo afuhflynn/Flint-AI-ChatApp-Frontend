@@ -57,7 +57,7 @@ const DeleteAccount = () => {
             to="/chat-bot/:chatID"
             className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline"
           >
-            Go back to Dashboard
+            Go back to Chat
           </Link>
         </footer>
       </div>

@@ -21,7 +21,7 @@ const ContactusPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pb-4 bg-primary-bg-light dark:bg-primary-bg-dark">
+    <div className="flex flex-col min-h-screen justify-between bg-primary-bg-light dark:bg-primary-bg-dark">
       <NavBar />
       <div className="w-full h-full paddingX relative">
         {/* Card with different background colors for light and dark modes */}

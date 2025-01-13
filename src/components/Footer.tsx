@@ -14,8 +14,8 @@ import CopyRight from "./CopyRight";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-screen py-12 bg-gray-100 dark:bg-gray-900 paddingX">
-      <div className="flex flex-col items-center max-w-full px-6 mx-auto text-center paddingX">
+    <footer className="w-screen py-12 bg-gray-100 dark:bg-gray-900 paddingX relative bottom-0">
+      <div className="flex flex-col items-center justify-between max-w-full px-6 mx-auto text-center paddingX">
         {/* Support and more */}
         <ul className="flex flex-col items-start w-full h-auto gap-2 mb-6 text-sm text-gray-600 md:text-lg dark:text-gray-400">
           <li className="ul-row">

@@ -114,7 +114,7 @@ const Terms_ConditionsPage: React.FC = () => {
           </h2>
           <p className="text-lg text-text-primary-light dark:text-text-primary-dark">
             If you have any questions about these terms, please contact us at
-            support@flintai.com.
+            flyinnsafuh@gmail.com.
           </p>
           <hr className="my-4 border-gray-300 dark:border-gray-600" />
         </section>
