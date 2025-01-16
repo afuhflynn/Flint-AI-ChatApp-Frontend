@@ -28,7 +28,7 @@ const AccountDeletionRequestPage: React.FC = () => {
           <span className="italic text-body-text">Changed your mind?</span>{" "}
           <Link
             to="/"
-            className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline text-lg custom-input !w-[60%] !mb-0"
+            className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline text-md custom-input !w-[60%] !mb-0"
           >
             Back to home
           </Link>

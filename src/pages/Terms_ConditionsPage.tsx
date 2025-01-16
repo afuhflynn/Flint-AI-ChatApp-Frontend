@@ -1,9 +1,12 @@
-import { Footer, NavBar } from "../components";
+import { useRef } from "react";
+import { useScrollIntoView } from "../hooks";
 
 const Terms_ConditionsPage: React.FC = () => {
+  const topRef = useRef<null | HTMLSpanElement>(null);
+  useScrollIntoView(topRef.current); // Scrolls to the top of the page on page load
   return (
-    <div className="flex flex-col min-h-screen bg-primary-bg-light dark:bg-primary-bg-dark">
-      <NavBar />
+    <section className="flex flex-col bg-primary-bg-light dark:bg-primary-bg-dark">
+      <span ref={topRef} />
       <div className="max-w-screen-lg mx-auto text-center md:px-8 paddingX">
         <h1 className="mb-8 text-3xl font-semibold md:text-4xl text-text-primary-light dark:text-text-primary-dark">
           Terms and Conditions
@@ -119,8 +122,7 @@ const Terms_ConditionsPage: React.FC = () => {
           <hr className="my-4 border-gray-300 dark:border-gray-600" />
         </section>
       </div>
-      <Footer />
-    </div>
+    </section>
   );
 };
 

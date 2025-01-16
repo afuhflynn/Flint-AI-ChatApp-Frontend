@@ -1,8 +1,12 @@
-import React, { FormEvent, useState } from "react";
-import { Button, Footer, Input, ModalHeading, NavBar } from "../components";
+import React, { FormEvent, useRef, useState } from "react";
+import { Button, Input, ModalHeading } from "../components";
+import { useScrollIntoView } from "../hooks";
+import { maxMsgInput } from "../constants/constants";
 
 const ContactusPage: React.FC = () => {
-  const maxMsgInput = 250;
+  const topRef = useRef<null | HTMLSpanElement>(null);
+  useScrollIntoView(topRef.current); // Scrolls to the top of the page on page load
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,9 +25,9 @@ const ContactusPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen justify-between bg-primary-bg-light dark:bg-primary-bg-dark">
-      <NavBar />
-      <div className="w-full h-full paddingX relative">
+    <div className="flex flex-col justify-between min-h-screen bg-primary-bg-light dark:bg-primary-bg-dark">
+      <span ref={topRef} />
+      <div className="relative w-full h-full paddingX">
         {/* Card with different background colors for light and dark modes */}
         <div className="max-w-screen-lg mx-auto mt-8 mb-4 p-6 rounded-xl shadow-lg md:w-96 w-[96%] bg-transparent dark:bg-neutral-dark-grey-dark dark:shadow-sm">
           <ModalHeading text="Send Us a Message" />
@@ -106,7 +110,6 @@ const ContactusPage: React.FC = () => {
           </form>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -2,9 +2,9 @@ import { Send } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import React, { useState } from "react";
 import { FilePicker } from "./";
+import { maxChatRoomMsgInput } from "../constants/constants";
 
 const ChatRoomInput: React.FC = () => {
-  const maxMsgInput = 2000;
   const [formData, setFormData] = useState({ prompt: "" });
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
@@ -18,7 +18,7 @@ const ChatRoomInput: React.FC = () => {
         placeholder="Message Flint AI"
         required
         rows={5}
-        maxLength={maxMsgInput}
+        maxLength={maxChatRoomMsgInput}
         className="custom-input"
       />
       <footer>

@@ -14,7 +14,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full appearance-none dark:bg-neutral-light-grey-light bg-neutral-light-grey-dark;
+  @apply rounded-full appearance-none dark:bg-neutral-light-grey-light bg-neutral-light-grey-dark -z-20;
 }
 
 /* Target all inputs of type number*/
@@ -48,7 +48,7 @@ header {
 }
 
 .card-p {
-  @apply text-text-secondary-light dark:text-text-secondary-dark md:text-lg;
+  @apply text-left text-text-secondary-light dark:text-text-secondary-dark md:text-lg;
 }
 
 .footer-link {
@@ -72,7 +72,7 @@ header {
 }
 
 .auth-btn {
-  @apply hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  dark:bg-primary-accent-blue-dark bg-primary-accent-blue-light text-text-primary-dark rounded-2xl h-[3rem] w-full outline-none focus:ring-offset-CTA-hover-blue-dark;
+  @apply hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  dark:bg-primary-accent-blue-dark bg-primary-accent-blue-light text-text-primary-dark rounded-2xl h-[2.7rem] w-full outline-none focus:ring-offset-CTA-hover-blue-dark;
 }
 
 .custom-input {
@@ -89,4 +89,11 @@ header {
 
 .input-row {
   @apply flex flex-col w-full h-auto gap-2;
+}
+
+/*Modify all textareas*/
+textarea{
+  ::-webkit-scrollbar-thumb{
+    @apply -z-10;
+  }
 }

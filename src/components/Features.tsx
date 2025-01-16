@@ -4,8 +4,8 @@ import { FeaturesData } from "../constants/constants";
 
 const Features: React.FC = () => {
   return (
-    <section className="w-screen py-16 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-black paddingX">
-      <div className="px-6 mx-auto max-w-7xl">
+    <section className="w-screen h-auto py-16 text-gray-900 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-black dark:text-white">
+      <div className="flex flex-col items-center justify-between px-6 mx-auto text-center max-w-7xl paddingX">
         {/* Features Heading */}
         <h2 className="mb-6 text-4xl leading-tight text-center md:mb-8 sm:text-5xl font-headings md:text-6xl">
           Features That Make Your Life Easier

@@ -1,3 +1,16 @@
+import {
+  ArrowRightCircleIcon,
+  BookAIcon,
+  Code2,
+  CombineIcon,
+  Github,
+  HandHelping,
+  Linkedin,
+  StarIcon,
+} from "lucide-react";
+
+export const maxMsgInput = 250;
+export const maxChatRoomMsgInput = 2000;
 export const navbarItems = [
   { id: 1, label: "Home", url: "/" },
   { id: 2, label: "About Us", url: "/about-us" },
@@ -87,6 +100,89 @@ export const startUpPrompts = [
   {
     id: 6,
     label: "Get advice",
+  },
+];
+
+// Terms and conditions
+export const termsAndConditions = [
+  {
+    title: "1. Introduction",
+    p: "Welcome to Flint AI! By accessing or using our services, you agree to be bound by the terms and conditions set forth below. Please read them carefully before using our platform.",
+  },
+  {
+    title: "2. Use of Services",
+    p: "You agree to use our services in compliance with all applicable laws and regulations. You are solely responsible for any activity that occurs under your account.<br />Unauthorized use, duplication, or redistribution of the content provided on Flint AI is strictly prohibited.",
+  },
+  {
+    title: "3. Account Responsibilities",
+    p: "Welcome to Flint AI! By accessing or using our services, you agree to be bound by the terms and conditions set forth below. Please read them carefully before using our platform.",
+  },
+  {
+    title: "1. Introduction",
+    p: "Welcome to Flint AI! By accessing or using our services, you agree to be bound by the terms and conditions set forth below. Please read them carefully before using our platform.",
+  },
+  {
+    title: "1. Introduction",
+    p: "Welcome to Flint AI! By accessing or using our services, you agree to be bound by the terms and conditions set forth below. Please read them carefully before using our platform.",
+  },
+  {
+    title: "1. Introduction",
+    p: "Welcome to Flint AI! By accessing or using our services, you agree to be bound by the terms and conditions set forth below. Please read them carefully before using our platform.",
+  },
+  {
+    title: "1. Introduction",
+    p: "Welcome to Flint AI! By accessing or using our services, you agree to be bound by the terms and conditions set forth below. Please read them carefully before using our platform.",
+  },
+  {
+    title: "1. Introduction",
+    p: "Welcome to Flint AI! By accessing or using our services, you agree to be bound by the terms and conditions set forth below. Please read them carefully before using our platform.",
+  },
+];
+
+// Footer data
+export const footerData = [
+  {
+    url: "https://github.com/AfuhFlynns",
+    text: "github",
+    Icon: Github,
+  },
+  {
+    url: "https://www.linkedin.com/in/afuh-flynn-s-74289a268",
+    text: "linkedin",
+    Icon: Linkedin,
+  },
+  {
+    url: "https://www.frontendmentor.io/profile/AfuhFlynns",
+    text: "frontend mentor",
+    Icon: Code2,
+  },
+  {
+    url: "https://www.upwork.com/freelancers/~01d602cb081a55ce51?mp_source=share",
+    text: "upwork",
+    Icon: Code2,
+  },
+];
+
+export const footerDataNotice = [
+  {
+    text: "Give a Star",
+    Icon: StarIcon,
+  },
+  {
+    text: "Follow",
+    Icon: CombineIcon,
+  },
+  {
+    text: "Support",
+    Icon: HandHelping,
+  },
+  {
+    text: "And Hire",
+    Icon: BookAIcon,
+  },
+  {
+    text: "Me on",
+    Icon: ArrowRightCircleIcon,
   },
 ];
 

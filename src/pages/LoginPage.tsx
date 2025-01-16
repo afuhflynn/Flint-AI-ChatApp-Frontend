@@ -44,7 +44,7 @@ const LoginPage = () => {
               />
             </div>
             <div className="flex flex-row items-center justify-end w-full h-auto mb-4 text-end text-primary-accent-blue-light dark:text-primary-accent-blue-dark hover:underline text-muted-text">
-              <Link to="/forgot-password">Forgot your password?</Link>
+              <Link to="/auth/forgot-password">Forgot your password?</Link>
             </div>
           </div>
           <Button
@@ -73,7 +73,7 @@ const LoginPage = () => {
         <footer className="mt-4 text-center modal-text !text-muted-text">
           Don't have an account?{" "}
           <Link
-            to="/sign-up"
+            to="/auth/sign-up"
             className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline"
           >
             Sign Up

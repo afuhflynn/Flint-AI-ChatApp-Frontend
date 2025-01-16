@@ -93,7 +93,7 @@ const PasswordResetPage = () => {
             </>
           )}
           <Button
-            text="Update Password"
+            text="Reset Password"
             type="submit"
             className={`text-body-text ${
               (formData.confirmPassword.trim() === "" ||

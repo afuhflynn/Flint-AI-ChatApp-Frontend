@@ -8,7 +8,7 @@ const CTAButton = ({ className }: { className?: string }) => {
   };
   return (
     <button
-      onClick={() => handleRouting("/sign-up")}
+      onClick={() => handleRouting("/auth/sign-up")}
       type="button"
       className={`cta-btn !${className}`}
     >

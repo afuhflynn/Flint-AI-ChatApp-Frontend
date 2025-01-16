@@ -6,7 +6,7 @@ import DashboardPage from "./DashboardPage";
 import FAQPage from "./FAQPage";
 import LoginPage from "./LoginPage";
 import PasswordResetPage from "./PasswordResetPage";
-import PasswordResetRquestPage from "./PasswordResetRquestPage";
+import PasswordResetRequestPage from "./PasswordResetRequestPage";
 import SettingsPage from "./SettingsPage";
 import Terms_ConditionsPage from "./Terms_ConditionsPage";
 import SignupPage from "./SignupPage";
@@ -27,7 +27,7 @@ export {
   LoginPage,
   SignupPage,
   PasswordResetPage,
-  PasswordResetRquestPage,
+  PasswordResetRequestPage,
   SettingsPage,
   Terms_ConditionsPage,
   ErrorPage,

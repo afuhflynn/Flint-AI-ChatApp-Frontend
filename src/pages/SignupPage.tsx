@@ -68,7 +68,7 @@ const SignupPage = () => {
           <div className="input-row">
             <label
               htmlFor="password"
-              className="modal-text flex flex-row items-center justify-between w-full h-auto"
+              className="flex flex-row items-center justify-between w-full h-auto modal-text"
             >
               <span>Password</span>
               <button
@@ -161,7 +161,7 @@ const SignupPage = () => {
         <footer className="mt-4 text-center modal-text !text-muted-text">
           Already have an account?{" "}
           <Link
-            to="/log-in"
+            to="/auth/log-in"
             className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline"
           >
             Login

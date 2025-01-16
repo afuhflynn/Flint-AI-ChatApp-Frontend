@@ -54,7 +54,7 @@ const DeleteAccount = () => {
         <footer className="mt-4 text-center modal-text !text-muted-text">
           Changed your mind?{" "}
           <Link
-            to="/chat-bot/:chatID"
+            to="/chat-bot"
             className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline"
           >
             Go back to Chat

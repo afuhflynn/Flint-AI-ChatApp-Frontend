@@ -79,12 +79,14 @@ const NavBar = () => {
           <button
             onClick={() =>
               handleRouting(
-                item.label.toLowerCase() === "login" ? "/log-in" : "/sign-up"
+                item.label.toLowerCase() === "login"
+                  ? "/auth/log-in"
+                  : "/auth/sign-up"
               )
             }
-            className={`text-[18px] rounded-3xl hover:scale-[1.02] ${
+            className={`text-[15px] rounded-3xl hover:scale-[1.02] ${
               item.label === "Login"
-                ? "ring-1 ring-primary-bg-dark dark:ring-primary-bg-light bg-transparent dark:text-text-primary-dark text-text-primary-light w-[6rem] h-[2.7rem]"
+                ? "ring-1 ring-primary-bg-dark dark:ring-primary-bg-light bg-transparent dark:text-text-primary-dark text-text-primary-light w-[6rem] h-[2.5rem]"
                 : "bg-primary-accent-blue-light dark:bg-primary-accent-blue-dark dark:hover:bg-primary-light-blue-dark hover:bg-primary-light-blue-light text-text-primary-dark w-[10rem] h-[3rem]"
             }`}
             type="button"
@@ -124,8 +126,8 @@ const NavBar = () => {
                 onClick={() => {
                   handleRouting(
                     item.label.toLowerCase() === "login"
-                      ? "/log-in"
-                      : "/sign-up"
+                      ? "/auth/log-in"
+                      : "/auth/sign-up"
                   );
                   toggleMobileMenu();
                 }}

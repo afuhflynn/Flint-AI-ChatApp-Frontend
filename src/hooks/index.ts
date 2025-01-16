@@ -1,3 +1,4 @@
 import useLocalTheme from "./useLocalTheme";
+import useScrollIntoView from "./useScrollIntoView";
 
-export { useLocalTheme };
+export { useLocalTheme, useScrollIntoView };

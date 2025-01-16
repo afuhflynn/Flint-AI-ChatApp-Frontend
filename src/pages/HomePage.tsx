@@ -1,12 +1,16 @@
-import { Features, Footer, HeroSection, NavBar } from "../components";
+import { useRef } from "react";
+import { Features, HeroSection } from "../components";
+import { useScrollIntoView } from "../hooks";
 
 const HomePage = () => {
+  const topRef = useRef<null | HTMLSpanElement>(null);
+  useScrollIntoView(topRef.current);
+
   return (
-    <div className="flex flex-col items-start w-full h-full justify-bteween dark:text-white">
-      <NavBar />
+    <div className="flex-1 w-full bg-primary-bg-light dark:bg-primary-bg-dark">
+      <span ref={topRef} />
       <HeroSection />
       <Features />
-      <Footer />
     </div>
   );
 };

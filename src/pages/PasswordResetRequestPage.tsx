@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Input, ModalHeading } from "../components";
 
-const PasswordResetRquestPage = () => {
+const PasswordResetRequestPage = () => {
   const [email, setEmail] = useState("");
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
@@ -27,7 +27,7 @@ const PasswordResetRquestPage = () => {
             </div>
           </div>
           <Button
-            text="Reset Password"
+            text="Send Link"
             type="submit"
             onClick={() => {}}
             disabled={email.trim() === ""}
@@ -39,4 +39,4 @@ const PasswordResetRquestPage = () => {
   );
 };
 
-export default PasswordResetRquestPage;
+export default PasswordResetRequestPage;
