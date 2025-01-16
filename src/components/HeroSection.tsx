@@ -32,10 +32,7 @@ const HeroSection = () => {
       {/* Subtext */}
       <div className="max-w-2xl px-2 mx-auto mt-8 dark:text-text-primary-dark text-text-primary-light text-opacity-30 opacity-80">
         <p className="text-lg leading-relaxed text-gray-500 dark:text-gray-300 md:text-lg">
-          Tired of using expensive intelligent Virtual friends?
-          <br />
-          For just a small price, you gain access to the most advanced AI models
-          that make your life easier by helping with:{" "}
+          In need of a helping hand with:{" "}
           <span className="font-semibold text-blue-600 dark:text-blue-400 text-[20px]">
             Automation of simple tasks
           </span>

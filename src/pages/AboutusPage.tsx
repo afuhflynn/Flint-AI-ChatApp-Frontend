@@ -6,7 +6,7 @@ const AboutusPage: React.FC = () => {
   const topRef = useRef<null | HTMLSpanElement>(null);
   useScrollIntoView(topRef.current); // Scrolls to the top of the page on page load
   return (
-    <div className="flex flex-col min-h-screen bg-primary-bg-light dark:bg-primary-bg-dark">
+    <div className="flex flex-col bg-primary-bg-light dark:bg-primary-bg-dark">
       <span ref={topRef} />
       <div className="max-w-screen-lg mx-auto mb-4 text-center md:px-8 paddingX">
         <h1 className="mb-8 text-3xl font-semibold md:text-4xl text-text-primary-light dark:text-text-primary-dark ">
