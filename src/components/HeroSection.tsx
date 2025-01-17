@@ -36,6 +36,7 @@ const HeroSection = () => {
           Discover cutting-edge solutions to simplify your tasks and enhance
           productivity. Our AI-powered assistant is here to assist you with:
           <br />
+          <br />
           <TypeAnimation
             wrapper="span"
             sequence={[
@@ -61,7 +62,7 @@ const HeroSection = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex flex-row justify-start items-center w-full md:h-[4rem] h-[9rem] gap-6 mt-10 md:flex-row md:justify-start">
+      <div className="flex flex-row justify-start items-center w-full md:h-[4rem] h-[9rem] gap-6 mt-6 md:flex-row md:justify-start">
         {/* Search Section */}
         <form className="flex flex-col items-start justify-center w-full md:h-full h-[full] gap-4 px-3 md:gap-6 md:flex-row md:items-center md:paddingX">
           <div className="flex flex-row items-center h-full md:w-[60%] w-full overflow-hidden bg-transparent border border-opacity-20 border-solid shadow-lg dark:bg-neutral-dark-grey-dark dark:shadow-sm text-text-primary-light dark:text-text-primary-dark border-neutral-light-grey-light dark:border-neutral-light-grey-dark dark:border-opacity-30 rounded-2xl relative">
