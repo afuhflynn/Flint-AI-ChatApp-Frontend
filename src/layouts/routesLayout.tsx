@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
             element: <SignupPage />,
           },
           {
-            path: "/auth/confirm-email-code",
+            path: "/auth/confirm-email-code/:token",
             element: <ConfirmEmailAddress />,
           },
           {

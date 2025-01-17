@@ -72,7 +72,7 @@ header {
 }
 
 .auth-btn {
-  @apply hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  dark:bg-primary-accent-blue-dark bg-primary-accent-blue-light text-text-primary-dark rounded-2xl h-[2.7rem] w-full outline-none focus:ring-offset-CTA-hover-blue-dark;
+  @apply hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  dark:bg-primary-accent-blue-dark bg-primary-accent-blue-light text-text-primary-dark rounded-2xl h-[2.7rem] w-full outline-none focus:ring-offset-CTA-hover-blue-dark flex flex-row items-center justify-center;
 }
 
 .custom-input {

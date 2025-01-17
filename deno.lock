@@ -19,9 +19,11 @@
     "npm:lucide-react@0.469": "0.469.0_react@18.3.1",
     "npm:postcss@^8.4.49": "8.4.49",
     "npm:react-dom@^18.3.1": "18.3.1_react@18.3.1",
+    "npm:react-helmet@^6.1.0": "6.1.0_react@18.3.1",
     "npm:react-joyride@^2.9.3": "2.9.3_react@18.3.1_react-dom@18.3.1__react@18.3.1_@types+react@18.3.14",
     "npm:react-router-dom@^7.1.0": "7.1.0_react@18.3.1_react-dom@18.3.1__react@18.3.1",
     "npm:react-toastify@11": "11.0.0_react@18.3.1_react-dom@18.3.1__react@18.3.1",
+    "npm:react-type-animation@^3.2.0": "3.2.0_prop-types@15.8.1_react@18.3.1_react-dom@18.3.1__react@18.3.1",
     "npm:react@^18.3.1": "18.3.1",
     "npm:swiper@^11.1.15": "11.1.15",
     "npm:tailwindcss@^3.4.17": "3.4.17_postcss@8.4.49",
@@ -1591,6 +1593,9 @@
         "scheduler"
       ]
     },
+    "react-fast-compare@3.2.2": {
+      "integrity": "sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ=="
+    },
     "react-floater@0.7.9_react@18.3.1_react-dom@18.3.1__react@18.3.1": {
       "integrity": "sha512-NXqyp9o8FAXOATOEo0ZpyaQ2KPb4cmPMXGWkx377QtJkIXHlHRAGer7ai0r0C1kG5gf+KJ6Gy+gdNIiosvSicg==",
       "dependencies": [
@@ -1601,6 +1606,16 @@
         "react",
         "react-dom",
         "tree-changes@0.9.3"
+      ]
+    },
+    "react-helmet@6.1.0_react@18.3.1": {
+      "integrity": "sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==",
+      "dependencies": [
+        "object-assign",
+        "prop-types",
+        "react",
+        "react-fast-compare",
+        "react-side-effect"
       ]
     },
     "react-innertext@1.1.5_@types+react@18.3.14_react@18.3.1": {
@@ -1653,6 +1668,12 @@
         "turbo-stream"
       ]
     },
+    "react-side-effect@2.1.2_react@18.3.1": {
+      "integrity": "sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==",
+      "dependencies": [
+        "react"
+      ]
+    },
     "react-toastify@11.0.0_react@18.3.1_react-dom@18.3.1__react@18.3.1": {
       "integrity": "sha512-NLTt0hNNlVZPLnY+uzUvmE2H2jRHUpaPi7H3+84+3fMjZSpfngyL/r+2VcaepNItWuN0BCBiZdVluXixXYSFmw==",
       "dependencies": [
@@ -1667,6 +1688,14 @@
         "@babel/runtime",
         "dom-helpers",
         "loose-envify",
+        "prop-types",
+        "react",
+        "react-dom"
+      ]
+    },
+    "react-type-animation@3.2.0_prop-types@15.8.1_react@18.3.1_react-dom@18.3.1__react@18.3.1": {
+      "integrity": "sha512-WXTe0i3rRNKjmggPvT5ntye1QBt0ATGbijeW6V3cQe2W0jaMABXXlPPEdtofnS9tM7wSRHchEvI9SUw+0kUohw==",
+      "dependencies": [
         "prop-types",
         "react",
         "react-dom"
@@ -2017,9 +2046,11 @@
         "npm:lucide-react@0.469",
         "npm:postcss@^8.4.49",
         "npm:react-dom@^18.3.1",
+        "npm:react-helmet@^6.1.0",
         "npm:react-joyride@^2.9.3",
         "npm:react-router-dom@^7.1.0",
         "npm:react-toastify@11",
+        "npm:react-type-animation@^3.2.0",
         "npm:react@^18.3.1",
         "npm:swiper@^11.1.15",
         "npm:tailwindcss@^3.4.17",
