@@ -1,0 +1,1 @@
+Toggle both sidebar and text input area
