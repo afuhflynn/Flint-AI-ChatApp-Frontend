@@ -6,13 +6,6 @@
 
  This section of the project contains all the code and resources needed to run the client-side of the application. Below you will find instructions on how to set up and run the frontend locally.
 
-# Flint AI pages preview
-![Frontend landing/chat page](./public/flintai-home-pg.png)
-
-## Flint AI frontend preview
-
-![Flint AI ChatApp](./public/flintai-frontend.png)
-
 ## Overview
 
 Flint AI ChatApp is an advanced chat application that leverages artificial intelligence to provide seamless and intelligent communication. This project is designed to demonstrate the capabilities of AI in enhancing user interactions.
@@ -126,13 +119,25 @@ Once the development server is running, open your browser and navigate to `http:
 
 ## Screenshots
 
-### Home page
+### Home page reviews
 
-![Chat Interface](./public/flintai-home-pg.png)
+![Frontend landing page light](./public/flintai-homepage.png)
 
-### Chatroom
+![Frontend landing page dark](./public/flintai-homepage-dark.png)
 
-![Chat Interface](./public/flintai-chatroom.png)
+### Chatroom pages previews
+
+#### New conversation page
+
+![Chat Interface new](./public/flintai-chatpage.png)
+
+![Chat Interface new](./public/flintai-chatpage-dark.png)
+
+#### Ongoing conversation page
+
+![Chat Interface new](./public/flintai-chatpage-conversation.png)
+
+![Chat Interface new](./public/flintai-chatpage-dark-conversation.png)
 
 ## Contributing
 
