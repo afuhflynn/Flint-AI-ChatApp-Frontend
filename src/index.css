@@ -40,7 +40,7 @@ header {
 }
 
 .card {
-  @apply p-6 bg-white rounded-lg shadow-lg dark:bg-neutral-dark-grey-dark h-[18rem] md:h-[18rem] flex flex-col items-start justify-start gap-4 md:gap-6;
+  @apply p-6 bg-white rounded-lg shadow-lg dark:bg-neutral-dark-grey-dark h-[18rem] md:h-[20rem] flex flex-col items-start justify-start gap-4 md:gap-6;
 }
 
 .card-heading {
@@ -83,6 +83,10 @@ header {
   @apply max-w-screen-lg mx-auto mt-8 mb-4 p-6 rounded-xl shadow-lg md:w-96 w-[96%] bg-transparent dark:bg-neutral-dark-grey-dark dark:shadow-sm;
 }
 
+.icons{
+  @apply h-[1.4rem] w-[1.4rem];
+}
+
 .modal-text {
   @apply text-text-primary-light dark:text-text-primary-dark text-body-text;
 }
@@ -96,4 +100,17 @@ textarea{
   ::-webkit-scrollbar-thumb{
     @apply -z-10;
   }
+}
+
+.image-input, .docs-input, .camera-input{
+  @apply hidden;
+}
+
+.user-name{
+  background-image: linear-gradient(to right, #66B2FF, #99CCFF);
+  @apply bg-clip-text;
+}
+
+.upload-btns{
+  @apply flex flex-row items-center gap-3 justify-start h-[3.6rem] w-full px-6 font-semibold text-blue-500 transition duration-300 bg-white border border-blue-500 rounded-[30px] shadow-sm hover:bg-blue-100 dark:bg-neutral-dark-grey-dark dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700;
 }

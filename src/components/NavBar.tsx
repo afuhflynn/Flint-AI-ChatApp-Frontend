@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { authNavItems, navbarItems } from "../constants/constants";
 import { flintaiLogo } from "../assets/images";
 import { Menu, X } from "lucide-react"; // Importing Menu and X icons from lucide-react
+import AuthButtons from "./AuthButtons";
 
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State to handle mobile menu toggle
@@ -36,7 +37,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className="w-full h-[80px] py-[1.5rem] flex flex-row items-center justify-between bg-primary-bg-light dark:bg-primary-bg-dark bg-opacity-90 sticky top-0 left-0 paddingX right-0 z-50">
+    <header className="w-full h-[80px] py-[1.5rem] flex flex-row items-center justify-between bg-primary-bg-light dark:bg-primary-bg-dark bg-opacity-90 top-0 left-0 paddingX right-0 z-50 sticky">
       <Link
         to="/"
         className="flex flex-row items-center justify-center gap-[0.5rem] dark:text-text-primary-dark text-text-primary-light"
@@ -74,28 +75,11 @@ const NavBar = () => {
       </nav>
 
       {/* Auth Buttons */}
-      <div className="md:flex flex-row items-center justify-center gap-[1.5rem] hidden md:visible ">
-        {authNavItems.map((item, index) => (
-          <button
-            onClick={() =>
-              handleRouting(
-                item.label.toLowerCase() === "login"
-                  ? "/auth/log-in"
-                  : "/auth/sign-up"
-              )
-            }
-            className={`text-[15px] rounded-3xl hover:scale-[1.02] ${
-              item.label === "Login"
-                ? "ring-1 ring-primary-bg-dark dark:ring-primary-bg-light bg-transparent dark:text-text-primary-dark text-text-primary-light w-[6rem] h-[2.5rem]"
-                : "bg-primary-accent-blue-light dark:bg-primary-accent-blue-dark dark:hover:bg-primary-light-blue-dark hover:bg-primary-light-blue-light text-text-primary-dark w-[10rem] h-[3rem]"
-            }`}
-            type="button"
-            key={`${index}-${item.id}-${item.label}`}
-          >
-            <span>{item.label}</span>
-          </button>
-        ))}
-      </div>
+      <AuthButtons
+        className={
+          "hidden md:visible md:flex flex-row items-center justify-center gap-[1.5rem] "
+        }
+      />
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
@@ -103,7 +87,7 @@ const NavBar = () => {
           ref={mobileMenuRef}
           className="md:hidden absolute top-[80px] left-0 right-0 bg-primary-bg-light dark:bg-primary-bg-dark bg-opacity-90 paddingX paddingY"
         >
-          <ul className="flex flex-col items-center justify-center gap-[2rem] py-[1rem]">
+          <ul className="flex flex-col items-center justify-center gap-[1rem] py-[1rem]">
             {navbarItems.map((item, index) => (
               <Link
                 to={item.url}
@@ -118,14 +102,14 @@ const NavBar = () => {
             {authNavItems.map((item, index) => (
               <button
                 className={`rounded-full py-4 my-1 w-full text-[18px]  ${
-                  item.label === "Login"
+                  item.label === "Log in"
                     ? "ring-1 ring-primary-bg-dark dark:ring-primary-bg-light bg-transparent dark:text-text-primary-dark text-text-primary-light"
                     : "bg-primary-accent-blue-light dark:bg-primary-accent-blue-dark dark:hover:bg-primary-light-blue-dark hover:bg-primary-light-blue-light text-text-primary-dark"
                 }`}
                 key={`${index}-${item.id}-${item.label}`}
                 onClick={() => {
                   handleRouting(
-                    item.label.toLowerCase() === "login"
+                    item.label.toLowerCase() === "Log in"
                       ? "/auth/log-in"
                       : "/auth/sign-up"
                   );

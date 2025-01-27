@@ -18,7 +18,7 @@ export const navbarItems = [
 ];
 
 export const authNavItems = [
-  { id: 7, label: "Login", url: "/log-in" },
+  { id: 7, label: "Log in", url: "/log-in" },
   { id: 8, label: "Sign Up Now", url: "/sign-up" },
 ];
 

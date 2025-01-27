@@ -7,7 +7,7 @@ const HomePage = () => {
   useScrollIntoView(topRef.current);
 
   return (
-    <div className="flex-1 w-full bg-primary-bg-light dark:bg-primary-bg-dark">
+    <div className="flex flex-col w-full bg-primary-bg-light dark:bg-primary-bg-dark">
       <span ref={topRef} />
       <HeroSection />
       <Features />

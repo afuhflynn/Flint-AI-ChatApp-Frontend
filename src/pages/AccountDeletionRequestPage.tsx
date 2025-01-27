@@ -7,7 +7,7 @@ const AccountDeletionRequestPage: React.FC = () => {
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal !p-6 !shadow-lg">
         <ModalHeading
-          text="Account Flagged for delete"
+          text="Account flagged for delete"
           className="text-center !text-red-500"
         />
         <p className="modal-text opacity-80 !my-4 text-center !mb-5">

@@ -19,6 +19,10 @@ import ChatRoomNav from "./ChatRoomNav";
 import ChatRoomFooter from "./ChatRoomFooter";
 import ChatRoomInput from "./ChatRoomInput";
 import FilePicker from "./FilePicker";
+import AccountLoginNotification from "./AccountLoginNotification";
+import AuthButtons from "./AuthButtons";
+import VoiceInput from "./VoiceInput";
+import InternetSearch from "./InternetSearch";
 
 export {
   NavBar,
@@ -42,4 +46,8 @@ export {
   ChatRoomNav,
   ChatRoomInput,
   FilePicker,
+  AccountLoginNotification,
+  AuthButtons,
+  VoiceInput,
+  InternetSearch,
 };

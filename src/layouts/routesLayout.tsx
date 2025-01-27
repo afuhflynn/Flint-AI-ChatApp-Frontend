@@ -56,16 +56,16 @@ export const router = createBrowserRouter([
         ],
       },
       {
+        path: "/auth/log-in",
+        element: <LoginPage />,
+      },
+      {
+        path: "/auth/sign-up",
+        element: <SignupPage />,
+      },
+      {
         element: <AuthLayout />,
         children: [
-          {
-            path: "/auth/log-in",
-            element: <LoginPage />,
-          },
-          {
-            path: "/auth/sign-up",
-            element: <SignupPage />,
-          },
           {
             path: "/auth/confirm-email-code/:token",
             element: <ConfirmEmailAddress />,

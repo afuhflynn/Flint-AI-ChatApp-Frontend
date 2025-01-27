@@ -10,32 +10,20 @@ const HeroSection = () => {
       {/* Heading */}
       {/* Animate the heading repeatedly (changing opacity from 0 to 100 on page load and do some crazy animations) */}
       <motion.h1
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0.4 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
         className="text-4xl leading-tight text-center sm:text-5xl font-headings md:text-7xl"
       >
         Empowering Your <br />
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            repeatType: "reverse",
-            delay: 2,
-            ease: "linear",
-          }}
-        >
-          Digital Journey
-        </motion.span>
+        <span className="leading-8">Digital Journey</span>
       </motion.h1>
 
       {/* Subtext */}
       <div className="max-w-2xl px-2 mx-auto mt-8 dark:text-text-primary-dark text-text-primary-light text-opacity-30 opacity-80">
         <p className="text-lg leading-relaxed text-gray-500 dark:text-gray-300 md:text-lg">
           Discover cutting-edge solutions to simplify your tasks and enhance
-          productivity. Our AI-powered assistant is here to assist you with:
+          productivity. Our AI-powered assistant is here to assist you with
           <br />
           <br />
           <TypeAnimation
