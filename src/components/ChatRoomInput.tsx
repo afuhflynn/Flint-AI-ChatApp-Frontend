@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { FilePicker, InternetSearch, VoiceInput } from "./";
 import { maxChatRoomMsgInput } from "../constants/constants";
 import { SendIcon } from "lucide-react";
+import globalAppStore from "../store/app.store";
 
 type ResponsiveTextareaProps = {
   maxRows?: number; // Maximum number of rows
@@ -19,6 +20,7 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
   startupPrompt,
 }) => {
   const [rows, setRows] = useState(1);
+  const maxHeight = 200;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -29,11 +31,11 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
       // Calculate the required number of rows
       if (textareaRef && textareaRef.current) {
         textareaRef.current.style.height = `auto`; // Ensures the height is calculated properly if the text input reduces
-        const newHeight = Math.floor(textareaRef.current.scrollHeight);
-        // Check if scroll height percent is more than the required number of rows
-        const scrollHeightPercent = Math.floor((newHeight / 100) * maxRows);
-        if (scrollHeightPercent <= maxRows || scrollHeightPercent === maxRows)
-          textareaRef.current.style.height = `${newHeight}px`;
+        const newHeight = Math.floor(
+          Math.min(textareaRef.current.scrollHeight, maxHeight)
+        ); // Getting the new height from a range of values between the smallest and largest height of textarea (Prevents unecessafy conditions)
+        // Textarea height changes dynamically
+        textareaRef.current.style.height = `${newHeight}px`;
       }
     };
     handleInput();
@@ -64,9 +66,11 @@ interface chatRoomInputTypes {
 }
 const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
   const [formData, setFormData] = useState({ prompt: "" });
+  const { setPrompt } = globalAppStore();
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
+    setPrompt(formData.prompt);
   };
 
   // Manually update the prompt value and focus on text area
@@ -90,7 +94,7 @@ const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
         maxRows={8}
       />
       {/* <ResponsiveTextarea maxRows={5} placeholder="Message Flint AI" /> */}
-      <footer className="w-full flex flex-row items-center justify-between">
+      <footer className="flex flex-row items-center justify-between w-full">
         {/* Display file picker, voicerecorder and internetsearch based on user account profile */}
         <div className="flex flex-row items-center justify-between gap-2 pl-2">
           <FilePicker />

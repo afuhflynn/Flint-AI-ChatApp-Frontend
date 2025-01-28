@@ -1,10 +1,18 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Features, HeroSection } from "../components";
-import { useScrollIntoView } from "../hooks";
 
 const HomePage = () => {
   const topRef = useRef<null | HTMLSpanElement>(null);
-  useScrollIntoView(topRef.current);
+  useEffect(() => {
+    const handleScrollToBottom = () => {
+      if (topRef && topRef.current) {
+        topRef.current.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    };
+    handleScrollToBottom();
+  }, []);
 
   return (
     <div className="flex flex-col w-full bg-primary-bg-light dark:bg-primary-bg-dark">

@@ -4,6 +4,10 @@ export interface appStoreTypes {
   setAppTheme: (value: string) => void;
   isPasswordValid: boolean;
   setIsPasswordValid: (value: boolean) => void;
+  prompt: string;
+  setPrompt: (value: string) => void;
+  chatbot: string;
+  setChatbot: (value: string) => void;
 }
 
 // user types

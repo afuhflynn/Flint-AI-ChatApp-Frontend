@@ -1,6 +1,7 @@
 import { Mic } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const VoiceInput = ({ txtInput }: { txtInput: string }) => {
   const [isTyping, setIsTyping] = useState(false);
@@ -13,7 +14,12 @@ const VoiceInput = ({ txtInput }: { txtInput: string }) => {
   return (
     <>
       <Tooltip title="Voice Note" placement="top" arrow>
-        <button type="button" disabled={isTyping} className="assets-btn">
+        <button
+          type="button"
+          disabled={isTyping}
+          className="assets-btn"
+          onClick={() => toast.info("Feature not available at the moment")}
+        >
           <Mic
             className={`icons ${
               isTyping

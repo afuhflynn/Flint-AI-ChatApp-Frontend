@@ -10,6 +10,14 @@ const globalAppStore = create<appStoreTypes>((set) => ({
   setIsPasswordValid: (value) => {
     set({ isPasswordValid: value });
   },
+  prompt: "",
+  setPrompt: (value) => {
+    set({ prompt: value });
+  },
+  chatbot: "",
+  setChatbot: (value) => {
+    set({ chatbot: value });
+  },
 }));
 
 export default globalAppStore;

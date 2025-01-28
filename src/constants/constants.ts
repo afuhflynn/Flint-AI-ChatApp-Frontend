@@ -194,6 +194,53 @@ export const footerDataNotice = [
     Icon: ArrowRightCircleIcon,
   },
 ];
+// TODO: Delete this after the work is complete
+export const mockUpData = [
+  {
+    role: "user",
+    parts: [{ text: "Hello ai how can I create a startup in Cameroon" }],
+  },
+  {
+    role: "model",
+    parts: [
+      {
+        text: "Hello!  I'm Flintai, your Startup Idea Generator and Advisor. Cameroon offers exciting opportunities for startups! To give you the best advice, I need a little more information.  Tell me about your interests, skills, and what kind of impact you want to make.  For example:\n\n* **What industries are you passionate about?** (e.g., technology, agriculture, education, healthcare, tourism)\n* **What problems have you observed in your community that you'd like to solve?**\n* **Do you have any specific skills or expertise you want to leverage?** (e.g., coding, marketing, design, farming)\n* **What are your resources like?** (e.g., access to funding, networks, technology)\n\nOnce I have a better understanding of your background and goals, I can generate some tailored startup ideas for you.  Let's brainstorm together!\n",
+      },
+    ],
+  },
+  {
+    role: "user",
+    parts: [
+      {
+        text: "I am interested in technology and education\nI want to solve the problem of lack of confidence in student who study computer engineering, lack of motivation to study, lack of hope of for the future. Make them take challenges to study, interact with each other and learn without pressure.\nI am a full stack nextjs and mern stack programmer learning ml and other necessary fields.\n",
+      },
+    ],
+  },
+  {
+    role: "model",
+    parts: [
+      {
+        text: "That's fantastic! You've identified a real challenge and have the technical skills to potentially address it.  Lack of confidence, motivation, and hope can be significant hurdles for students, especially in a demanding field like computer engineering.  Here are some startup ideas combining technology and education to address these issues in Cameroon:\n\n**1. Gamified Learning Platform with a Focus on Collaboration and Mentorship:**\n\n* **Concept:** Develop a platform that uses game mechanics like points, badges, and leaderboards to make learning computer engineering",
+      },
+    ],
+  },
+  {
+    role: "user",
+    parts: [
+      {
+        text: "I am interested in technology and education\nI want to solve the problem of lack of confidence in student who study computer engineering, lack of motivation to study, lack of hope of for the future. Make them take challenges to study, interact with each other and learn without pressure.\nI am a full stack nextjs and mern stack programmer learning ml I am interested in technology and education\nI want to solve the problem of lack of confidence in student who study computer engineering, lack of motivation to study, lack of hope of for the future. Make them take challenges to study, ",
+      },
+    ],
+  },
+  {
+    role: "model",
+    parts: [
+      {
+        text: "That's a great initiative!Build a personalized gamified platform for learning computer engineering concepts.Focus on gamification, collaboration, and practical projects to boost motivation and confidence.Partner with schools or institutions for a pilot program.Innovate with gamified assessment tools to promote active participation.Add a mentorship program to boost confidence and motivation.Host workshops to teach coding and gamification techniques.Use AI for personalized recommendations and skill assessments.Host competitions for students to showcase their skills.Develop a community ",
+      },
+    ],
+  },
+];
 
 // Endpoints and urls
 export const backendBaseUrl = "http://localhost:3000";

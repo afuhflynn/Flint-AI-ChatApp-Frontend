@@ -5,7 +5,7 @@ import { AccountLoginNotification, ChatRoomInput } from "./";
 const NewConversationPage: React.FC = () => {
   const [greetings, setGreetings] = useState<string>("");
   const [startupPrompt, setStartupPrompt] = useState("");
-  const userExists = true;
+  const userExists = false;
 
   const handleSetGreetings = (time: number) => {
     if (time < 12 && time >= 0) {
@@ -34,17 +34,17 @@ const NewConversationPage: React.FC = () => {
     <section className="flex flex-col items-center justify-between w-full h-full">
       {/*TODO: Display login notification based on user profile */}
       <AccountLoginNotification />
-      <div className="flex flex-col items-center justify-center gap-6 w-full h-full">
+      <div className="flex flex-col items-center justify-center w-full h-full gap-6">
         <div className="md:w-[68%] w-[96%] h-full flex flex-col items-center justify-end md:justify-center gap-1">
           <div className="text-primary-bg-dark dark:text-primary-bg-light text-left w-[90%] md:w-[94%]">
             {userExists ? (
-              <div className="md:mb-8 mb-10">
+              <div className="mb-10 md:mb-8">
                 {/* Display greetings and user name if the user exist */}
                 <h1 className="leading-tight capitalize font-headings text-header">
                   {greetings}!
                 </h1>
                 {/*TODO: To be replaced by user name */}
-                <h2 className="text-2xl mt-1 user-name bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">
+                <h2 className="mt-1 text-2xl text-transparent user-name bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">
                   Alex Wang
                 </h2>
               </div>
@@ -55,7 +55,7 @@ const NewConversationPage: React.FC = () => {
             )}
           </div>
           <section className="flex w-full flex-col items-center justify-between md:justify-center gap-[8rem] md:gap-0 md:flex-col-reverse">
-            <div className="text-primary-bg-dark dark:text-primary-bg-light w-full flex flex-row items-center justify-center flex-wrap gap-3 md:mt-6">
+            <div className="flex flex-row flex-wrap items-center justify-center w-full gap-3 text-primary-bg-dark dark:text-primary-bg-light md:mt-6">
               {startUpPrompts.map((item, index) => (
                 <button
                   className="cta-btn !text-sm !px-3 !shadow-none !rounded-[40px] !h-[2.6rem] !font-normal"

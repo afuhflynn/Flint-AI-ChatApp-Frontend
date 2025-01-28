@@ -1,11 +1,19 @@
-import React, { FormEvent, useRef, useState } from "react";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { Button, Input, ModalHeading } from "../components";
-import { useScrollIntoView } from "../hooks";
 import { maxMsgInput } from "../constants/constants";
 
 const ContactusPage: React.FC = () => {
   const topRef = useRef<null | HTMLSpanElement>(null);
-  useScrollIntoView(topRef.current); // Scrolls to the top of the page on page load
+  useEffect(() => {
+    const handleScrollToBottom = () => {
+      if (topRef && topRef.current) {
+        topRef.current.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    };
+    handleScrollToBottom();
+  }, []);
 
   const [formData, setFormData] = useState({
     name: "",

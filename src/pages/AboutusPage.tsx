@@ -1,10 +1,18 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useScrollIntoView } from "../hooks";
 
 const AboutusPage: React.FC = () => {
   const topRef = useRef<null | HTMLSpanElement>(null);
-  useScrollIntoView(topRef.current); // Scrolls to the top of the page on page load
+  useEffect(() => {
+    const handleScrollToBottom = () => {
+      if (topRef && topRef.current) {
+        topRef.current.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    };
+    handleScrollToBottom();
+  }, []);
   return (
     <div className="flex flex-col bg-primary-bg-light dark:bg-primary-bg-dark">
       <span ref={topRef} />
