@@ -6,7 +6,7 @@ const ConversationPage: React.FC = () => {
     <section className="w-full h-full">
       <div>Conversation view</div>
       <div className="w-full h-auto">
-        <ChatRoomInput />
+        <ChatRoomInput startupPrompt="" />
       </div>
     </section>
   );

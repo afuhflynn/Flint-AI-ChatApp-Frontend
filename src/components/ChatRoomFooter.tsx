@@ -2,7 +2,7 @@ import React from "react";
 
 const ChatRoomFooter: React.FC = () => {
   return (
-    <footer className="text-xs dark:text-text-secondary-dark text-text-secondary-light text-center mb-1">
+    <footer className="text-xs dark:text-text-secondary-dark text-text-secondary-light text-center mb-1 px-2">
       <p className="leading-relaxed">
         Flint AI is powered by{" "}
         <a

@@ -4,6 +4,7 @@ import { AccountLoginNotification, ChatRoomInput } from "./";
 
 const NewConversationPage: React.FC = () => {
   const [greetings, setGreetings] = useState<string>("");
+  const [startupPrompt, setStartupPrompt] = useState("");
   const userExists = true;
 
   const handleSetGreetings = (time: number) => {
@@ -59,13 +60,14 @@ const NewConversationPage: React.FC = () => {
                 <button
                   className="cta-btn !text-sm !px-3 !shadow-none !rounded-[40px] !h-[2.6rem] !font-normal"
                   key={`${item.id}-${index}`}
+                  onClick={() => setStartupPrompt(item.label)}
                 >
                   {item.label}
                 </button>
               ))}
             </div>
             <div className="w-full h-auto mb-2">
-              <ChatRoomInput />
+              <ChatRoomInput startupPrompt={startupPrompt} />
             </div>
           </section>
         </div>

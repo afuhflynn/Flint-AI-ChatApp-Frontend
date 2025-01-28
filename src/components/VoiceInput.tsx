@@ -6,7 +6,7 @@ const VoiceInput = ({ txtInput }: { txtInput: string }) => {
   const [isTyping, setIsTyping] = useState(false);
   useEffect(() => {
     const handleTextInput = () => {
-      setIsTyping(txtInput && txtInput.length > 0 ? true : false);
+      setIsTyping(txtInput.trim() !== "" ? true : false);
     };
     handleTextInput();
   }, [txtInput]);
