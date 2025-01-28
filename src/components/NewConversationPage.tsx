@@ -43,7 +43,9 @@ const NewConversationPage: React.FC = () => {
                   {greetings}!
                 </h1>
                 {/*TODO: To be replaced by user name */}
-                <h2 className="text-2xl mt-1 user-name">Alex Wang</h2>
+                <h2 className="text-2xl mt-1 user-name bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">
+                  Alex Wang
+                </h2>
               </div>
             ) : (
               <h1 className="leading-tight font-headings text-[30px] text-center md:mb-5 mb-6">
