@@ -127,15 +127,15 @@ const FilePicker: React.FC = () => {
   const [isFilePickerPopup, setIsFilePickerPopup] = useState<boolean>(false);
 
   return (
-    <div>
+    <div className="h-full w-auto">
       {isFilePickerPopup && <PopupPicker togglePopup={setIsFilePickerPopup} />}
       <Tooltip
         title="Attach a file"
-        placement="top"
+        placement="left"
         arrow
         onClick={() => setIsFilePickerPopup(!isFilePickerPopup)}
       >
-        <button type="button">
+        <button type="button" className="assets-btn">
           <PaperclipIcon className="icons" />
         </button>
       </Tooltip>

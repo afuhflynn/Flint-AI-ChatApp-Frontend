@@ -10,7 +10,8 @@ import {
 } from "lucide-react";
 
 export const maxMsgInput = 250;
-export const maxChatRoomMsgInput = 2000;
+export const maxChatRoomMsgInput = 5000;
+
 export const navbarItems = [
   { id: 1, label: "Home", url: "/" },
   { id: 2, label: "About Us", url: "/about-us" },
@@ -100,6 +101,14 @@ export const startUpPrompts = [
   {
     id: 6,
     label: "Get advice",
+  },
+  {
+    id: 7,
+    label: "Code",
+  },
+  {
+    id: 8,
+    label: "Brainstorm",
   },
 ];
 

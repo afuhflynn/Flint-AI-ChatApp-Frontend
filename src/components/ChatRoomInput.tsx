@@ -1,19 +1,21 @@
-import { Tooltip } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FilePicker, InternetSearch, VoiceInput } from "./";
 import { maxChatRoomMsgInput } from "../constants/constants";
 import { SendIcon } from "lucide-react";
 
 type ResponsiveTextareaProps = {
   maxRows?: number; // Maximum number of rows
-  placeholder?: string;
+  placeholder: string;
+  prompt: string;
+  onChange: (name: string, value: string) => void;
 };
 
 const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
   maxRows = 5,
-  placeholder = "Type something...",
+  placeholder = "Message Flint AI",
+  onChange,
+  prompt = "",
 }) => {
-  const [value, setValue] = useState("");
   const [rows, setRows] = useState(1);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -33,67 +35,45 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
     );
 
     setRows(newRows);
-    setValue(textarea.value);
+    console.log(lineHeight, rows, textarea.scrollHeight);
   };
 
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [value]);
-
   return (
-    <div className="w-full max-w-md p-4">
-      <textarea
-        ref={textareaRef}
-        value={value}
-        onChange={handleInput}
-        rows={rows}
-        placeholder={placeholder}
-        className="
-          w-full
-          resize-none
-          overflow-hidden
-          border
-          border-gray-300
-          rounded-md
-          p-2
-          text-base
-          focus:outline-none
-          sm:text-sm
-          sm:p-1
-        "
-        style={{
-          maxHeight: `${maxRows * 1.5}em`, // Assuming line-height is 1.5em
-        }}
-      ></textarea>
-    </div>
+    <textarea
+      name="prompt"
+      value={prompt}
+      onChange={(e) => {
+        handleInput(e);
+        onChange(e.target.name, e.target.value);
+      }}
+      placeholder={placeholder}
+      required
+      rows={rows}
+      maxLength={maxChatRoomMsgInput}
+      className="custom-input !mb-2 focus:!ring-0 !border-0 !text-lg !px-2"
+      ref={textareaRef}
+    />
   );
 };
 
 const ChatRoomInput: React.FC = () => {
-  const [isInputFocus, setIsInputFocus] = useState(false);
   const [formData, setFormData] = useState({ prompt: "" });
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
   };
   return (
     <form
-      className={`flex flex-col items-center justify-between shadow-sm border-none custom-input !m-0 !rounded-[2rem] ${
-        isInputFocus === true ? "ring-primary-light-blue-light" : "ring-0"
+      className={`flex flex-col items-center justify-between custom-input !border-opacity-10 !px-2 !py-2 !pb-3 !pr-3 !m-0 !rounded-[2rem] !shadow-md ${
+        formData.prompt.trim() !== ""
+          ? "ring-2 ring-primary-light-blue-light border-transparent"
+          : "ring-0"
       }`}
     >
-      <textarea
-        name="prompt"
-        value={formData.prompt}
-        onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+      <ResponsiveTextarea
         placeholder="Message Flint AI"
-        required
-        rows={1}
-        maxLength={maxChatRoomMsgInput}
-        className="custom-input !mb-2 focus:!ring-0 !border-0 !text-lg !px-2"
-        onFocus={() => setIsInputFocus(true)}
+        onChange={(name, value) => handleInputChange(name, value)}
+        prompt={formData.prompt}
+        maxRows={5}
       />
       {/* <ResponsiveTextarea maxRows={5} placeholder="Message Flint AI" /> */}
       <footer className="w-full flex flex-row items-center justify-between">
@@ -106,7 +86,7 @@ const ChatRoomInput: React.FC = () => {
         <div className="flex flex-row items-center justify-between mb-1">
           <button
             type="submit"
-            className={`dark:bg-primary-accent-blue-dark bg-primary-accent-blue-light outline-none rounded-full w-[2rem] h-[2rem] flex flex-row items-center justify-center p-0 ${
+            className={`bg-primary-accent-blue-light outline-none rounded-full w-[2rem] h-[2rem] flex flex-row items-center justify-center p-0 ${
               formData.prompt.trim() === ""
                 ? "bg-opacity-20 text-neutral-mid-grey-light"
                 : "hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  focus:ring-offset-CTA-hover-blue-dark text-text-primary-dark"

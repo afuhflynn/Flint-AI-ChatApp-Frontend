@@ -13,7 +13,7 @@ const VoiceInput = ({ txtInput }: { txtInput: string }) => {
   return (
     <>
       <Tooltip title="Voice Note" placement="top" arrow>
-        <button type="button" disabled={isTyping}>
+        <button type="button" disabled={isTyping} className="assets-btn">
           <Mic
             className={`icons ${
               isTyping
