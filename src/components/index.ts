@@ -23,7 +23,8 @@ import AccountLoginNotification from "./AccountLoginNotification";
 import AuthButtons from "./AuthButtons";
 import VoiceInput from "./VoiceInput";
 import InternetSearch from "./InternetSearch";
-import SidebarNav from "./SidebarNav"
+import SidebarNav from "./SidebarNav";
+import MarkdownRenderer from "./MarkdownRenderer";
 
 export {
   NavBar,
@@ -52,4 +53,5 @@ export {
   VoiceInput,
   InternetSearch,
   SidebarNav,
+  MarkdownRenderer,
 };

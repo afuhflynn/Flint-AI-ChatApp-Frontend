@@ -2,7 +2,7 @@ import { Tooltip } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { flintaiLogo } from "../assets/images";
-import { PanelsTopLeftIcon } from "lucide-react";
+import { PanelsLeftBottomIcon } from "lucide-react";
 
 const SidebarNav: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const SidebarNav: React.FC = () => {
       </Link>
       <Tooltip title="Toggle Menu" placement="bottom">
         <button type="button">
-          <PanelsTopLeftIcon />
+          <PanelsLeftBottomIcon />
         </button>
       </Tooltip>
     </nav>

@@ -228,7 +228,7 @@ export const mockUpData = [
     role: "user",
     parts: [
       {
-        text: "I am interested in technology and education\nI want to solve the problem of lack of confidence in student who study computer engineering, lack of motivation to study, lack of hope of for the future. Make them take challenges to study, interact with each other and learn without pressure.\nI am a full stack nextjs and mern stack programmer learning ml I am interested in technology and education\nI want to solve the problem of lack of confidence in student who study computer engineering, lack of motivation to study, lack of hope of for the future. Make them take challenges to study, ",
+        text: "I am interested in technology and education\nI want to solve the problem of lack of confidence in student who study computer engineering, lack of motivation to study, lack of hope of for the future. Make them take challenges to study, interact with each other and learn without pressure.\nI am a full stack nextjs and mern stack programmer learning ml I am interested in technology and education\nI want to solve the problem of lack of confidence in student who study computer engineering, lack of motivation to study, lack of hope of for the future. Make them take challenges to study, ```javascript console.log('Hello, world');```",
       },
     ],
   },

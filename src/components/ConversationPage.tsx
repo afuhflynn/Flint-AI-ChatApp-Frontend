@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ChatRoomInput } from "./";
+import { ChatRoomInput, MarkdownRenderer } from "./";
 import globalAppStore from "../store/app.store";
 import { Tooltip } from "@mui/material";
 import { ArrowDown } from "lucide-react";
@@ -69,26 +69,41 @@ const ConversationPage: React.FC = () => {
         ref={chatContainerRef}
         className="overflow-x-hidden overflow-y-scroll h-[90%] flex flex-col items-center mb-1"
       >
-        Conversation view
-        <div className="md:w-[68%] w-[96%]">
+        <div className="md:w-[70%] w-[98%] grid grid-cols-1 grid-rows-auto gap-6">
           {mockUpData.map((item, index) => {
             return (
-              <div key={`item-${index}-${item.role}`} className="custom-input">
+              <div
+                key={`item-${index}-${item.role}`}
+                className="flex flex-row items-start gap-4"
+              >
                 {item.role === "model" && (
-                  <img
-                    src={flintaiLogo}
-                    alt="Flint AI logo"
-                    className="w-[2.2rem] h-[2.2rem] object-contain"
-                  />
+                  <button className="cta-btn !w-auto !h-auto !p-[0.4rem] !rounded-full !flex  !flex-row  !items-center !justify-center !cursor-default hover:!bg-transparent">
+                    <img
+                      src={flintaiLogo}
+                      alt="Flint AI logo"
+                      className="w-[1.6rem] h-[1.6rem] object-contain"
+                    />
+                  </button>
                 )}
-                {item.parts[0].text}
+                <span
+                  className={`w-full h-auto flex ${
+                    item.role === "model" ? "items-start" : "items-end"
+                  }`}
+                >
+                  <div
+                    className={`custom-input p-5 rounded-[40px] bg-primary-bg-light dark:bg-primary-bg-dark`}
+                  >
+                    <MarkdownRenderer text={item.parts[0].text} />
+                  </div>
+                </span>
               </div>
             );
           })}
+
           <span ref={bottomRef} />
         </div>
       </div>
-      {scrollPercent !== 100 && (
+      {Number(scrollPercent) <= 98 && (
         <div className="relative flex flex-row items-center justify-center w-full h-auto mb-2">
           <ScrollButton handleClick={handleScrollToBottom} />
         </div>
