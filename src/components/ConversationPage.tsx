@@ -33,6 +33,7 @@ const ConversationPage: React.FC = () => {
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
   //TODO: Add a scroll to bottom effect based on bottomRef and hide the button based on scroll height
   const bottomRef = useRef<null | HTMLSpanElement>(null);
+  const { isMobileSidebarActive } = globalAppStore();
 
   // const handleScrollButtonClick = () =>{
   //   setIsAtBottom()
@@ -64,7 +65,7 @@ const ConversationPage: React.FC = () => {
     }
   }, []);
   return (
-    <section className="relative flex flex-col items-center w-full h-full overflow-hidden">
+    <section className="flex flex-col items-center w-full h-full overflow-hidden">
       <div
         ref={chatContainerRef}
         className="overflow-x-hidden overflow-y-scroll h-[90%] flex flex-col items-center mb-1"
@@ -86,15 +87,23 @@ const ConversationPage: React.FC = () => {
                   </button>
                 )}
                 <span
-                  className={`w-full h-auto flex ${
-                    item.role === "model" ? "items-start" : "items-end"
+                  className={`w-full h-auto flex flex-row items-start ${
+                    item.role === "model" ? "justify-start" : "justify-end"
                   }`}
                 >
-                  <div
-                    className={`custom-input p-5 rounded-[40px] bg-primary-bg-light dark:bg-primary-bg-dark`}
-                  >
-                    <MarkdownRenderer text={item.parts[0].text} />
-                  </div>
+                  {item.role === "model" ? (
+                    <div
+                      className={`custom-input !p-5 !rounded-[40px] !border-opacity-0 !bg-primary-bg-light dark:!bg-primary-bg-dark !h-auto !w-auto !m-0 !mr-10`}
+                    >
+                      <MarkdownRenderer text={item.parts[0].text} />
+                    </div>
+                  ) : (
+                    <div
+                      className={`custom-input !p-5 !rounded-[40px] !border-opacity-10  !h-auto !w-auto !m-0 !ml-20`}
+                    >
+                      <MarkdownRenderer text={item.parts[0].text} />
+                    </div>
+                  )}
                 </span>
               </div>
             );
@@ -104,9 +113,20 @@ const ConversationPage: React.FC = () => {
         </div>
       </div>
       {Number(scrollPercent) <= 98 && (
-        <div className="relative flex flex-row items-center justify-center w-full h-auto mb-2">
-          <ScrollButton handleClick={handleScrollToBottom} />
-        </div>
+        <>
+          <div
+            className={`relative hidden md:flex flex-row items-center justify-center w-full h-auto mb-2`}
+          >
+            <ScrollButton handleClick={handleScrollToBottom} />
+          </div>
+          {!isMobileSidebarActive && (
+            <div
+              className={`relative flex md:hidden flex-row items-center justify-center w-full h-auto mb-2`}
+            >
+              <ScrollButton handleClick={handleScrollToBottom} />
+            </div>
+          )}
+        </>
       )}
       <div className="flex flex-row items-center justify-center w-full h-auto mb-2 shadow-sm bg-neutral-dark-grey-light dark:bg-neutral-dark-grey-dark">
         <div className="md:w-[68%] w-[96%] h-auto shadow-md rounded-[2rem]">

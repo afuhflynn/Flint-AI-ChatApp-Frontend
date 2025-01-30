@@ -8,7 +8,7 @@ const App: React.FC = () => {
   const [theme, setTheme] = useLocalTheme("light");
 
   useEffect(() => {
-    setTheme("dark");
+    setTheme("light");
   }, [setTheme]);
   const loading = false;
   return (

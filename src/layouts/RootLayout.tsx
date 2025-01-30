@@ -4,7 +4,7 @@ import { Footer, NavBar } from "../components";
 
 const RootLayout: React.FC = () => {
   return (
-    <main className="relative flex flex-col justify-between w-full h-full">
+    <main className="flex flex-col justify-between w-full h-full">
       <NavBar />
       <Outlet />
       <Footer />

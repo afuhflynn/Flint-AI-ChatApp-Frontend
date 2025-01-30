@@ -44,7 +44,7 @@ const NewConversationPage: React.FC = () => {
                   {greetings}!
                 </h1>
                 {/*TODO: To be replaced by user name */}
-                <h2 className="mt-1 text-2xl text-transparent user-name bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">
+                <h2 className="mt-1 text-2xl text-transparent bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">
                   Alex Wang
                 </h2>
               </div>

@@ -8,6 +8,10 @@ export interface appStoreTypes {
   setPrompt: (value: string) => void;
   chatbot: string;
   setChatbot: (value: string) => void;
+  isSidebarActive: boolean;
+  setIsSidebarActive: (value: boolean) => void;
+  isMobileSidebarActive: boolean;
+  setIsMobileSidebarActive: (value: boolean) => void;
 }
 
 // user types
