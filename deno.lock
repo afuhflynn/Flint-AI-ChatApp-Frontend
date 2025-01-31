@@ -6,7 +6,6 @@
     "npm:@eslint/js@^9.13.0": "9.16.0",
     "npm:@mui/icons-material@^6.2.1": "6.2.1_@mui+material@6.2.1__@emotion+react@11.14.0___react@18.3.1__@emotion+styled@11.14.0___@emotion+react@11.14.0____react@18.3.1___react@18.3.1__@types+react@18.3.14__react@18.3.1__react-dom@18.3.1___react@18.3.1_@types+react@18.3.14_react@18.3.1_@emotion+react@11.14.0__react@18.3.1_@emotion+styled@11.14.0__@emotion+react@11.14.0___react@18.3.1__react@18.3.1_react-dom@18.3.1__react@18.3.1",
     "npm:@mui/material@^6.2.1": "6.2.1_@emotion+react@11.14.0__react@18.3.1_@emotion+styled@11.14.0__@emotion+react@11.14.0___react@18.3.1__react@18.3.1_@types+react@18.3.14_react@18.3.1_react-dom@18.3.1__react@18.3.1",
-    "npm:@types/highlight.js@^10.1.0": "10.1.0",
     "npm:@types/react-dom@^18.3.1": "18.3.2",
     "npm:@types/react-syntax-highlighter@^15.5.13": "15.5.13",
     "npm:@types/react-twemoji@~0.4.3": "0.4.3",
@@ -660,12 +659,6 @@
       "integrity": "sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==",
       "dependencies": [
         "@types/unist@3.0.3"
-      ]
-    },
-    "@types/highlight.js@10.1.0": {
-      "integrity": "sha512-77hF2dGBsOgnvZll1vymYiNUtqJ8cJfXPD6GG/2M0aLRc29PkvB7Au6sIDjIEFcSICBhCh2+Pyq6WSRS7LUm6A==",
-      "dependencies": [
-        "highlight.js@11.11.1"
       ]
     },
     "@types/json-schema@7.0.15": {
@@ -3113,7 +3106,6 @@
         "npm:@eslint/js@^9.13.0",
         "npm:@mui/icons-material@^6.2.1",
         "npm:@mui/material@^6.2.1",
-        "npm:@types/highlight.js@^10.1.0",
         "npm:@types/react-dom@^18.3.1",
         "npm:@types/react-syntax-highlighter@^15.5.13",
         "npm:@types/react-twemoji@~0.4.3",

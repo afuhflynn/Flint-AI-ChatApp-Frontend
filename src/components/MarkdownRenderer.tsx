@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, CSSProperties } from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -8,6 +8,7 @@ import "katex/dist/katex.min.css";
 import "highlight.js/styles/github-dark.css";
 import Twemoji from "react-twemoji";
 import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
   return (
@@ -25,22 +26,21 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
             }: ComponentPropsWithoutRef<"code"> & { inline?: boolean }) {
               const match = /language-(\w+)/.exec(className || "");
               const language = className?.replace(/language-/, "");
-              const style: CSSProperties = {
-                backgroundColor: "#f5f5f5",
-                borderRadius: "5px",
-                padding: "10px",
-                fontSize: "14px",
-              };
               const code = Array.isArray(children)
                 ? children.map(String).join("")
                 : String(children);
 
               return !inline && match ? (
-                <SyntaxHighlighter style={style} language={language} {...props}>
+                <SyntaxHighlighter style={docco} language={language} {...props}>
                   {String(children).replace(/\n$/, "")}
                 </SyntaxHighlighter>
               ) : (
-                <code className={className} {...props}>
+                <code
+                  className={
+                    "h-auto w-[90%] overflow-x-scroll overflow-y-hidden"
+                  }
+                  {...props}
+                >
                   {code}
                 </code>
               );
@@ -72,15 +72,19 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
             ),
             // List styling
             ul: ({ children }) => (
-              <ul className="list-disc list-inside space-y-1">{children}</ul>
+              <ul className="list-disc list-inside space-y-1 my-1">
+                {children}
+              </ul>
             ),
             ol: ({ children }) => (
-              <ol className="list-decimal list-inside space-y-1">{children}</ol>
+              <ol className="list-decimal list-inside space-y-1 my-1">
+                {children}
+              </ol>
             ),
             li: ({ children }) => <li className="ml-4">{children}</li>,
             // Table styling
             table: ({ children }) => (
-              <table className="table-auto border-collapse border border-gray-400 dark:border-gray-600">
+              <table className="table-auto border-collapse border border-gray-400 dark:border-gray-600 overflow-x-scroll overflow-y-hidden my-2">
                 {children}
               </table>
             ),
@@ -93,6 +97,10 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
               <td className="border border-gray-400 dark:border-gray-600 px-4 py-2">
                 {children}
               </td>
+            ),
+            p: ({ children }) => <p className="text-body-text">{children}</p>,
+            span: ({ children }) => (
+              <span className="text-muted-text">{children}</span>
             ),
           }}
         >

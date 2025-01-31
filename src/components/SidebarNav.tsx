@@ -2,7 +2,7 @@ import { Tooltip } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { flintaiLogo } from "../assets/images";
-import { PanelsLeftBottomIcon } from "lucide-react";
+import { PanelsLeftBottomIcon, SearchIcon } from "lucide-react";
 import globalAppStore from "../store/app.store";
 
 const SidebarNav: React.FC = () => {
@@ -20,17 +20,32 @@ const SidebarNav: React.FC = () => {
         />
         <h2 className="text-[18px]">Flint AI</h2>
       </Link>
-      <Tooltip title="Toggle Menu" placement="bottom">
-        <button
-          type="button"
-          onClick={() => {
-            setIsSidebarActive(false);
-            setIsMobileSidebarActive(false);
-          }}
+      <div className="flex flex-row items-center gap-2 w-auto h-auto">
+        <Tooltip
+          title="Search a chat"
+          placement="bottom"
+          className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
         >
-          <PanelsLeftBottomIcon />
-        </button>
-      </Tooltip>
+          <button type="button">
+            <SearchIcon />
+          </button>
+        </Tooltip>
+        <Tooltip
+          title="Toggle Menu"
+          placement="right"
+          className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
+        >
+          <button
+            type="button"
+            onClick={() => {
+              setIsSidebarActive(false);
+              setIsMobileSidebarActive(false);
+            }}
+          >
+            <PanelsLeftBottomIcon />
+          </button>
+        </Tooltip>
+      </div>
     </nav>
   );
 };
