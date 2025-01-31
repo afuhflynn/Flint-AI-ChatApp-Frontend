@@ -1,53 +1,49 @@
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import rehypeHighlight from "rehype-highlight";
+import "katex/dist/katex.min.css";
+import "highlight.js/styles/github-dark.css";
+import { Copy } from "lucide-react";
+import Twemoji from "react-twemoji";
 
-const MarkdownRenderer = ({ text }: { text: string }) => {
+const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
   return (
-    <ReactMarkdown
-      remarkPlugins={[remarkGfm, remarkMath]}
-      rehypePlugins={[rehypeKatex]}
-      components={{
-        h1: ({ children }) => (
-          <h1 className="text-3xl font-bold">{children}</h1>
-        ),
-        h2: ({ children }) => (
-          <h2 className="text-2xl font-semibold">{children}</h2>
-        ),
-        h3: ({ children }) => (
-          <h3 className="text-xl font-semibold">{children}</h3>
-        ),
-        strong: ({ children }) => (
-          <strong className="font-bold">{children}</strong>
-        ),
-        em: ({ children }) => <em className="italic">{children}</em>,
-        blockquote: ({ children }) => (
-          <blockquote className="border-l-4 border-gray-500 pl-4 italic opacity-80">
-            {children}
-          </blockquote>
-        ),
-        ul: ({ children }) => <ul className="list-disc pl-6">{children}</ul>,
-        ol: ({ children }) => <ol className="list-decimal pl-6">{children}</ol>,
-        li: ({ children }) => <li className="mb-1">{children}</li>,
-        code({ inline, className, children }) {
-          const match = /language-(\w+)/.exec(className || "");
-          return !inline && match ? (
-            <SyntaxHighlighter style={atomDark} language={match[1]}>
-              {String(children).replace(/\n$/, "")}
-            </SyntaxHighlighter>
-          ) : (
-            <code className="bg-gray-200 dark:bg-gray-800 p-1 rounded">
-              {children}
-            </code>
-          );
-        },
-      }}
-    >
-      {text}
-    </ReactMarkdown>
+    <div className="prose max-w-none dark:prose-invert">
+      <Twemoji options={{ className: "twemoji" }}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeKatex, rehypeHighlight]}
+          components={{
+            code({ className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || "");
+              const code = String(children).trim();
+              const language = match ? match[1] : "plaintext";
+
+              return (
+                <div className="relative group">
+                  <pre className="overflow-x-auto p-3 rounded-lg bg-gray-900 text-gray-100">
+                    <code className={`hljs language-${language}`} {...props}>
+                      {code}
+                    </code>
+                  </pre>
+                  <button
+                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 bg-gray-700 text-white p-1 rounded"
+                    onClick={() => navigator.clipboard.writeText(code)}
+                  >
+                    <Copy size={16} />
+                  </button>
+                </div>
+              );
+            },
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      </Twemoji>
+    </div>
   );
 };
 

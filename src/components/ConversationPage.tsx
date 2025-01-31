@@ -35,9 +35,39 @@ const ConversationPage: React.FC = () => {
   const bottomRef = useRef<null | HTMLSpanElement>(null);
   const { isMobileSidebarActive } = globalAppStore();
 
-  // const handleScrollButtonClick = () =>{
-  //   setIsAtBottom()
-  // }
+  const markdownContent = `
+# 📝 Markdown Renderer
+This is a **powerful** markdown renderer with **hierarchy support**, *syntax highlighting*, and emoji rendering! 😃
+
+## ✅ Features
+- Headings
+- Lists
+- Blockquotes
+- Code Blocks with Copy Button
+- Tables
+- Math Equations
+- Emojis 🎉
+
+## 📜 Code Block
+\`\`\`javascript
+const greet = () => console.log("Hello, world!");
+greet();
+\`\`\`
+
+## 📊 Tables
+| Name  | Age |
+|-------|-----|
+| Alice | 23  |
+| Bob   | 30  |
+
+## 📏 Math Expressions
+Inline math: $E = mc^2$
+
+Block math:
+$$
+a^2 + b^2 = c^2
+$$
+`;
 
   const handleScrollToBottom = () => {
     if (bottomRef && bottomRef.current) {
@@ -95,13 +125,13 @@ const ConversationPage: React.FC = () => {
                     <div
                       className={`custom-input !p-5 !rounded-[40px] !border-opacity-0 !bg-primary-bg-light dark:!bg-primary-bg-dark !h-auto !w-auto !m-0 !mr-10`}
                     >
-                      <MarkdownRenderer text={item.parts[0].text} />
+                      <MarkdownRenderer content={markdownContent} />
                     </div>
                   ) : (
                     <div
                       className={`custom-input !p-5 !rounded-[40px] !border-opacity-10  !h-auto !w-auto !m-0 !ml-20`}
                     >
-                      <MarkdownRenderer text={item.parts[0].text} />
+                      <MarkdownRenderer content={item.parts[0].text} />
                     </div>
                   )}
                 </span>
