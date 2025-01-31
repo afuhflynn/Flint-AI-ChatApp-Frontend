@@ -49,9 +49,19 @@ This is a **powerful** markdown renderer with **hierarchy support**, *syntax hig
 - Emojis 🎉
 
 ## 📜 Code Block
+\`\`\`python
+import sys
+
+def main():
+    print('Hello from Python!')
+    print('Arguments:', sys.argv[1:])
+
+if __name__ == '__main__':
+    main()
+\`\`\`
+
 \`\`\`javascript
-const greet = () => console.log("Hello, world!");
-greet();
+console.log('Hello, world');
 \`\`\`
 
 ## 📊 Tables
