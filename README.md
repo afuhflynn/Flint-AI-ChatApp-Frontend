@@ -129,9 +129,9 @@ Once the development server is running, open your browser and navigate to `http:
 
 #### New conversation page
 
-![Chat Interface new](./public/flintai-chatpage.png)
+![Chat Interface new](./public/flintai-newchat.png)
 
-![Chat Interface new](./public/flintai-chatpage-dark.png)
+![Chat Interface new](./public/flintai-newchat-dark.png)
 
 #### Ongoing conversation page
 
