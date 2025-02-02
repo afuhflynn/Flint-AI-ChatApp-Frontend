@@ -7,11 +7,15 @@ import {
   PasswordStrengthMeter,
   SocialConnections,
 } from "../components";
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import globalAppStore from "../store/app.store";
+import globalUserStore from "../store/user.store";
+import { routeUsers } from "../utils";
+import { toast } from "react-toastify";
 
 const SignupPage = () => {
   const { isPasswordValid } = globalAppStore();
+  const { isLoading, error, signUp, message } = globalUserStore();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -30,13 +34,28 @@ const SignupPage = () => {
     }, 10000); // Toggle back after 10s
   };
 
-  // TODO: Trim username before submitting to backend
+  // Handle sign up
+  const handleSignUp = async (event: FormEvent) => {
+    event.preventDefault();
+    signUp(formData.username.trim(), formData.password, formData.email);
+  };
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (error) {
+        toast.error(error);
+      } else if (message) {
+        toast.success(message);
+        routeUsers("/auth/confirm-email-code/z2eHDqrspy637kjdwoflintai");
+      }
+    }
+  }, [isLoading, error, message]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
         <ModalHeading text="Sign up for Flint AI" className="text-center" />
-        <form>
+        <form onSubmit={handleSignUp}>
           <div className="input-row">
             <label htmlFor="username" className="modal-text">
               Username
@@ -126,6 +145,11 @@ const SignupPage = () => {
               <PasswordStrengthCriteria password={formData.password} />
             </>
           )}
+          {error && (
+            <div className="mb-4 w-full flex flex-row items-center h-auto">
+              <p className="text-muted-text text-red-500">{error}</p>
+            </div>
+          )}
           <Button
             text="Sign Up"
             type="submit"
@@ -139,6 +163,7 @@ const SignupPage = () => {
                 formData.confirmPassword !== formData.password) &&
               "opacity-50"
             }`}
+            isLoading={isLoading}
             disabled={
               formData.password.trim() === "" ||
               formData.username.trim() === "" ||

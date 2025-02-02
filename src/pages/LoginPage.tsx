@@ -1,21 +1,41 @@
 import { Link } from "react-router-dom";
 import { Button, Input, ModalHeading, SocialConnections } from "../components";
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import globalUserStore from "../store/user.store";
+import { toast } from "react-toastify";
+import { routeUsers } from "../utils";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+  const { isLoading, error, logIn, message } = globalUserStore();
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
   };
+  // Handle sign in
+  const handleSignIn = async (event: FormEvent) => {
+    event.preventDefault();
+    logIn(formData.username.trim(), formData.password);
+  };
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (error) {
+        toast.error(error);
+      } else if (message) {
+        toast.success(message);
+        routeUsers("/chat-bot/chats/new-chat");
+      }
+    }
+  }, [isLoading, error, message]);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
         <ModalHeading text="Sign in to Flint AI" className="text-center" />
-        <form>
+        <form onSubmit={handleSignIn}>
           <div className="input-row">
             <label htmlFor="username" className="modal-text">
               Username or Email
@@ -47,6 +67,11 @@ const LoginPage = () => {
               <Link to="/auth/forgot-password">Forgot your password?</Link>
             </div>
           </div>
+          {error && (
+            <div className="mb-4 w-full flex flex-row items-center h-auto">
+              <p className="text-muted-text text-red-500">{error}</p>
+            </div>
+          )}
           <Button
             text="Login Securely"
             type="submit"
@@ -55,6 +80,7 @@ const LoginPage = () => {
                 formData.username.trim() === "") &&
               "opacity-50"
             }`}
+            isLoading={isLoading}
             onClick={() => {}}
             disabled={
               formData.password.trim() === "" || formData.username.trim() === ""

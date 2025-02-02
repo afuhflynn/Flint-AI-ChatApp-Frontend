@@ -244,3 +244,5 @@ export const mockUpData = [
 
 // Endpoints and urls
 export const backendBaseUrl = "http://localhost:3000";
+export const authBackendBaseUrl = `${backendBaseUrl}/api/auth/users`;
+export const geminiBackendUrl = `${backendBaseUrl}/assist/api/ai`;

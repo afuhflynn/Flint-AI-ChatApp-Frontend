@@ -16,6 +16,7 @@ import ConfirmEmailAddress from "./ConfirmEmail";
 import AccountDeletionRequestPage from "./AccountDeletionRequestPage";
 import ConfirmEmailWithLink from "./ConfirmEmailWithLink";
 import EmailVerifiedSuccessfully from "./EmailVerifiedSuccessfully";
+import ResendVerificationEmail from "./ResendVerficationEmail";
 
 export {
   HomePage,
@@ -36,4 +37,5 @@ export {
   AccountDeletionRequestPage,
   EmailVerifiedSuccessfully,
   ConfirmEmailWithLink,
+  ResendVerificationEmail,
 };

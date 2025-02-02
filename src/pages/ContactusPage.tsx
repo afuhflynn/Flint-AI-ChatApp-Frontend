@@ -1,20 +1,8 @@
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { Button, Input, ModalHeading } from "../components";
 import { maxMsgInput } from "../constants/constants";
 
 const ContactusPage: React.FC = () => {
-  const topRef = useRef<null | HTMLSpanElement>(null);
-  useEffect(() => {
-    const handleScrollToBottom = () => {
-      if (topRef && topRef.current) {
-        topRef.current.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
-    };
-    handleScrollToBottom();
-  }, []);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,7 +22,6 @@ const ContactusPage: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-between min-h-screen bg-primary-bg-light dark:bg-primary-bg-dark">
-      <span ref={topRef} />
       <div className="relative w-full h-full paddingX">
         {/* Card with different background colors for light and dark modes */}
         <div className="max-w-screen-lg mx-auto mt-8 mb-4 p-6 rounded-xl shadow-lg md:w-96 w-[96%] bg-transparent dark:bg-neutral-dark-grey-dark dark:shadow-sm">

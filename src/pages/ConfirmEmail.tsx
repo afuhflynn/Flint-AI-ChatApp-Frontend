@@ -1,30 +1,38 @@
-import { useEffect, useState } from "react";
-import { Button, Input, ModalHeading } from "../components";
+import { FormEvent, useEffect, useState } from "react";
+import {
+  Button,
+  Input,
+  ModalHeading,
+  ResendVerificationCode,
+} from "../components";
+import globalUserStore from "../store/user.store";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmEmailAddress = () => {
   const [code, setCode] = useState("");
-  const [minutes, setMinutes] = useState(1);
-  const [seconds, setSeconds] = useState(60);
+  const [verify, setVerify] = useState(false); // Just to ensure that the user clicks the button to submit. Because token will always be available
+  const { isLoading, error, verifyEmailWithCode, message } = globalUserStore();
+  const navigate = useNavigate();
 
-  const handleTimeUpdate = () => {
-    setSeconds(seconds - 1);
-    if (seconds === 0 && minutes > 0) {
-      setSeconds(60);
-      setMinutes(0);
-    }
-    if (seconds === 0 && minutes === 0) {
-      setSeconds(0);
-      setMinutes(0);
-    }
+  // Handle verfication
+  const handleVerify = async (event: FormEvent) => {
+    event.preventDefault();
+    verifyEmailWithCode(code);
+    setVerify(true);
   };
 
   useEffect(() => {
-    if (seconds === 0 && minutes === 0) return;
-    else
-      setTimeout(() => {
-        handleTimeUpdate();
-      }, 1000);
-  });
+    if (!isLoading && code.trim().length > 0 && verify === true) {
+      if (error) {
+        toast.error(error);
+        return;
+      } else {
+        toast.success(message);
+        navigate("/auth/email-verified");
+      }
+    }
+  }, [isLoading, error, message, navigate, code, verify]);
 
   return (
     <div className="flex items-center flex-col justify-center min-h-screen bg-background text-text">
@@ -33,7 +41,7 @@ const ConfirmEmailAddress = () => {
         <p className="modal-text opacity-80 !my-4 text-center !mb-5">
           Enter the 6 digit verification code sent to your email below
         </p>
-        <form>
+        <form onSubmit={handleVerify}>
           <div className="input-row">
             <label htmlFor="code" className="modal-text">
               Verification Code
@@ -44,45 +52,26 @@ const ConfirmEmailAddress = () => {
                 placeholder="e.g 472913"
                 value={code}
                 name="code"
-                maxLength={6}
                 onChange={(_, value) => setCode(value)}
               />
             </div>
           </div>
+          {error && (
+            <div className="mb-4 w-full flex flex-row items-center h-auto">
+              <p className="text-muted-text text-red-500">{error}</p>
+            </div>
+          )}
           <Button
             text="Confirm Email"
             type="submit"
             className={`text-body-text ${code.trim() === "" && "opacity-50"}`}
+            isLoading={isLoading}
             onClick={() => {}}
             disabled={code.trim() === ""}
           />
         </form>
       </div>
-      <footer className="mt-4 text-center modal-text !text-muted-text">
-        Didn't receive the code?{" "}
-        <button
-          className={`dark:text-primary-accent-blue-dark text-primary-accent-blue-light text-body-text capitalize ${
-            seconds > 0 || minutes > 0 ? "opacity-50" : "hover:underline"
-          }`}
-          onClick={() => {
-            alert("Code sent successfully");
-            setMinutes(1);
-            setSeconds(60);
-          }}
-          type="button"
-          disabled={seconds > 0 || minutes > 0 ? true : false}
-        >
-          Send again
-        </button>{" "}
-        <span
-          className={`text-body-text ${
-            seconds === 0 && minutes === 0 && "hidden"
-          }`}
-        >
-          in 0{minutes}:{seconds < 10 && 0}
-          {seconds}s
-        </span>
-      </footer>
+      <ResendVerificationCode />
     </div>
   );
 };

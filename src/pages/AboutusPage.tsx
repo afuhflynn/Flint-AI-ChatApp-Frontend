@@ -1,21 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const AboutusPage: React.FC = () => {
-  const topRef = useRef<null | HTMLSpanElement>(null);
-  useEffect(() => {
-    const handleScrollToBottom = () => {
-      if (topRef && topRef.current) {
-        topRef.current.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
-    };
-    handleScrollToBottom();
-  }, []);
   return (
     <div className="flex flex-col bg-primary-bg-light dark:bg-primary-bg-dark">
-      <span ref={topRef} />
       <div className="max-w-screen-lg mx-auto mb-4 text-center md:px-8 paddingX">
         <h1 className="mb-8 text-3xl font-semibold md:text-4xl text-text-primary-light dark:text-text-primary-dark ">
           About Us

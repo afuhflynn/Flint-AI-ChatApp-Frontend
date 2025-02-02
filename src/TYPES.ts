@@ -48,9 +48,25 @@ export interface UserSchemaTypes {
   };
 }
 
+// Response types
+export interface newAuthResponseTypes {
+  message: string;
+}
+
 // Global user types
 export interface userStoreTypes {
   prefersTheme: string;
+  isLoading: boolean;
+  error: string;
+  message: string;
+  setIsLoading: (value: boolean) => void;
   user: UserSchemaTypes | null;
+  email: string;
+  setUser: (value: UserSchemaTypes | null) => void;
   setprefersTheme: (value: string) => void;
+  signUp: (username: string, password: string, email: string) => void;
+  verifyEmailWithCode: (code: string) => void;
+  verifyEmailWithLink: (token: string) => void;
+  resendVerificationCode: (email: string) => void;
+  logIn: (username: string, password: string) => void;
 }

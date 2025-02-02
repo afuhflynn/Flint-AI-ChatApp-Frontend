@@ -16,6 +16,7 @@ import {
   LoginPage,
   PasswordResetPage,
   PasswordResetRequestPage,
+  ResendVerificationEmail,
   SignupPage,
   Terms_ConditionsPage,
 } from "../pages";
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
           {
             path: "/auth/confirm-email-link/:token",
             element: <ConfirmEmailWithLink />,
+          },
+          {
+            path: "/auth/resend-verification-email",
+            element: <ResendVerificationEmail />,
           },
           {
             path: "/auth/email-verified",
