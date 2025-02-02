@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { routeUsers } from "../utils";
 
 const LoginPage = () => {
+  const [login, setLogin] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -19,10 +20,11 @@ const LoginPage = () => {
   const handleSignIn = async (event: FormEvent) => {
     event.preventDefault();
     logIn(formData.username.trim(), formData.password);
+    setLogin(true);
   };
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && login === true) {
       if (error) {
         toast.error(error);
       } else if (message) {
@@ -30,7 +32,7 @@ const LoginPage = () => {
         routeUsers("/chat-bot/chats/new-chat");
       }
     }
-  }, [isLoading, error, message]);
+  }, [isLoading, error, message, login]);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
