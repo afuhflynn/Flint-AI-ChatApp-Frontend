@@ -52,6 +52,9 @@ export interface UserSchemaTypes {
 export interface newAuthResponseTypes {
   message: string;
 }
+export interface responseWithUserTypes {
+  user: UserSchemaTypes;
+}
 
 // Global user types
 export interface userStoreTypes {
@@ -59,6 +62,8 @@ export interface userStoreTypes {
   isLoading: boolean;
   error: string;
   message: string;
+  isAuthenticated: boolean;
+  isCheckingAuth: boolean;
   setIsLoading: (value: boolean) => void;
   user: UserSchemaTypes | null;
   email: string;
@@ -71,4 +76,5 @@ export interface userStoreTypes {
   logIn: (username: string, password: string) => void;
   sendPasswordResetRequest: (email: string) => void;
   resetPassword: (password: string, token: string) => void;
+  getUserProfile: () => void;
 }
