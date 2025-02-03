@@ -43,6 +43,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
         set({
+          error: "An unexpected error occurred. Try again later",
+          isLoading: false,
+        });
+      } else {
+        set({
           error: error.response.data?.message,
           isLoading: false,
         });
@@ -66,6 +71,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
         set({
+          error: "An unexpected error occurred. Try again later",
+          isLoading: false,
+        });
+      } else {
+        set({
           error: error.response.data?.message,
           isLoading: false,
         });
@@ -85,6 +95,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
+        set({
+          error: "An unexpected error occurred. Try again later",
+          isLoading: false,
+        });
+      } else {
         set({
           error: error.response.data?.message,
           isLoading: false,
@@ -107,6 +122,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
         set({
+          error: "An unexpected error occurred. Try again later",
+          isLoading: false,
+        });
+      } else {
+        set({
           error: error.response.data?.message,
           isLoading: false,
         });
@@ -128,6 +148,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
         set({
+          error: "An unexpected error occurred. Try again later",
+          isLoading: false,
+        });
+      } else {
+        set({
           error: error.response.data?.message,
           isLoading: false,
         });
@@ -141,7 +166,6 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     set({
       isCheckingAuth: true,
       error: "",
-      message: "",
       isAuthenticated: false,
     });
     try {
@@ -157,9 +181,14 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
         set({
+          error:
+            "An error occurred logging in. Login a again or create an account",
+          isLoading: false,
+        });
+      } else {
+        set({
           error: error.response.data?.message,
-          isCheckingAuth: false,
-          isAuthenticated: false,
+          isLoading: false,
         });
       }
     } finally {
@@ -178,6 +207,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
+        set({
+          error: "An unexpected error occurred. Try again later",
+          isLoading: false,
+        });
+      } else {
         set({
           error: error.response.data?.message,
           isLoading: false,
@@ -199,6 +233,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
+        set({
+          error: "An unexpected error occurred. Try again later",
+          isLoading: false,
+        });
+      } else {
         set({
           error: error.response.data?.message,
           isLoading: false,

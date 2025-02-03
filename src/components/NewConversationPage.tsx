@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { startUpPrompts } from "../constants/constants";
 import { AccountLoginNotification, ChatRoomInput } from "./";
+import globalUserStore from "../store/user.store";
 
 const NewConversationPage: React.FC = () => {
   const [greetings, setGreetings] = useState<string>("");
   const [startupPrompt, setStartupPrompt] = useState("");
-  const userExists = false;
+  const { isAuthenticated, user } = globalUserStore();
 
   const handleSetGreetings = (time: number) => {
     if (time < 12 && time >= 0) {
@@ -33,11 +34,11 @@ const NewConversationPage: React.FC = () => {
   return (
     <section className="flex flex-col items-center justify-between w-full h-full">
       {/*TODO: Display login notification based on user profile */}
-      <AccountLoginNotification />
+      {!isAuthenticated && !user && <AccountLoginNotification />}
       <div className="flex flex-col items-center justify-center w-full h-full gap-6">
         <div className="md:w-[68%] w-[96%] h-full flex flex-col items-center justify-end md:justify-center gap-1">
           <div className="text-primary-bg-dark dark:text-primary-bg-light text-left w-[90%] md:w-[94%]">
-            {userExists ? (
+            {user ? (
               <div className="mb-10 md:mb-8">
                 {/* Display greetings and user name if the user exist */}
                 <h1 className="leading-tight capitalize font-headings text-header">
@@ -45,7 +46,7 @@ const NewConversationPage: React.FC = () => {
                 </h1>
                 {/*TODO: To be replaced by user name */}
                 <h2 className="mt-1 text-2xl text-transparent bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">
-                  Alex Wang
+                  {user && user.username && user.username}
                 </h2>
               </div>
             ) : (

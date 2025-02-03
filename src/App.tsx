@@ -16,15 +16,17 @@ const App: React.FC = () => {
       if (error && error.trim().length > 0) toast.info(error);
     };
     handleGetUserProfile();
-  }, [getUserProfile, error]);
+  }, []);
 
   // Modify app theme based on user theme if the user exists
   useEffect(() => {
     setTheme(
-      user && user.preferences?.theme ? (user?.preferences.theme as string) : "light"
+      user && user.preferences?.theme
+        ? (user?.preferences.theme as string)
+        : "light"
     );
   }, [setTheme, user]);
-  console.log(user)
+  console.log(user);
   return (
     <main className="w-screen h-screen overflow-x-hidden bg-primary-bg-light dark:bg-primary-bg-dark">
       {/* toast container */}
