@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import {
   Button,
   Input,
@@ -7,6 +7,9 @@ import {
   PasswordStrengthMeter,
 } from "../components";
 import globalAppStore from "../store/app.store";
+import { useNavigate, useParams } from "react-router-dom";
+import globalUserStore from "../store/user.store";
+import { toast } from "react-toastify";
 
 const PasswordResetPage = () => {
   const { isPasswordValid } = globalAppStore();
@@ -15,6 +18,10 @@ const PasswordResetPage = () => {
     confirmPassword: "",
   });
   const [passwordType, setPasswordType] = useState("password");
+  const [verify, setVerify] = useState(false); // Just to ensure that the user clicks the button to submit. Because token will always be available
+  const { isLoading, error, resetPassword, message } = globalUserStore();
+  const { token } = useParams();
+  const navigate = useNavigate();
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
@@ -26,12 +33,30 @@ const PasswordResetPage = () => {
       setPasswordType("password");
     }, 10000); // Toggle back after 10s
   };
-  console.log(isPasswordValid);
+
+  // Handle reset
+  const handleSendReset = async (event: FormEvent) => {
+    event.preventDefault();
+    resetPassword(formData.password, token as string);
+    setVerify(true);
+  };
+
+  useEffect(() => {
+    if (!isLoading && formData.password.trim().length > 0 && verify === true) {
+      if (error) {
+        toast.error(error);
+        return;
+      } else {
+        toast.success(message);
+        navigate("/auth/log-in");
+      }
+    }
+  }, [isLoading, error, message, formData.password, verify, navigate]);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal !p-6 !shadow-lg !h-[60%]">
         <ModalHeading text="Reset Password" className="text-center" />
-        <form>
+        <form onSubmit={handleSendReset}>
           <div className="input-row">
             <label
               htmlFor="password"
@@ -92,6 +117,11 @@ const PasswordResetPage = () => {
               <PasswordStrengthCriteria password={formData.password} />
             </>
           )}
+          {error && (
+            <div className="mb-4 w-full flex flex-row items-center h-auto">
+              <p className="text-muted-text text-red-500">{error}</p>
+            </div>
+          )}
           <Button
             text="Reset Password"
             type="submit"
@@ -102,6 +132,7 @@ const PasswordResetPage = () => {
                 formData.confirmPassword !== formData.password) &&
               "opacity-50"
             }`}
+            isLoading={isLoading}
             onClick={() => {}}
             disabled={
               formData.confirmPassword.trim() === "" ||

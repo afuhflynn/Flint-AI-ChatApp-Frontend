@@ -69,4 +69,6 @@ export interface userStoreTypes {
   verifyEmailWithLink: (token: string) => void;
   resendVerificationCode: (email: string) => void;
   logIn: (username: string, password: string) => void;
+  sendPasswordResetRequest: (email: string) => void;
+  resetPassword: (password: string, token: string) => void;
 }

@@ -156,6 +156,56 @@ const globalUserStore = create<userStoreTypes>((set) => ({
       set({ isLoading: false });
     }
   },
+  sendPasswordResetRequest: async (email) => {
+    // Use trycatch instead
+    set({ isLoading: true, error: "", message: "" });
+    try {
+      const res = await axios.post<newAuthResponseTypes>(
+        `${authBackendBaseUrl}/reset-password-request`,
+        { email: email }
+      );
+      set({ message: res.data.message, isLoading: false });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      if (axios.isAxiosError(error) && error.response) {
+        set({
+          error:
+            error.response.data?.message?.length === 0
+              ? errorText
+              : "Unauthorized. User not found!",
+        });
+      } else {
+        set({ isLoading: false, error: errorText });
+      }
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  resetPassword: async (password, token) => {
+    // Use trycatch instead
+    set({ isLoading: true, error: "", message: "" });
+    try {
+      const res = await axios.put<newAuthResponseTypes>(
+        `${authBackendBaseUrl}/reset-password/${token}`,
+        { password: password }
+      );
+      set({ message: res.data.message, isLoading: false });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      if (axios.isAxiosError(error) && error.response) {
+        set({
+          error:
+            error.response.data?.message?.length === 0
+              ? errorText
+              : "Unauthorized. User not found!",
+        });
+      } else {
+        set({ isLoading: false, error: errorText });
+      }
+    } finally {
+      set({ isLoading: false });
+    }
+  },
 }));
 
 export default globalUserStore;
