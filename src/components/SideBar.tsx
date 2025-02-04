@@ -1,14 +1,15 @@
 import React from "react";
-import { SidebarNav } from "./";
+import { SidebarNav, UserAvatar } from "./";
 import { Settings } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import { LucideEdit } from "lucide-react";
-import { flintaiLogo } from "../assets/images";
 import globalAppStore from "../store/app.store";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import globalUserStore from "../store/user.store";
 
 const SideBar: React.FC = () => {
+  const { user } = globalUserStore();
   const { isSidebarActive, isMobileSidebarActive, setIsMobileSidebarActive } =
     globalAppStore();
   const navigate = useNavigate();
@@ -52,28 +53,24 @@ const SideBar: React.FC = () => {
                   </button>
                 </Tooltip>
               </div>
-              <div className="h-auto w-full custom-input !border-x-0 !border-b-0 !px-0 !py-0 !pt-3 !my-0 !rounded-[0px] !border-opacity-10">
-                <Tooltip
-                  title="Settings"
-                  placement="right"
-                  arrow
-                  className="h-auto w-full"
-                >
-                  <button className="w-full user-btn bg-opacity-20 !justify-between !px-3 !h-[4rem]">
-                    <span className="w-auto h-auto flex flex-row items-center justify-center gap-2">
-                      <span className="cta-btn !w-auto !h-auto !p-[0.4rem] !rounded-full !flex  !flex-row  !items-center !justify-center !cursor-default">
-                        <img
-                          src={flintaiLogo}
-                          alt="Flint AI logo"
-                          className="w-[1.6rem] h-[1.6rem] object-contain"
-                        />
+              {user && user.username && (
+                <div className="h-auto w-full custom-input !border-x-0 !border-b-0 !px-0 !py-0 !pt-3 !my-0 !rounded-[0px] !border-opacity-10">
+                  <Tooltip
+                    title="Settings"
+                    placement="right"
+                    arrow
+                    className="h-auto w-full"
+                  >
+                    <button className="w-full user-btn bg-opacity-20 !justify-between !px-3 !h-[4rem]">
+                      <span className="w-auto h-auto flex flex-row items-center justify-center gap-2">
+                        <UserAvatar />
+                        <span className="text-lg">Settings</span>
                       </span>
-                      <span className="text-lg">Settings</span>
-                    </span>
-                    <Settings className="h-[3rem] w-[3rem]" />
-                  </button>
-                </Tooltip>
-              </div>
+                      <Settings className="h-[3rem] w-[3rem]" />
+                    </button>
+                  </Tooltip>
+                </div>
+              )}
             </section>
           </div>
         </motion.section>
@@ -110,33 +107,29 @@ const SideBar: React.FC = () => {
                     </button>
                   </Tooltip>
                 </div>
-                <div className="h-auto w-full custom-input !border-x-0 !border-b-0 !px-0 !py-0 !pt-3 !my-0 !rounded-[0px] !border-opacity-10">
-                  <Tooltip
-                    title="Settings"
-                    placement="right"
-                    arrow
-                    className="h-auto w-full"
-                  >
-                    <button
-                      className="w-full user-btn bg-opacity-20 !justify-between !px-3 !h-[4rem]"
-                      onClick={() => {
-                        handleToggleMobileSidebar();
-                      }}
+                {user && user.username && (
+                  <div className="h-auto w-full custom-input !border-x-0 !border-b-0 !px-0 !py-0 !pt-3 !my-0 !rounded-[0px] !border-opacity-10">
+                    <Tooltip
+                      title="Settings"
+                      placement="right"
+                      arrow
+                      className="h-auto w-full"
                     >
-                      <span className="w-auto h-auto flex flex-row items-center justify-center gap-2">
-                        <span className="cta-btn !w-auto !h-auto !p-[0.4rem] !rounded-full !flex  !flex-row  !items-center !justify-center !cursor-default">
-                          <img
-                            src={flintaiLogo}
-                            alt="Flint AI logo"
-                            className="w-[1.6rem] h-[1.6rem] object-contain"
-                          />
+                      <button
+                        className="w-full user-btn bg-opacity-20 !justify-between !px-3 !h-[4rem]"
+                        onClick={() => {
+                          handleToggleMobileSidebar();
+                        }}
+                      >
+                        <span className="w-auto h-auto flex flex-row items-center justify-center gap-2">
+                          <UserAvatar />
+                          <span className="text-lg">Settings</span>
                         </span>
-                        <span className="text-lg">Settings</span>
-                      </span>
-                      <Settings className="h-[3rem] w-[3rem]" />
-                    </button>
-                  </Tooltip>
-                </div>
+                        <Settings className="h-[3rem] w-[3rem]" />
+                      </button>
+                    </Tooltip>
+                  </div>
+                )}
               </section>
             </div>
           </div>

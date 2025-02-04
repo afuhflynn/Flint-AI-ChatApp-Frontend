@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
 import { useLocalTheme } from "./hooks";
 import { LoadingOverlay } from "./components";
@@ -7,13 +7,12 @@ import globalUserStore from "./store/user.store";
 
 const App: React.FC = () => {
   const [theme, setTheme] = useLocalTheme("light");
-  const { isCheckingAuth, error, getUserProfile, user } = globalUserStore();
+  const { isCheckingAuth, getUserProfile, user } = globalUserStore();
 
   // Get authenticated user profile from db
   useEffect(() => {
     const handleGetUserProfile = async () => {
       await getUserProfile();
-      if (error && error.trim().length > 0) toast.info(error);
     };
     handleGetUserProfile();
   }, []);

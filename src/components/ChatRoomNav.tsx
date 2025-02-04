@@ -8,6 +8,8 @@ import {
   ShareIcon,
 } from "lucide-react";
 import globalAppStore from "../store/app.store";
+import globalUserStore from "../store/user.store";
+import { UserAvatar } from "./";
 
 const ChatRoomNav: React.FC = () => {
   const {
@@ -16,6 +18,7 @@ const ChatRoomNav: React.FC = () => {
     isMobileSidebarActive,
     setIsMobileSidebarActive,
   } = globalAppStore();
+  const { user, isNewChat } = globalUserStore();
   const navigate = useNavigate();
   const handleRouteUsers = (url: string) => {
     navigate(url);
@@ -78,15 +81,22 @@ const ChatRoomNav: React.FC = () => {
           </Tooltip>
         </div>
       )}
-      <Tooltip title="Share Chat" placement="bottom">
-        <button
-          className={`cta-btn !text-sm !px-3 !shadow-none !rounded-[40px] !flex !flex-row !items-center !justify-center !font-normal !w-[6.2rem] !h-[2.6rem] !gap-1`}
-          type="button"
-        >
-          <ShareIcon className="w-[1.2rem] h-[1.2rem]" />
-          <span className="text-muted-text">Share</span>
-        </button>
-      </Tooltip>
+      {user && user.username && (
+        <div className="h-auto w-auto flex flex-row items-center gap-3">
+          {!isNewChat && (
+            <Tooltip title="Share Chat" placement="bottom">
+              <button
+                className={`cta-btn !text-sm !px-3 !shadow-none !rounded-[40px] !flex !flex-row !items-center !justify-center !font-normal !w-[6.2rem] !h-[2.6rem] !gap-1`}
+                type="button"
+              >
+                <ShareIcon className="w-[1.2rem] h-[1.2rem]" />
+                <span className="text-muted-text">Share</span>
+              </button>
+            </Tooltip>
+          )}
+          <UserAvatar />
+        </div>
+      )}
     </nav>
   );
 };

@@ -64,6 +64,8 @@ export interface userStoreTypes {
   message: string;
   isAuthenticated: boolean;
   isCheckingAuth: boolean;
+  isNewChat: boolean;
+  setIsNewChat: (value: boolean) => void;
   setIsLoading: (value: boolean) => void;
   user: UserSchemaTypes | null;
   email: string;

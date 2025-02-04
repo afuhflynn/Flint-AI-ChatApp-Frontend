@@ -33,6 +33,7 @@ const LoginPage = () => {
       }
     }
   }, [isLoading, error, message, login]);
+  console.log(window.history, window.origin, window.location.pathname);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">

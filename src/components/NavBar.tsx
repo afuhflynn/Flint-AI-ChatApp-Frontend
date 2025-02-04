@@ -109,7 +109,7 @@ const NavBar = () => {
                 key={`${index}-${item.id}-${item.label}`}
                 onClick={() => {
                   handleRouting(
-                    item.label.toLowerCase() === "Log in"
+                    item.label === "Log in"
                       ? "/auth/log-in"
                       : "/auth/sign-up"
                   );

@@ -1,4 +1,3 @@
-import React from "react";
 import { ChatRoomFooter, ChatRoomNav, SideBar } from "../components";
 import { Outlet } from "react-router-dom";
 // TODO: Remember to add a user tour of the chatroom if it's a new user with joyride

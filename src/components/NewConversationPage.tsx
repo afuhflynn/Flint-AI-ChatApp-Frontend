@@ -6,7 +6,7 @@ import globalUserStore from "../store/user.store";
 const NewConversationPage: React.FC = () => {
   const [greetings, setGreetings] = useState<string>("");
   const [startupPrompt, setStartupPrompt] = useState("");
-  const { isAuthenticated, user } = globalUserStore();
+  const { isAuthenticated, user, setIsNewChat } = globalUserStore();
 
   const handleSetGreetings = (time: number) => {
     if (time < 12 && time >= 0) {
@@ -31,6 +31,12 @@ const NewConversationPage: React.FC = () => {
     handleSetGreetings(time);
   });
 
+  // Get current url path and modify navbar
+  useEffect(() => {
+    const urlPath: string = window.location.pathname as string;
+    if (urlPath.split("/").includes("new-chat")) setIsNewChat(true);
+  }, []);
+
   return (
     <section className="flex flex-col items-center justify-between w-full h-full">
       {/*TODO: Display login notification based on user profile */}
@@ -45,7 +51,7 @@ const NewConversationPage: React.FC = () => {
                   {greetings}!
                 </h1>
                 {/*TODO: To be replaced by user name */}
-                <h2 className="mt-1 text-2xl text-transparent bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">
+                <h2 className="mt-1 text-2xl font-semibold text-transparent bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">
                   {user && user.username && user.username}
                 </h2>
               </div>

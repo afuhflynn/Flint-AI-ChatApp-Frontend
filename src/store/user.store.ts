@@ -16,6 +16,10 @@ const globalUserStore = create<userStoreTypes>((set) => ({
   email: "",
   isAuthenticated: false,
   isCheckingAuth: false,
+  isNewChat: false,
+  setIsNewChat: (value: boolean) => {
+    set({ isNewChat: value });
+  },
   setIsLoading: (value) => {
     set({ isLoading: value });
   },
@@ -181,15 +185,14 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
         set({
-          error:
-            "An error occurred logging in. Login a again or create an account",
           isLoading: false,
         });
+        console.log(error);
       } else {
         set({
-          error: error.response.data?.message,
           isLoading: false,
         });
+        console.log(error);
       }
     } finally {
       set({ isCheckingAuth: false });
