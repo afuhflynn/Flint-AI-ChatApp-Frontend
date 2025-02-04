@@ -26,6 +26,10 @@ const globalAppStore = create<appStoreTypes>((set) => ({
   setIsMobileSidebarActive: (value) => {
     set({ isMobileSidebarActive: value });
   },
+  isNewChat: false,
+  setIsNewChat: (value: boolean) => {
+    set({ isNewChat: value });
+  },
 }));
 
 export default globalAppStore;

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { startUpPrompts } from "../constants/constants";
 import { AccountLoginNotification, ChatRoomInput } from "./";
 import globalUserStore from "../store/user.store";
+import globalAppStore from "../store/app.store";
 
 const NewConversationPage: React.FC = () => {
   const [greetings, setGreetings] = useState<string>("");
   const [startupPrompt, setStartupPrompt] = useState("");
-  const { isAuthenticated, user, setIsNewChat } = globalUserStore();
+  const { isAuthenticated, user } = globalUserStore();
+  const { setIsNewChat } = globalAppStore();
 
   const handleSetGreetings = (time: number) => {
     if (time < 12 && time >= 0) {

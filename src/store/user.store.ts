@@ -16,10 +16,6 @@ const globalUserStore = create<userStoreTypes>((set) => ({
   email: "",
   isAuthenticated: false,
   isCheckingAuth: false,
-  isNewChat: false,
-  setIsNewChat: (value: boolean) => {
-    set({ isNewChat: value });
-  },
   setIsLoading: (value) => {
     set({ isLoading: value });
   },
@@ -167,35 +163,43 @@ const globalUserStore = create<userStoreTypes>((set) => ({
   },
   getUserProfile: async () => {
     // Use trycatch instead
-    set({
-      isCheckingAuth: true,
-      error: "",
-      isAuthenticated: false,
-    });
-    try {
-      const res = await privateAxios.get<responseWithUserTypes>(
-        `${authBackendBaseUrl}/profile`
-      );
+    // NOTE: Run this function two times if the user accessToken expired and end if there is no way to refresh it
+    let tries = 2;
+    for (let i = 0; i <= tries; i++) {
       set({
-        user: res.data.user,
-        isCheckingAuth: false,
-        isAuthenticated: true,
+        isCheckingAuth: true,
+        error: "",
+        isAuthenticated: false,
       });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (axios.isAxiosError(error) && error.response) {
+      try {
+        const res = await privateAxios.get<responseWithUserTypes>(
+          `${authBackendBaseUrl}/profile`
+        );
         set({
-          isLoading: false,
+          user: res.data.user,
+          isCheckingAuth: false,
+          isAuthenticated: true,
         });
-        console.log(error);
-      } else {
-        set({
-          isLoading: false,
-        });
-        console.log(error);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
+        if (axios.isAxiosError(error) && error.response) {
+          set({
+            isLoading: false,
+          });
+          console.log(error);
+        } else {
+          set({
+            isLoading: false,
+          });
+          console.log(error);
+        }
+        await privateAxios.get<responseWithUserTypes>(
+          `${authBackendBaseUrl}/refresh-token`
+        );
+        tries--;
+      } finally {
+        set({ isCheckingAuth: false });
       }
-    } finally {
-      set({ isCheckingAuth: false });
     }
   },
   sendPasswordResetRequest: async (email) => {

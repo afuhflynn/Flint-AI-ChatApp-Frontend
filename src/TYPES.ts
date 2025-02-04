@@ -12,6 +12,8 @@ export interface appStoreTypes {
   setIsSidebarActive: (value: boolean) => void;
   isMobileSidebarActive: boolean;
   setIsMobileSidebarActive: (value: boolean) => void;
+  isNewChat: boolean;
+  setIsNewChat: (value: boolean) => void;
 }
 
 // user types
@@ -64,8 +66,6 @@ export interface userStoreTypes {
   message: string;
   isAuthenticated: boolean;
   isCheckingAuth: boolean;
-  isNewChat: boolean;
-  setIsNewChat: (value: boolean) => void;
   setIsLoading: (value: boolean) => void;
   user: UserSchemaTypes | null;
   email: string;

@@ -6,7 +6,6 @@ import { ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { mockUpData } from "../constants/constants";
 import { flintaiLogo } from "../assets/images";
-import globalUserStore from "../store/user.store";
 
 interface scrollButtonTypes {
   handleClick: () => void;
@@ -30,12 +29,11 @@ const ScrollButton: React.FC<scrollButtonTypes> = ({ handleClick }) => {
 
 const ConversationPage: React.FC = () => {
   const [scrollPercent, setScrollPercent] = useState<number | null>(null);
-  const { prompt, chatbot } = globalAppStore();
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
   //TODO: Add a scroll to bottom effect based on bottomRef and hide the button based on scroll height
   const bottomRef = useRef<null | HTMLSpanElement>(null);
-  const { isMobileSidebarActive } = globalAppStore();
-  const { setIsNewChat } = globalUserStore();
+  const { isMobileSidebarActive, setIsNewChat, prompt, chatbot } =
+    globalAppStore();
 
   const handleScrollToBottom = () => {
     if (bottomRef && bottomRef.current) {
@@ -65,8 +63,7 @@ const ConversationPage: React.FC = () => {
 
   // Get current url path and modify navbar
   useEffect(() => {
-    const urlPath: string = window.location.pathname as string;
-    if (!urlPath.split("/").includes("new-chat")) setIsNewChat(false);
+    setIsNewChat(false);
   }, []);
   return (
     <section className="flex flex-col items-center w-full h-full overflow-hidden">

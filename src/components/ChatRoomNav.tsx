@@ -18,7 +18,8 @@ const ChatRoomNav: React.FC = () => {
     isMobileSidebarActive,
     setIsMobileSidebarActive,
   } = globalAppStore();
-  const { user, isNewChat } = globalUserStore();
+  const { user } = globalUserStore();
+  const { isNewChat } = globalAppStore();
   const navigate = useNavigate();
   const handleRouteUsers = (url: string) => {
     navigate(url);
