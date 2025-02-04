@@ -26,7 +26,8 @@ import InternetSearch from "./InternetSearch";
 import SidebarNav from "./SidebarNav";
 import MarkdownRenderer from "./MarkdownRenderer";
 import ResendVerificationCode from "./ResendVerificationCode";
-import UserAvatar from "./UserAvatar"
+import UserAvatar from "./UserAvatar";
+import SharePopup from "./SharePopup";
 
 export {
   NavBar,
@@ -57,5 +58,6 @@ export {
   SidebarNav,
   MarkdownRenderer,
   ResendVerificationCode,
-  UserAvatar
+  UserAvatar,
+  SharePopup,
 };

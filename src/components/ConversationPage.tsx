@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ChatRoomInput, MarkdownRenderer } from "./";
+import { ChatRoomInput, MarkdownRenderer, SharePopup } from "./";
 import globalAppStore from "../store/app.store";
 import { Tooltip } from "@mui/material";
 import { ArrowDown } from "lucide-react";
@@ -32,7 +32,7 @@ const ConversationPage: React.FC = () => {
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
   //TODO: Add a scroll to bottom effect based on bottomRef and hide the button based on scroll height
   const bottomRef = useRef<null | HTMLSpanElement>(null);
-  const { isMobileSidebarActive, setIsNewChat, prompt, chatbot } =
+  const { isMobileSidebarActive, setIsNewChat, prompt, chatbot, isSharePopup } =
     globalAppStore();
 
   const handleScrollToBottom = () => {
@@ -67,6 +67,7 @@ const ConversationPage: React.FC = () => {
   }, []);
   return (
     <section className="flex flex-col items-center w-full h-full overflow-hidden">
+      <SharePopup />
       <div
         ref={chatContainerRef}
         className="overflow-x-hidden overflow-y-scroll h-[90%] flex flex-col items-center mb-1"
@@ -113,7 +114,7 @@ const ConversationPage: React.FC = () => {
           <span ref={bottomRef} />
         </div>
       </div>
-      {Number(scrollPercent) <= 98 && (
+      {Number(scrollPercent) <= 98 && !isSharePopup && (
         <>
           <div
             className={`relative hidden md:flex flex-row items-center justify-center w-full h-auto mb-2`}

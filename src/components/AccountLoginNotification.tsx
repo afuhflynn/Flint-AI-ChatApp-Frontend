@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import ModalHeading from "./ModalHeading";
 import { AuthButtons } from "./";
 
 const AccountLoginNotification: React.FC = () => {
-  const popUpRef = useRef<HTMLDivElement | null>(null);
   const [isPopup, setIsPopup] = useState(true); // Read the click event state
 
   const handleHidePopup = (value: boolean) => {
@@ -16,10 +15,7 @@ const AccountLoginNotification: React.FC = () => {
         isPopup === true ? "visible" : "hidden"
       }`}
     >
-      <div
-        ref={popUpRef}
-        className="modal !bg-primary-bg-light dark:!bg-neutral-dark-grey-dark"
-      >
+      <div className="modal !bg-primary-bg-light dark:!bg-neutral-dark-grey-dark">
         <ModalHeading text="Welcome back" className="text-center" />
         <p className="modal-text opacity-80 !my-4 text-center !mb-5">
           Log in or sign up to get tailored responses, upload files and images,

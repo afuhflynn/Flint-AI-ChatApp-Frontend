@@ -193,7 +193,7 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           });
           console.log(error);
         }
-        await privateAxios.get<responseWithUserTypes>(
+        await privateAxios.post<responseWithUserTypes>(
           `${authBackendBaseUrl}/refresh-token`
         );
         tries--;

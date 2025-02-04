@@ -14,6 +14,8 @@ export interface appStoreTypes {
   setIsMobileSidebarActive: (value: boolean) => void;
   isNewChat: boolean;
   setIsNewChat: (value: boolean) => void;
+  isSharePopup: boolean;
+  handleHideSharePopup: (value: boolean) => void;
 }
 
 // user types

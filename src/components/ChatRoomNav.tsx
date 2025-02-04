@@ -19,7 +19,7 @@ const ChatRoomNav: React.FC = () => {
     setIsMobileSidebarActive,
   } = globalAppStore();
   const { user } = globalUserStore();
-  const { isNewChat } = globalAppStore();
+  const { isNewChat, handleHideSharePopup } = globalAppStore();
   const navigate = useNavigate();
   const handleRouteUsers = (url: string) => {
     navigate(url);
@@ -34,7 +34,7 @@ const ChatRoomNav: React.FC = () => {
         <div className="h-auto w-auto flex flex-row items-center gap-3 md:hidden">
           <Tooltip title="Toggle Sidebar" placement="bottom">
             <button
-              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
+              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
               type="button"
               onClick={() => setIsMobileSidebarActive(true)}
             >
@@ -48,7 +48,7 @@ const ChatRoomNav: React.FC = () => {
             className="h-auto w-full"
           >
             <button
-              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
+              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
               onClick={() => handleRouteUsers("/chat-bot/chats/new-chat")}
             >
               <LucideEdit />
@@ -62,7 +62,7 @@ const ChatRoomNav: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsSidebarActive(true)}
-              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
+              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
             >
               <PanelsLeftBottomIcon />
             </button>
@@ -74,7 +74,7 @@ const ChatRoomNav: React.FC = () => {
             className="h-auto w-full"
           >
             <button
-              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
+              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
               onClick={() => handleRouteUsers("/chat-bot/chats/new-chat")}
             >
               <LucideEdit />
@@ -89,13 +89,17 @@ const ChatRoomNav: React.FC = () => {
               <button
                 className={`cta-btn !text-sm !px-3 !shadow-none !rounded-[40px] !flex !flex-row !items-center !justify-center !font-normal !w-[6.2rem] !h-[2.6rem] !gap-1`}
                 type="button"
+                onClick={() => handleHideSharePopup(true)}
               >
                 <ShareIcon className="w-[1.2rem] h-[1.2rem]" />
                 <span className="text-muted-text">Share</span>
               </button>
             </Tooltip>
           )}
-          <UserAvatar />
+          <button>
+            <UserAvatar />
+            <div></div>
+          </button>
         </div>
       )}
     </nav>

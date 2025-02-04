@@ -27,8 +27,12 @@ const globalAppStore = create<appStoreTypes>((set) => ({
     set({ isMobileSidebarActive: value });
   },
   isNewChat: false,
-  setIsNewChat: (value: boolean) => {
+  setIsNewChat: (value) => {
     set({ isNewChat: value });
+  },
+  isSharePopup: false,
+  handleHideSharePopup: (value) => {
+    set({ isSharePopup: value });
   },
 }));
 
