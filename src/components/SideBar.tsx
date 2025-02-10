@@ -1,5 +1,5 @@
 import React from "react";
-import { SidebarNav, UserAvatar } from "./";
+import { AuthButtons, SidebarNav, UserAvatar } from "./";
 import { Settings } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import { LucideEdit } from "lucide-react";
@@ -29,7 +29,7 @@ const SideBar: React.FC = () => {
     <>
       {isSidebarActive && (
         <motion.section
-          className={`h-full hidden md:flex flex-col custom-input !border-opacity-10 !py-0 !m-0 !rounded-[0px] !border-y-0 !border-l-0  !px-4 !bg-primary-bg-light dark:!bg-primary-bg-dark md:w-[18rem] md:min-w-[20rem]`}
+          className={`h-full hidden md:flex flex-col custom-input !border-opacity-10 !py-0 !m-0 !rounded-[0px] !border-y-0 !border-l-0  !px-4 !bg-neutral-dark-grey-light dark:!bg-neutral-dark-grey-dark md:w-[18rem] md:min-w-[20rem]`}
           variants={animateVariance}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
@@ -52,6 +52,10 @@ const SideBar: React.FC = () => {
                     <span>New Chat</span>
                   </button>
                 </Tooltip>
+                {!user &&  (<AuthButtons 
+                    className={"gap-[1rem] md:visible mt-8 flex flex-col items-center "}
+                    btnClassName={"w-full h-[3.4rem] md:h-[3rem]"} 
+                />)}
               </div>
               {user && user.username && (
                 <div className="h-auto w-full custom-input !border-x-0 !border-b-0 !px-0 !py-0 !pt-3 !my-0 !rounded-[0px] !border-opacity-10">
@@ -106,6 +110,10 @@ const SideBar: React.FC = () => {
                       <span>New Chat</span>
                     </button>
                   </Tooltip>
+                  {!user &&  (<AuthButtons 
+                    className={"gap-[1rem] md:visible mt-8 flex flex-col items-center "}
+                    btnClassName={"w-full h-[3.4rem] md:h-[3rem]"} 
+                />)}
                 </div>
                 {user && user.username && (
                   <div className="h-auto w-full custom-input !border-x-0 !border-b-0 !px-0 !py-0 !pt-3 !my-0 !rounded-[0px] !border-opacity-10">

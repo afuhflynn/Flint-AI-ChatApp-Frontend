@@ -28,6 +28,9 @@ import MarkdownRenderer from "./MarkdownRenderer";
 import ResendVerificationCode from "./ResendVerificationCode";
 import UserAvatar from "./UserAvatar";
 import SharePopup from "./SharePopup";
+import GeneralSettings from "./GeneralSettings";
+import PersonalizedSettings from "./PersonalizedSettings";
+import SecuritySettings from "./SecuritySettings";
 
 export {
   NavBar,
@@ -60,4 +63,7 @@ export {
   ResendVerificationCode,
   UserAvatar,
   SharePopup,
+  GeneralSettings,
+  PersonalizedSettings,
+  SecuritySettings
 };

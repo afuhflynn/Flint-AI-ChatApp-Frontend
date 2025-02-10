@@ -3,10 +3,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { flintaiLogo } from "../assets/images";
 import { PanelsLeftBottomIcon, SearchIcon } from "lucide-react";
+import globalUserStore from "../store/user.store";
 import globalAppStore from "../store/app.store";
 
 const SidebarNav: React.FC = () => {
   const { setIsSidebarActive, setIsMobileSidebarActive } = globalAppStore();
+  const { user, isAuthenticated } = globalUserStore();
   return (
     <nav className="h-[70px] w-full flex flex-row items-center justify-between custom-input !border-x-0 !border-t-0 !px-0 !py-0 !rounded-[0px] !border-opacity-10">
       <Link
@@ -21,7 +23,7 @@ const SidebarNav: React.FC = () => {
         <h2 className="text-[18px]">Flint AI</h2>
       </Link>
       <div className="flex flex-row items-center gap-2 w-auto h-auto">
-        <Tooltip
+        {user && user.username && isAuthenticated && <Tooltip
           title="Search a chat"
           placement="bottom"
           className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
@@ -29,7 +31,7 @@ const SidebarNav: React.FC = () => {
           <button type="button">
             <SearchIcon />
           </button>
-        </Tooltip>
+        </Tooltip>}
         <Tooltip
           title="Toggle Menu"
           placement="right"

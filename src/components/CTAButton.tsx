@@ -12,7 +12,7 @@ const CTAButton = ({ className }: { className?: string }) => {
       type="button"
       className={`cta-btn !${className}`}
     >
-      Get Started for Free
+      Get started for free
     </button>
   );
 };

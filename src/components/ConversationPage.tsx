@@ -1,11 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ChatRoomInput, MarkdownRenderer, SharePopup } from "./";
+import {
+  ChatRoomInput,
+  MarkdownRenderer,
+  SharePopup,
+  AccountLoginNotification,
+} from "./";
 import globalAppStore from "../store/app.store";
 import { Tooltip } from "@mui/material";
 import { ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { mockUpData } from "../constants/constants";
 import { flintaiLogo } from "../assets/images";
+import globalUserStore from "../store/user.store";
+import { SettingsPage } from "../pages";
 
 interface scrollButtonTypes {
   handleClick: () => void;
@@ -32,8 +39,9 @@ const ConversationPage: React.FC = () => {
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
   //TODO: Add a scroll to bottom effect based on bottomRef and hide the button based on scroll height
   const bottomRef = useRef<null | HTMLSpanElement>(null);
-  const { isMobileSidebarActive, setIsNewChat, prompt, chatbot, isSharePopup } =
+  const { isMobileSidebarActive, setIsNewChat, prompt, chatbot, isSharePopup, isSettingsPopup } =
     globalAppStore();
+  const { user, isAuthenticated } = globalUserStore();
 
   const handleScrollToBottom = () => {
     if (bottomRef && bottomRef.current) {
@@ -44,7 +52,7 @@ const ConversationPage: React.FC = () => {
   };
   useEffect(() => {
     handleScrollToBottom();
-  }, [prompt, chatbot]);
+  }, [chatbot]);
 
   useEffect(() => {
     if (chatContainerRef && chatContainerRef.current) {
@@ -68,6 +76,8 @@ const ConversationPage: React.FC = () => {
   return (
     <section className="flex flex-col items-center w-full h-full overflow-hidden">
       <SharePopup />
+      <SettingsPage />
+      {!isAuthenticated && !user && <AccountLoginNotification />}
       <div
         ref={chatContainerRef}
         className="overflow-x-hidden overflow-y-scroll h-[90%] flex flex-col items-center mb-1"
@@ -77,14 +87,14 @@ const ConversationPage: React.FC = () => {
             return (
               <div
                 key={`item-${index}-${item.role}`}
-                className="flex flex-row items-start gap-4"
+                className="flex flex-row items-start gap-1 cursor-default"
               >
                 {item.role === "model" && (
-                  <button className="cta-btn !w-auto !h-auto !p-[0.4rem] !rounded-full !flex  !flex-row  !items-center !justify-center !cursor-default hover:!bg-transparent">
+                  <button className="cta-btn !w-auto !h-auto !p-[0.3rem] !rounded-full !flex  !flex-row  !items-center !justify-center !cursor-default hover:!bg-transparent">
                     <img
                       src={flintaiLogo}
                       alt="Flint AI logo"
-                      className="w-[1.6rem] h-[1.6rem] object-contain"
+                      className="w-[1.4rem] h-[1.4rem] object-cover"
                     />
                   </button>
                 )}
@@ -95,13 +105,13 @@ const ConversationPage: React.FC = () => {
                 >
                   {item.role === "model" ? (
                     <div
-                      className={`custom-input !p-5 !rounded-[40px] !border-opacity-0 !bg-primary-bg-light dark:!bg-primary-bg-dark !h-auto !w-auto !m-0 !mr-10`}
+                      className={`custom-input !p-5 !rounded-[40px] !border-opacity-0 !bg-primary-bg-light dark:!bg-primary-bg-dark !h-auto !w-auto !m-0 !mr-6 md:!mr-10`}
                     >
                       <MarkdownRenderer content={item.parts[0].text} />
                     </div>
                   ) : (
                     <div
-                      className={`custom-input !p-5 !rounded-[40px] !border-opacity-10  !h-auto !w-auto !m-0 !ml-20`}
+                      className={`custom-input !bg-neutral-dark-grey-light dark:!bg-neutral-dark-grey-dark !p-4 md:!p-5 !rounded-[40px] !border-opacity-10  !h-auto !w-auto !m-0 !ml-14 md:!ml-20`}
                     >
                       <MarkdownRenderer content={item.parts[0].text} />
                     </div>
@@ -114,7 +124,7 @@ const ConversationPage: React.FC = () => {
           <span ref={bottomRef} />
         </div>
       </div>
-      {Number(scrollPercent) <= 98 && !isSharePopup && (
+      {Number(scrollPercent) <= 98 && !isSharePopup && !isSettingsPopup && (
         <>
           <div
             className={`relative hidden md:flex flex-row items-center justify-center w-full h-auto mb-2`}
@@ -130,7 +140,7 @@ const ConversationPage: React.FC = () => {
           )}
         </>
       )}
-      <div className="flex flex-row items-center justify-center w-full h-auto mb-2 shadow-sm bg-neutral-dark-grey-light dark:bg-neutral-dark-grey-dark">
+      <div className="flex flex-row items-center justify-center w-full h-auto mb-2 shadow-sm bg-primary-bg-light dark:bg-primary-bg-dark">
         <div className="md:w-[68%] w-[96%] h-auto shadow-md rounded-[2rem]">
           <ChatRoomInput startupPrompt="" />
         </div>

@@ -27,6 +27,7 @@ body {
   transition: all 0.4s ease-in;
   @apply w-screen h-screen bg-primary-bg-light dark:bg-primary-bg-dark;
 }
+
 header {
   transition: all 0.4s ease-out;
 }
@@ -71,16 +72,16 @@ header {
   @apply h-[3.6rem] px-6 font-semibold text-blue-500 transition duration-300 bg-white border border-blue-500 rounded-lg shadow-lg hover:bg-blue-100 dark:bg-neutral-dark-grey-dark dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700;
 }
 
-.assets-btn{
+.assets-btn {
   @apply h-[1.8rem] w-[1.8rem] flex flex-row items-center justify-center hover:bg-blue-100 dark:hover:bg-gray-700 rounded-xl
 }
 
 .auth-btn {
-  @apply hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  dark:bg-primary-accent-blue-dark bg-primary-accent-blue-light text-text-primary-dark rounded-2xl h-[2.7rem] w-full outline-none focus:ring-offset-CTA-hover-blue-dark flex flex-row items-center justify-center;
+  @apply hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light dark:bg-primary-accent-blue-dark bg-primary-accent-blue-light text-text-primary-dark rounded-2xl h-[2.7rem] w-full outline-none focus:ring-offset-CTA-hover-blue-dark flex flex-row items-center justify-center;
 }
 
-.user-btn{
-  @apply h-[3rem] hover:bg-CTA-hover-blue-dark bg-gradient-to-r from-CTA-hover-blue-dark to-primary-accent-blue-light dark:hover:bg-primary-accent-blue-light dark:bg-primary-accent-blue-dark text-text-primary-dark rounded-3xl w-full shadow-md outline-none  flex flex-row items-center justify-center;
+.user-btn {
+  @apply h-[3rem] hover:bg-CTA-hover-blue-dark bg-gradient-to-r from-CTA-hover-blue-dark to-primary-accent-blue-light dark:hover:bg-primary-accent-blue-light dark:bg-primary-accent-blue-dark text-text-primary-dark rounded-3xl w-full shadow-md outline-none flex flex-row items-center justify-center;
 }
 
 .custom-input {
@@ -91,7 +92,7 @@ header {
   @apply max-w-screen-lg mx-auto mt-8 mb-4 p-6 rounded-xl shadow-lg md:w-96 w-[96%] bg-transparent dark:bg-neutral-dark-grey-dark dark:shadow-sm;
 }
 
-.icons{
+.icons {
   @apply h-[1.4rem] w-[1.4rem];
 }
 
@@ -104,17 +105,21 @@ header {
 }
 
 /*Modify all textareas*/
-textarea{
-  ::-webkit-scrollbar-thumb{
-    @apply -z-10;
-  }
+textarea::-webkit-scrollbar-thumb {
+  @apply -z-10 cursor-default;
 }
 
-.image-input, .docs-input, .camera-input{
+textarea::-webkit-scrollbar {
+  @apply -z-10 cursor-default;
+}
+
+.image-input,
+.docs-input,
+.camera-input {
   @apply hidden;
 }
 
 
-.upload-btns{
+.upload-btns {
   @apply flex flex-row items-center gap-3 justify-start h-[3.6rem] w-full px-6 font-semibold text-blue-500 transition duration-300 bg-white border border-blue-500 rounded-[30px] shadow-sm hover:bg-blue-100 dark:bg-neutral-dark-grey-dark dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700;
 }

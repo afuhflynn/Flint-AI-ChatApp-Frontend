@@ -99,7 +99,6 @@ const ContactusPage: React.FC = () => {
                   formData.message.trim() === "" ||
                   formData.name.trim() === ""
                 }
-                onClick={() => {}}
               />
             </div>
           </form>

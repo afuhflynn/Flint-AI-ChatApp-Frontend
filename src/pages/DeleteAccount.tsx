@@ -22,7 +22,7 @@ const DeleteAccount = () => {
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Your Message..."
+              placeholder="Your Reason..."
               required
               rows={5}
               maxLength={maxMsgInput}
@@ -44,7 +44,6 @@ const DeleteAccount = () => {
           <Button
             text="Submit Reason"
             type="submit"
-            onClick={() => {}}
             disabled={message.trim() === ""}
             className={`text-body-text ${
               message.trim() === "" && "opacity-50"
@@ -54,7 +53,7 @@ const DeleteAccount = () => {
         <footer className="mt-4 text-center modal-text !text-muted-text">
           Changed your mind?{" "}
           <Link
-            to="/chat-bot"
+            to="/chat-bot/chats/new-chat"
             className="dark:text-primary-accent-blue-dark text-primary-accent-blue-light hover:underline"
           >
             Go back to Chat

@@ -4,13 +4,15 @@ import ModalHeading from "./ModalHeading";
 import { toast } from "react-toastify";
 import { CheckCircleOutline } from "@mui/icons-material";
 import globalAppStore from "../store/app.store";
+import globalUserStore from "../store/user.store";
 
 const SharePopup: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const currentUrl = window.location.pathname;
   const { handleHideSharePopup, isSharePopup } = globalAppStore();
+  const { user } = globalUserStore();
 
-  const username = "AfuhFlynn"; // NOTE: To be replaced by the actual user name
+  const username = user?.username; // NOTE: Checks if user and username exist and then read the value
   const handleCopyUrl = () => {
     try {
       navigator.clipboard.writeText(
@@ -34,7 +36,7 @@ const SharePopup: React.FC = () => {
         isSharePopup === true ? "visible" : "hidden"
       }`}
     >
-      <div className="modal !bg-primary-bg-light dark:!bg-neutral-dark-grey-dark !p-2 md:!w-[36%] !py-4 !pb-6">
+      <div className="modal !bg-primary-bg-light dark:!bg-neutral-dark-grey-dark !p-2 md:!w-[30rem] sm:!w-[80%] !py-4 !pb-6">
         <div className="w-full h-auto flex flex-row items-center justify-end">
           <button
             onClick={() => handleHideSharePopup(false)}

@@ -19,7 +19,7 @@ const PasswordResetPage = () => {
   });
   const [passwordType, setPasswordType] = useState("password");
   const [verify, setVerify] = useState(false); // Just to ensure that the user clicks the button to submit. Because token will always be available
-  const { isLoading, error, resetPassword, message } = globalUserStore();
+  const { isLoading, error, resetPassword, message, setError } = globalUserStore();
   const { token } = useParams();
   const navigate = useNavigate();
 
@@ -52,6 +52,9 @@ const PasswordResetPage = () => {
       }
     }
   }, [isLoading, error, message, formData.password, verify, navigate]);
+   useEffect(() =>{
+    setError("");
+  }, [])
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal !p-6 !shadow-lg !h-[60%]">
@@ -133,7 +136,6 @@ const PasswordResetPage = () => {
               "opacity-50"
             }`}
             isLoading={isLoading}
-            onClick={() => {}}
             disabled={
               formData.confirmPassword.trim() === "" ||
               formData.password.trim() === "" ||

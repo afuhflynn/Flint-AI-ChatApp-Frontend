@@ -34,6 +34,10 @@ const globalAppStore = create<appStoreTypes>((set) => ({
   handleHideSharePopup: (value) => {
     set({ isSharePopup: value });
   },
+  isSettingsPopup: true,
+  handleHideSettingsPopup: (value) => {
+    set({ isSettingsPopup: value });
+  },
 }));
 
 export default globalAppStore;

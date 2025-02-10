@@ -26,7 +26,6 @@ const EmailVerifiedSuccessfully: React.FC = () => {
             text="Proceed to Login"
             type="submit"
             className={`text-body-text`}
-            onClick={() => {}}
           />
         </form>
       </div>

@@ -7,7 +7,7 @@ import { routeUsers } from "../utils";
 const ResendVerificationEmail: React.FC = () => {
   const [email, setEmail] = useState("");
   const [verify, setVerify] = useState(false); // Just to ensure that the user clicks the button to submit. Because token will always be available
-  const { isLoading, error, resendVerificationCode, message } =
+  const { isLoading, error, resendVerificationCode, message, setError } =
     globalUserStore();
 
   const handleResendEmail = (event: FormEvent) => {
@@ -29,6 +29,10 @@ const ResendVerificationEmail: React.FC = () => {
       }
     }
   }, [isLoading, error, message, email, verify, routeUsers]);
+
+   useEffect(() =>{
+    setError("");
+  }, [])
 
   return (
     <div className="flex items-center flex-col justify-center min-h-screen bg-background text-text">
@@ -66,7 +70,6 @@ const ResendVerificationEmail: React.FC = () => {
             type="submit"
             className={`text-body-text ${email.trim() === "" && "opacity-50"}`}
             isLoading={isLoading}
-            onClick={() => {}}
             disabled={email.trim() === ""}
           />
         </form>

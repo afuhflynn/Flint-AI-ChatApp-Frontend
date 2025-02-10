@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ConfirmEmailWithLink: React.FC = () => {
-  const { isLoading, error, verifyEmailWithLink, message } = globalUserStore();
+  const { isLoading, error, verifyEmailWithLink, message, setError } = globalUserStore();
   const [verify, setVerify] = useState(false); // Just to ensure that the user clicks the button to submit. Because token will always be available
   const navigate = useNavigate();
   const { token } = useParams();
@@ -26,6 +26,9 @@ const ConfirmEmailWithLink: React.FC = () => {
       }
     }
   }, [isLoading, error, message, navigate, token, verify]);
+   useEffect(() =>{
+    setError("");
+  }, [])
   return (
     <div className="flex items-center flex-col justify-center min-h-screen bg-background text-text">
       <div className="modal !p-6 !shadow-lg !h-[60%]">
@@ -44,7 +47,6 @@ const ConfirmEmailWithLink: React.FC = () => {
             type="submit"
             className={`text-body-text`}
             isLoading={isLoading}
-            onClick={() => {}}
           />
         </form>
       </div>

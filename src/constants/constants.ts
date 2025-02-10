@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 export const maxMsgInput = 250;
-export const maxChatRoomMsgInput = 5000;
+export const maxChatRoomMsgInput = 8000;
 
 export const navbarItems = [
   { id: 1, label: "Home", url: "/" },
@@ -241,6 +241,21 @@ export const mockUpData = [
     ],
   },
 ];
+
+export const settingsTabs = [
+  {
+    id: 0,
+    label: "General"
+  },
+  {
+    id: 1,
+    label: "Personalized"
+  },
+  {
+    id: 2,
+    label: "Security"
+  },
+]
 
 // Endpoints and urls
 export const backendBaseUrl = "http://localhost:3000";

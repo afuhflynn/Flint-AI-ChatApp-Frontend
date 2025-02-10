@@ -16,6 +16,8 @@ export interface appStoreTypes {
   setIsNewChat: (value: boolean) => void;
   isSharePopup: boolean;
   handleHideSharePopup: (value: boolean) => void;
+  isSettingsPopup: boolean;
+  handleHideSettingsPopup: (value: boolean) => void;
 }
 
 // user types
@@ -69,6 +71,7 @@ export interface userStoreTypes {
   isAuthenticated: boolean;
   isCheckingAuth: boolean;
   setIsLoading: (value: boolean) => void;
+  setError: (value: string) => void;
   user: UserSchemaTypes | null;
   email: string;
   setUser: (value: UserSchemaTypes | null) => void;

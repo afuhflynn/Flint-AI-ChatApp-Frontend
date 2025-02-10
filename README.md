@@ -304,7 +304,6 @@ const SignupPage = () => {
           <Button
             text="Sign Up"
             type="submit"
-            onClick={() => {}}
             className={`text-body-text ${
               (formData.password.trim() === "" ||
                 formData.username.trim() === "" ||
@@ -411,7 +410,6 @@ const LoginPage = () => {
                 formData.username.trim() === "") &&
               "opacity-50"
             }`}
-            onClick={() => {}}
             disabled={
               formData.password.trim() === "" || formData.username.trim() === ""
             }

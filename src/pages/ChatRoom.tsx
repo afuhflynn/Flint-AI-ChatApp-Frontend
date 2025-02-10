@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 const ChatRoom: React.FC = () => {
   return (
-    <div className="flex flex-row items-center justify-between w-full h-full bg-neutral-dark-grey-light dark:bg-neutral-dark-grey-dark text-text-primary-light dark:text-text-primary-light overflow-hidden">
+    <div className="flex flex-row items-center justify-between w-full h-full bg-primary-bg-light dark:bg-primary-bg-dark text-text-primary-light dark:text-text-primary-light overflow-hidden">
       <SideBar />
       <section className="flex flex-col items-center justify-between w-full h-full">
         <ChatRoomNav />

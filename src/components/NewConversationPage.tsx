@@ -41,7 +41,6 @@ const NewConversationPage: React.FC = () => {
 
   return (
     <section className="flex flex-col items-center justify-between w-full h-full">
-      {/*TODO: Display login notification based on user profile */}
       {!isAuthenticated && !user && <AccountLoginNotification />}
       <div className="flex flex-col items-center justify-center w-full h-full gap-6">
         <div className="md:w-[68%] w-[96%] h-full flex flex-col items-center justify-end md:justify-center gap-1">

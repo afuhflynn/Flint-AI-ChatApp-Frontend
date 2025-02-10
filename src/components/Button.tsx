@@ -9,7 +9,7 @@ const Button = ({
   isLoading,
 }: {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
   type: "button" | "submit" | "reset" | undefined;
   className?: string;
   disabled?: boolean;

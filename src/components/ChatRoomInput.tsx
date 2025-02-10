@@ -3,12 +3,14 @@ import { FilePicker, InternetSearch, VoiceInput } from "./";
 import { maxChatRoomMsgInput } from "../constants/constants";
 import { SendIcon } from "lucide-react";
 import globalAppStore from "../store/app.store";
+import globalUserStore from "../store/user.store";
+import { Tooltip } from "@mui/material";
 
 type ResponsiveTextareaProps = {
   maxRows?: number; // Maximum number of rows
   placeholder: string;
   prompt: string;
-  startupPrompt: string;
+  startupPrompt?: string;
   onChange: (name: string, value: string) => void;
 };
 
@@ -22,6 +24,7 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
   const [rows, setRows] = useState(1);
   const maxHeight = 200;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+ 
 
   useEffect(() => {
     const handleInput = () => {
@@ -42,7 +45,7 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
   }, [prompt, maxRows]);
 
   useEffect(() => {
-    if (startupPrompt.trim() !== "" || prompt.trim() !== "")
+    if (startupPrompt && startupPrompt.trim() !== "" || prompt.trim() !== "")
       textareaRef?.current?.focus();
   }, [startupPrompt, prompt]);
 
@@ -62,11 +65,12 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
 };
 
 interface chatRoomInputTypes {
-  startupPrompt: string;
+  startupPrompt?: string;
 }
 const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
   const [formData, setFormData] = useState({ prompt: "" });
   const { setPrompt } = globalAppStore();
+   const { user } = globalUserStore();
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
@@ -75,7 +79,7 @@ const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
 
   // Manually update the prompt value and focus on text area
   useEffect(() => {
-    if (startupPrompt.trim() !== "")
+    if (startupPrompt && startupPrompt.trim() !== "")
       setFormData({ ...formData, ["prompt"]: `${startupPrompt} ` });
   }, [startupPrompt]);
   return (
@@ -97,14 +101,20 @@ const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
       <footer className="flex flex-row items-center justify-between w-full">
         {/* Display file picker, voicerecorder and internetsearch based on user account profile */}
         <div className="flex flex-row items-center justify-between gap-2 pl-2">
-          <FilePicker />
-          <VoiceInput txtInput={formData.prompt} />
+          {user && user.username && (
+            <>  
+            <FilePicker />
+            <VoiceInput txtInput={formData.prompt} />
+            </>
+          )}
           <InternetSearch />
         </div>
         <div className="flex flex-row items-center justify-between mb-1">
+          <Tooltip title="Send Prompt" placement="right">
+            <>
           <button
             type="submit"
-            className={`bg-primary-accent-blue-light outline-none rounded-full w-[2rem] h-[2rem] flex flex-row items-center justify-center p-0 ${
+            className={`bg-primary-accent-blue-light outline-none rounded-full w-[2.4rem] h-[2.4rem] flex flex-row items-center justify-center p-0 ${
               formData.prompt.trim() === ""
                 ? "bg-opacity-20 text-neutral-mid-grey-light"
                 : "hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  focus:ring-offset-CTA-hover-blue-dark text-text-primary-dark"
@@ -119,6 +129,8 @@ const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
               } `}
             />
           </button>
+            </>
+          </Tooltip>
         </div>
       </footer>
     </form>

@@ -11,7 +11,7 @@ const LoginPage = () => {
     username: "",
     password: "",
   });
-  const { isLoading, error, logIn, message } = globalUserStore();
+  const { isLoading, error, logIn, message, setError } = globalUserStore();
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
@@ -33,6 +33,9 @@ const LoginPage = () => {
       }
     }
   }, [isLoading, error, message, login]);
+   useEffect(() =>{
+    setError("");
+  }, [])
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
@@ -83,7 +86,6 @@ const LoginPage = () => {
               "opacity-50"
             }`}
             isLoading={isLoading}
-            onClick={() => {}}
             disabled={
               formData.password.trim() === "" || formData.username.trim() === ""
             }

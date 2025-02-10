@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const PasswordResetRequestPage = () => {
   const [email, setEmail] = useState("");
   const [verify, setVerify] = useState(false); // Just to ensure that the user clicks the button to submit. Because token will always be available
-  const { isLoading, error, sendPasswordResetRequest, message } =
+  const { isLoading, error, sendPasswordResetRequest, message, setError } =
     globalUserStore();
   const navigate = useNavigate();
 
@@ -37,6 +37,10 @@ const PasswordResetRequestPage = () => {
   useEffect(() => {
     setVerify(false);
   }, [setVerify]);
+  
+   useEffect(() =>{
+    setError("");
+  }, [])
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       {((error.trim().length > 0 || error.trim().length === 0) &&
@@ -71,7 +75,6 @@ const PasswordResetRequestPage = () => {
             <Button
               text="Send Link"
               type="submit"
-              onClick={() => {}}
               disabled={email.trim() === ""}
               isLoading={isLoading}
               className={`text-body-text ${
@@ -94,7 +97,6 @@ const PasswordResetRequestPage = () => {
             <Button
               text="Back to chats"
               type="submit"
-              onClick={() => {}}
               className={`text-body-text`}
             />
           </form>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
 import { useLocalTheme } from "./hooks";
@@ -10,9 +10,11 @@ const App: React.FC = () => {
   const { isCheckingAuth, getUserProfile, user } = globalUserStore();
 
   // Get authenticated user profile from db
-  useEffect(() => {
+
+  // NOTE: This ensures that the user data is fetched before the painting process
+  useLayoutEffect(() => {
     const handleGetUserProfile = async () => {
-      await getUserProfile();
+      getUserProfile();
     };
     handleGetUserProfile();
   }, []);

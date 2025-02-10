@@ -10,6 +10,7 @@ import {
 import globalAppStore from "../store/app.store";
 import globalUserStore from "../store/user.store";
 import { UserAvatar } from "./";
+import { DashboardPage } from "../pages";
 
 const ChatRoomNav: React.FC = () => {
   const {
@@ -98,8 +99,10 @@ const ChatRoomNav: React.FC = () => {
           )}
           <button>
             <UserAvatar />
-            <div></div>
           </button>
+          <div className="relative w-auto h-auto">
+            <DashboardPage />
+          </div>
         </div>
       )}
     </nav>

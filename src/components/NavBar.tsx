@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { authNavItems, navbarItems } from "../constants/constants";
+import { navbarItems } from "../constants/constants";
 import { flintaiLogo } from "../assets/images";
 import { Menu, X } from "lucide-react"; // Importing Menu and X icons from lucide-react
 import AuthButtons from "./AuthButtons";
@@ -9,7 +9,6 @@ const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State to handle mobile menu toggle
   // Mobile menu ref
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -32,9 +31,6 @@ const NavBar = () => {
     };
   }, []);
 
-  const handleRouting = (routePath: string) => {
-    navigate(routePath);
-  };
 
   return (
     <header className="w-full h-[80px] py-[1.5rem] flex flex-row items-center justify-between bg-primary-bg-light dark:bg-primary-bg-dark bg-opacity-90 top-0 left-0 paddingX right-0 z-50 sticky">
@@ -74,7 +70,7 @@ const NavBar = () => {
         </ul>
       </nav>
 
-      {/* Auth Buttons */}
+      {/* Desktop Auth Buttons */}
       <AuthButtons
         className={
           "hidden md:visible md:flex flex-row items-center justify-center gap-[1.5rem] "
@@ -99,26 +95,11 @@ const NavBar = () => {
                 </li>
               </Link>
             ))}
-            {authNavItems.map((item, index) => (
-              <button
-                className={`rounded-full py-4 my-1 w-full text-[18px]  ${
-                  item.label === "Log in"
-                    ? "ring-1 ring-primary-bg-dark dark:ring-primary-bg-light bg-transparent dark:text-text-primary-dark text-text-primary-light"
-                    : "bg-primary-accent-blue-light dark:bg-primary-accent-blue-dark dark:hover:bg-primary-light-blue-dark hover:bg-primary-light-blue-light text-text-primary-dark"
-                }`}
-                key={`${index}-${item.id}-${item.label}`}
-                onClick={() => {
-                  handleRouting(
-                    item.label === "Log in"
-                      ? "/auth/log-in"
-                      : "/auth/sign-up"
-                  );
-                  toggleMobileMenu();
-                }}
-              >
-                <span>{item.label}</span>
-              </button>
-            ))}
+            {/* Mobile Auth Buttons */}
+            <AuthButtons 
+                    className={"gap-[1rem] md:visible my-4 flex flex-col items-center w-full"}
+                    btnClassName={"w-full h-[3.4rem] md:h-[3rem]"} 
+                />
           </ul>
         </div>
       )}

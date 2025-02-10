@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 
 const SignupPage = () => {
   const { isPasswordValid } = globalAppStore();
-  const { isLoading, error, signUp, message } = globalUserStore();
+  const { isLoading, error, signUp, message, setError } = globalUserStore();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -50,6 +50,10 @@ const SignupPage = () => {
       }
     }
   }, [isLoading, error, message]);
+
+   useEffect(() =>{
+    setError("");
+  }, [])
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
@@ -153,7 +157,6 @@ const SignupPage = () => {
           <Button
             text="Sign Up"
             type="submit"
-            onClick={() => {}}
             className={`text-body-text ${
               (formData.password.trim() === "" ||
                 formData.username.trim() === "" ||

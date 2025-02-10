@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const ConfirmEmailAddress = () => {
   const [code, setCode] = useState("");
   const [verify, setVerify] = useState(false); // Just to ensure that the user clicks the button to submit. Because token will always be available
-  const { isLoading, error, verifyEmailWithCode, message } = globalUserStore();
+  const { isLoading, error, verifyEmailWithCode, message, setError } = globalUserStore();
   const navigate = useNavigate();
 
   // Handle verfication
@@ -33,6 +33,10 @@ const ConfirmEmailAddress = () => {
       }
     }
   }, [isLoading, error, message, navigate, code, verify]);
+
+  useEffect(() =>{
+    setError("");
+  }, [])
 
   return (
     <div className="flex items-center flex-col justify-center min-h-screen bg-background text-text">
@@ -66,7 +70,6 @@ const ConfirmEmailAddress = () => {
             type="submit"
             className={`text-body-text ${code.trim() === "" && "opacity-50"}`}
             isLoading={isLoading}
-            onClick={() => {}}
             disabled={code.trim() === ""}
           />
         </form>
