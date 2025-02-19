@@ -180,7 +180,6 @@ const globalUserStore = create<userStoreTypes>((set) => ({
         );
         set({
           user: res.data.user,
-          isCheckingAuth: false,
           isAuthenticated: true,
         });
         // If successful, exit the function
@@ -190,13 +189,13 @@ const globalUserStore = create<userStoreTypes>((set) => ({
         // Optionally, you could check if the error is due to an expired access token
         const shouldRefreshToken =
           /* logic to decide if refresh is needed, e.g.: */
-          axios.isAxiosError(error) && error.response?.status === 403;
+          axios.isAxiosError(error) && error.response?.status !== 200;
 
         if (!shouldRefreshToken) {
           // For non-refreshable errors, exit immediately.
           set({
             isCheckingAuth: false,
-            error: "",
+            isAuthenticated: true,
           });
           return;
         }
@@ -214,8 +213,7 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           console.error("Token refresh failed:", refreshError);
           set({
             isLoading: false,
-            isCheckingAuth: false,
-            error: "Token refresh failed.",
+            error: "Token refresh failed. Please login again.",
           });
           return;
         }

@@ -1,6 +1,5 @@
 import NavBar from "./NavBar";
 import HeroSection from "./HeroSection";
-import Features from "./Features";
 import Footer from "./Footer";
 import CTAButton from "./CTAButton";
 import CopyRight from "./CopyRight";
@@ -35,7 +34,6 @@ import SecuritySettings from "./SecuritySettings";
 export {
   NavBar,
   HeroSection,
-  Features,
   Footer,
   CTAButton,
   CopyRight,
@@ -65,5 +63,5 @@ export {
   SharePopup,
   GeneralSettings,
   PersonalizedSettings,
-  SecuritySettings
+  SecuritySettings,
 };

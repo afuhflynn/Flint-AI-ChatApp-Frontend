@@ -39,8 +39,14 @@ const ConversationPage: React.FC = () => {
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
   //TODO: Add a scroll to bottom effect based on bottomRef and hide the button based on scroll height
   const bottomRef = useRef<null | HTMLSpanElement>(null);
-  const { isMobileSidebarActive, setIsNewChat, prompt, chatbot, isSharePopup, isSettingsPopup } =
-    globalAppStore();
+  const {
+    isMobileSidebarActive,
+    setIsNewChat,
+    prompt,
+    chatbot,
+    isSharePopup,
+    isSettingsPopup,
+  } = globalAppStore();
   const { user, isAuthenticated } = globalUserStore();
 
   const handleScrollToBottom = () => {

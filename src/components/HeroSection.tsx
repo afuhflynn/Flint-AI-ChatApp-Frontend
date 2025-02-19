@@ -6,7 +6,7 @@ import CTAButton from "./CTAButton";
 
 const HeroSection = () => {
   return (
-    <section className="flex md:h-[50%] h-auto flex-col items-center justify-start w-full gap-5 text-center text-gray-900 md:gap-4 dark:text-white paddingY bg-primary-bg-light dark:bg-primary-bg-dark paddingX md:!px-0">
+    <section className="flex h-screen flex-col items-center justify-start w-full gap-5 text-center text-gray-900 md:gap-4 dark:text-white paddingY bg-primary-bg-light dark:bg-primary-bg-dark paddingX md:!px-0">
       {/* Heading */}
       {/* Animate the heading repeatedly (changing opacity from 0 to 100 on page load and do some crazy animations) */}
       <motion.h1

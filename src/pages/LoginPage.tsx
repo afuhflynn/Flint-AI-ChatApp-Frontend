@@ -33,9 +33,9 @@ const LoginPage = () => {
       }
     }
   }, [isLoading, error, message, login]);
-   useEffect(() =>{
+  useEffect(() => {
     setError("");
-  }, [])
+  }, [error]);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
@@ -73,8 +73,8 @@ const LoginPage = () => {
             </div>
           </div>
           {error && (
-            <div className="mb-4 w-full flex flex-row items-center h-auto">
-              <p className="text-muted-text text-red-500">{error}</p>
+            <div className="flex flex-row items-center w-full h-auto mb-4">
+              <p className="text-red-500 text-muted-text">{error}</p>
             </div>
           )}
           <Button

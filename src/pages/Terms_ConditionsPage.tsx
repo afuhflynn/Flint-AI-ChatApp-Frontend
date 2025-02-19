@@ -1,6 +1,6 @@
 const Terms_ConditionsPage: React.FC = () => {
   return (
-    <section className="flex flex-col bg-primary-bg-light dark:bg-primary-bg-dark">
+    <section className="flex flex-col h-screen bg-primary-bg-light dark:bg-primary-bg-dark">
       <div className="max-w-screen-lg mx-auto text-center md:px-8 paddingX">
         <h1 className="mb-8 text-3xl font-semibold md:text-4xl text-text-primary-light dark:text-text-primary-dark">
           Terms and Conditions
