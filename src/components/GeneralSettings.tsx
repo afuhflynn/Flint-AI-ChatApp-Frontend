@@ -93,7 +93,7 @@ const Logout = () => {
 };
 
 const GeneralSettings: React.FC = () => {
-  const LIST = [ThemeToggle, DeleteAllChats, Logout];
+  const LIST = [ThemeToggle, DeleteAllChats, Logout]; // List of the different rows
 
   return (
     <div className="flex flex-col justify-start w-full h-full item-center">

@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import globalUserStore from "../store/user.store";
 import { toast } from "react-toastify";
 import { routeUsers } from "../utils";
+import globalAppStore from "../store/app.store";
 
 const LoginPage = () => {
   const [login, setLogin] = useState(false);
@@ -12,6 +13,7 @@ const LoginPage = () => {
     password: "",
   });
   const { isLoading, error, logIn, message, setError } = globalUserStore();
+  const { prevOrigin } = globalAppStore();
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
@@ -29,12 +31,18 @@ const LoginPage = () => {
         toast.error(error);
       } else if (message) {
         toast.success(message);
-        routeUsers("/chat-bot/chats/new-chat");
+        if (prevOrigin) routeUsers(prevOrigin);
+        else routeUsers("/chat-bot/chats/new-chat");
       }
     }
-  }, [isLoading, error, message, login]);
+  }, [isLoading, error, message, login, prevOrigin]);
   useEffect(() => {
     setError("");
+    console.log(
+      window.location.pathname,
+      window.history,
+      window.location.ancestorOrigins
+    );
   }, [error]);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">

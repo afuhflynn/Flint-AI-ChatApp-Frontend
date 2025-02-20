@@ -13,6 +13,7 @@ import { mockUpData } from "../constants/constants";
 import { flintaiLogo } from "../assets/images";
 import globalUserStore from "../store/user.store";
 import { SettingsPage } from "../pages";
+import { useLocation } from "react-router-dom";
 
 interface scrollButtonTypes {
   handleClick: () => void;
@@ -39,6 +40,7 @@ const ConversationPage: React.FC = () => {
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
   //TODO: Add a scroll to bottom effect based on bottomRef and hide the button based on scroll height
   const bottomRef = useRef<null | HTMLSpanElement>(null);
+  const location = useLocation();
   const {
     isMobileSidebarActive,
     setIsNewChat,
@@ -46,6 +48,7 @@ const ConversationPage: React.FC = () => {
     chatbot,
     isSharePopup,
     isSettingsPopup,
+    setPrevOrigin,
   } = globalAppStore();
   const { user, isAuthenticated } = globalUserStore();
 
@@ -78,6 +81,7 @@ const ConversationPage: React.FC = () => {
   // Get current url path and modify navbar
   useEffect(() => {
     setIsNewChat(false);
+    setPrevOrigin(location.pathname as string);
   }, []);
   return (
     <section className="flex flex-col items-center w-full h-full overflow-hidden">

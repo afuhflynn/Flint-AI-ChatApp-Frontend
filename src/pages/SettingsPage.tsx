@@ -13,6 +13,7 @@ import { useState } from "react";
 const SettingsPage = () => {
   const [selectedItem, setSelectedItem] = useState<number>(1);
   const { handleHideSettingsPopup, isSettingsPopup } = globalAppStore();
+  const LIST = [GeneralSettings, PersonalizedSettings, SecuritySettings]; // List of tabs view
 
   const getSelectedItem = (value: number) => {
     setSelectedItem(value);
@@ -61,13 +62,11 @@ const SettingsPage = () => {
 
           {/* Settings */}
           <div className="w-full h-full -mt-5 md:mt-2">
-            {selectedItem === 1 ? (
-              <GeneralSettings />
-            ) : selectedItem === 2 ? (
-              <PersonalizedSettings />
-            ) : (
-              <SecuritySettings />
-            )}
+            {LIST.map((Item, index) => (
+              <span key={`item-${index}-${Item.name}`}>
+                {selectedItem === index + 1 && <Item />}
+              </span>
+            ))}
           </div>
         </div>
       </main>

@@ -3,12 +3,14 @@ import { startUpPrompts } from "../constants/constants";
 import { AccountLoginNotification, ChatRoomInput } from "./";
 import globalUserStore from "../store/user.store";
 import globalAppStore from "../store/app.store";
+import { useLocation } from "react-router-dom";
 
 const NewConversationPage: React.FC = () => {
   const [greetings, setGreetings] = useState<string>("");
   const [startupPrompt, setStartupPrompt] = useState("");
+  const location = useLocation();
   const { isAuthenticated, user } = globalUserStore();
-  const { setIsNewChat } = globalAppStore();
+  const { setIsNewChat, setPrevOrigin } = globalAppStore();
 
   const handleSetGreetings = (time: number) => {
     if (time < 12 && time >= 0) {
@@ -37,6 +39,7 @@ const NewConversationPage: React.FC = () => {
   useEffect(() => {
     const urlPath: string = window.location.pathname as string;
     if (urlPath.split("/").includes("new-chat")) setIsNewChat(true);
+    setPrevOrigin(location.pathname as string);
   }, []);
 
   return (

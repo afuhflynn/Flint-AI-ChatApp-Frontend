@@ -18,6 +18,8 @@ export interface appStoreTypes {
   handleHideSharePopup: (value: boolean) => void;
   isSettingsPopup: boolean;
   handleHideSettingsPopup: (value: boolean) => void;
+  prevOrigin: string;
+  setPrevOrigin: (origin: string) => void;
 }
 
 // user types

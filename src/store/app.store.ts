@@ -18,6 +18,10 @@ const globalAppStore = create<appStoreTypes>((set) => ({
   setChatbot: (value) => {
     set({ chatbot: value });
   },
+  prevOrigin: "",
+  setPrevOrigin: (origin) => {
+    set({ prevOrigin: origin });
+  },
   isSidebarActive: true,
   setIsSidebarActive: (value) => {
     set({ isSidebarActive: value });
