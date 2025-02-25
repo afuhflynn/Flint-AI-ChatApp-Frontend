@@ -53,8 +53,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           isLoading: false,
         });
       } else {
+        // error.message will be used if there are other errors not coming from the server.
         set({
-          error: error.response.data?.message,
+          error: error.message
+            ? `${error.message}. Please check your internet connection!`
+            : error.response.data?.message,
           isLoading: false,
         });
       }
@@ -81,8 +84,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           isLoading: false,
         });
       } else {
+        // error.message will be used if there are other errors not coming from the server.
         set({
-          error: error.response.data?.message,
+          error: error.message
+            ? `${error.message}. Please check your internet connection!`
+            : error.response.data?.message,
           isLoading: false,
         });
       }
@@ -106,8 +112,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           isLoading: false,
         });
       } else {
+        // error.message will be used if there are other errors not coming from the server.
         set({
-          error: error.response.data?.message,
+          error: error.message
+            ? `${error.message}. Please check your internet connection!`
+            : error.response.data?.message,
           isLoading: false,
         });
       }
@@ -132,8 +141,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           isLoading: false,
         });
       } else {
+        // error.message will be used if there are other errors not coming from the server.
         set({
-          error: error.response.data?.message,
+          error: error.message
+            ? `${error.message}. Please check your internet connection!`
+            : error.response.data?.message,
           isLoading: false,
         });
       }
@@ -154,12 +166,15 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
         set({
-          error: "User not found!",
+          error: "An unexpected error occurred. Try again later",
           isLoading: false,
         });
       } else {
+        // error.message will be used if there are other errors not coming from the server.
         set({
-          error: "An unexpected error occurred. Try again later",
+          error: error.message
+            ? `${error.message}. Please check your internet connection!`
+            : error.response.data?.message || "User not found!",
           isLoading: false,
         });
       }
@@ -172,6 +187,7 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     let attempt = 0;
     set({ isCheckingAuth: true, error: "", isAuthenticated: false });
 
+    // Re-attempt the get user profile for <maxAttempts> times
     while (attempt < maxAttempts) {
       try {
         // Attempt to fetch the profile
@@ -211,9 +227,13 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (refreshError: any) {
           console.error("Token refresh failed:", refreshError);
+          // error.message will be used if there are other errors not coming from the server.
           set({
+            error: error.message
+              ? `${error.message}. Please check your internet connection!`
+              : error.response?.data?.message ||
+                "Error getting your profile. Please log-in or sign-up.",
             isLoading: false,
-            error: "Token refresh failed. Please login again.",
           });
           return;
         }
@@ -251,8 +271,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           isLoading: false,
         });
       } else {
+        // error.message will be used if there are other errors not coming from the server.
         set({
-          error: error.response.data?.message,
+          error: error.message
+            ? `${error.message}. Please check your internet connection!`
+            : error.response.data?.message,
           isLoading: false,
         });
       }
@@ -277,8 +300,11 @@ const globalUserStore = create<userStoreTypes>((set) => ({
           isLoading: false,
         });
       } else {
+        // error.message will be used if there are other errors not coming from the server.
         set({
-          error: error.response.data?.message,
+          error: error.message
+            ? `${error.message}. Please check your internet connection!`
+            : error.response.data?.message,
           isLoading: false,
         });
       }

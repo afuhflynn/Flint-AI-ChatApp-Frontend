@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
-import { Button, Input, ModalHeading } from "../components";
+import { Button, ErrorPanel, Input, ModalHeading } from "../components";
 import globalUserStore from "../store/user.store";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -28,7 +28,7 @@ const PasswordResetRequestPage = () => {
         toast.error(error);
         setVerify(false);
         return;
-      } else {
+      } else if (message && message.trim().length > 0) {
         toast.success(message);
       }
     }
@@ -37,10 +37,10 @@ const PasswordResetRequestPage = () => {
   useEffect(() => {
     setVerify(false);
   }, [setVerify]);
-  
-   useEffect(() =>{
+
+  useEffect(() => {
     setError("");
-  }, [])
+  }, []);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       {((error.trim().length > 0 || error.trim().length === 0) &&
@@ -52,6 +52,7 @@ const PasswordResetRequestPage = () => {
             Enter your email address below. <br />
             And a password reset link will be sent to your inbox
           </p>
+          {error && <ErrorPanel error={error} />}
           <form onSubmit={handleSendRequest}>
             <div className="input-row">
               <label htmlFor="email" className="modal-text">
@@ -67,11 +68,7 @@ const PasswordResetRequestPage = () => {
                 />
               </div>
             </div>
-            {error && (
-              <div className="mb-4 w-full flex flex-row items-center h-auto">
-                <p className="text-muted-text text-red-500">{error}</p>
-              </div>
-            )}
+
             <Button
               text="Send Link"
               type="submit"

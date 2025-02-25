@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from "react";
-import { Button, Input, ModalHeading } from "../components";
+import { Button, ErrorPanel, Input, ModalHeading } from "../components";
 import globalUserStore from "../store/user.store";
 import { toast } from "react-toastify";
 import { routeUsers } from "../utils";
@@ -30,12 +30,12 @@ const ResendVerificationEmail: React.FC = () => {
     }
   }, [isLoading, error, message, email, verify, routeUsers]);
 
-   useEffect(() =>{
+  useEffect(() => {
     setError("");
-  }, [])
+  }, []);
 
   return (
-    <div className="flex items-center flex-col justify-center min-h-screen bg-background text-text">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-background text-text">
       <div className="modal !p-6 !shadow-lg !h-[60%]">
         <ModalHeading
           text="Resend verification email"
@@ -45,6 +45,7 @@ const ResendVerificationEmail: React.FC = () => {
           Didn't receive the verification email? Please enter your email address
           below to request a new one.
         </p>
+        {error && <ErrorPanel error={error} />}
         <form onSubmit={handleResendEmail}>
           <div className="input-row">
             <label htmlFor="email" className="modal-text">
@@ -60,11 +61,6 @@ const ResendVerificationEmail: React.FC = () => {
               />
             </div>
           </div>
-          {error && (
-            <div className="mb-4 w-full flex flex-row items-center h-auto">
-              <p className="text-muted-text text-red-500">{error}</p>
-            </div>
-          )}
           <Button
             text="Resend Email"
             type="submit"

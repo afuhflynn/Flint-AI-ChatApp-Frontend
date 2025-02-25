@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect } from "react";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
 import { toggleLocalTheme } from "./hooks";
 import { LoadingOverlay } from "./components";
@@ -7,13 +7,8 @@ import globalUserStore from "./store/user.store";
 import globalAppStore from "./store/app.store";
 
 const App: React.FC = () => {
-  const {
-    isCheckingAuth,
-    getUserProfile,
-    user,
-    setprefersTheme,
-    prefersTheme,
-  } = globalUserStore();
+  const { isCheckingAuth, getUserProfile, user, setprefersTheme, error } =
+    globalUserStore();
   const { appTheme, setAppTheme } = globalAppStore();
 
   // Get authenticated user profile from db
@@ -33,9 +28,19 @@ const App: React.FC = () => {
         ? (user?.preferences.theme as string)
         : "light";
     setprefersTheme(newTheme);
-    toggleLocalTheme(prefersTheme);
-    setAppTheme(prefersTheme);
+    toggleLocalTheme(newTheme);
+    setAppTheme(newTheme);
   }, []);
+
+  useEffect(() => {
+    if (!isCheckingAuth) {
+      if (error) {
+        toast.warning(error, {
+          className: "text-yellow-500 w-auto max-sm:max-w-[90%]",
+        });
+      }
+    }
+  }, [isCheckingAuth]);
 
   return (
     <main className="w-screen h-screen overflow-x-hidden bg-primary-bg-light dark:bg-primary-bg-dark">
@@ -45,6 +50,11 @@ const App: React.FC = () => {
         hideProgressBar={true}
         theme={appTheme}
         closeButton={false}
+        newestOnTop={true}
+        toastClassName={`w-[90%] sm:w-auto text-text-primary-light dark:text-text-primary-dark shadow-md mt-4 mr-1 md:mr-0`}
+        toastStyle={{
+          backgroundColor: appTheme === "dark" ? "#2B2F4C" : "#F7FAFC",
+        }}
       />
       {/* Loading overlay when checking user auth state */}
       {isCheckingAuth ? <LoadingOverlay /> : <Outlet />}

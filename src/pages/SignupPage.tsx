@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   Button,
+  ErrorPanel,
   Input,
   ModalHeading,
   PasswordStrengthCriteria,
@@ -51,14 +52,15 @@ const SignupPage = () => {
     }
   }, [isLoading, error, message]);
 
-   useEffect(() =>{
+  useEffect(() => {
     setError("");
-  }, [])
+  }, []);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
         <ModalHeading text="Sign up for Flint AI" className="text-center" />
+        {error && <ErrorPanel error={error} />}
         <form onSubmit={handleSignUp}>
           <div className="input-row">
             <label htmlFor="username" className="modal-text">
@@ -138,22 +140,19 @@ const SignupPage = () => {
               </p>
             )}
           {/* Password strength meter */}
-          {formData.password !== "" && (
-            <PasswordStrengthMeter password={formData.password} />
-          )}
+          {formData.password !== "" &&
+            formData.password !== formData.confirmPassword && (
+              <PasswordStrengthMeter password={formData.password} />
+            )}
 
           {/* Password strength criteria */}
-          {formData.password !== "" && (
-            <>
-              <p className="modal-text">Must contain: </p>
-              <PasswordStrengthCriteria password={formData.password} />
-            </>
-          )}
-          {error && (
-            <div className="mb-4 w-full flex flex-row items-center h-auto">
-              <p className="text-muted-text text-red-500">{error}</p>
-            </div>
-          )}
+          {formData.password !== "" &&
+            formData.password !== formData.confirmPassword && (
+              <>
+                <p className="modal-text">Must contain: </p>
+                <PasswordStrengthCriteria password={formData.password} />
+              </>
+            )}
           <Button
             text="Sign Up"
             type="submit"

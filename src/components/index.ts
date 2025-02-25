@@ -30,6 +30,7 @@ import SharePopup from "./SharePopup";
 import GeneralSettings from "./GeneralSettings";
 import PersonalizedSettings from "./PersonalizedSettings";
 import SecuritySettings from "./SecuritySettings";
+import ErrorPanel from "./ErrorPanel";
 
 export {
   NavBar,
@@ -64,4 +65,5 @@ export {
   GeneralSettings,
   PersonalizedSettings,
   SecuritySettings,
+  ErrorPanel,
 };

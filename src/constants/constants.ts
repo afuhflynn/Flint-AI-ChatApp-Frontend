@@ -245,19 +245,19 @@ export const mockUpData = [
 export const settingsTabs = [
   {
     id: 0,
-    label: "General"
+    label: "General",
   },
   {
     id: 1,
-    label: "Personalized"
+    label: "Personalized",
   },
   {
     id: 2,
-    label: "Security"
+    label: "Security",
   },
-]
+];
 
 // Endpoints and urls
-export const backendBaseUrl = "http://localhost:3000";
+export const backendBaseUrl = "http://localhost:5000";
 export const authBackendBaseUrl = `${backendBaseUrl}/api/auth/users`;
 export const geminiBackendUrl = `${backendBaseUrl}/assist/api/ai`;

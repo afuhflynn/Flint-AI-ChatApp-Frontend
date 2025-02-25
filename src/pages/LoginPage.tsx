@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { Button, Input, ModalHeading, SocialConnections } from "../components";
+import {
+  Button,
+  ErrorPanel,
+  Input,
+  ModalHeading,
+  SocialConnections,
+} from "../components";
 import { FormEvent, useEffect, useState } from "react";
 import globalUserStore from "../store/user.store";
 import { toast } from "react-toastify";
@@ -43,11 +49,12 @@ const LoginPage = () => {
       window.history,
       window.location.ancestorOrigins
     );
-  }, [error]);
+  }, [setError]);
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">
       <div className="modal">
         <ModalHeading text="Sign in to Flint AI" className="text-center" />
+        {error && <ErrorPanel error={error} />}
         <form onSubmit={handleSignIn}>
           <div className="input-row">
             <label htmlFor="username" className="modal-text">
@@ -80,11 +87,7 @@ const LoginPage = () => {
               <Link to="/auth/forgot-password">Forgot your password?</Link>
             </div>
           </div>
-          {error && (
-            <div className="flex flex-row items-center w-full h-auto mb-4">
-              <p className="text-red-500 text-muted-text">{error}</p>
-            </div>
-          )}
+
           <Button
             text="Login Securely"
             type="submit"
