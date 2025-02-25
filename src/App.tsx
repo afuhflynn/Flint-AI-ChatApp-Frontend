@@ -51,7 +51,7 @@ const App: React.FC = () => {
         theme={appTheme}
         closeButton={false}
         newestOnTop={true}
-        toastClassName={`w-[90%] sm:w-auto text-text-primary-light dark:text-text-primary-dark shadow-md mt-4 mr-1 md:mr-0`}
+        toastClassName={`w-[90%] sm:w-auto text-text-primary-light dark:text-text-primary-dark shadow-md mt-4`}
         toastStyle={{
           backgroundColor: appTheme === "dark" ? "#2B2F4C" : "#F7FAFC",
         }}

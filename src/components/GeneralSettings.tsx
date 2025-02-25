@@ -58,7 +58,7 @@ const ThemeToggle = () => {
               key={`item-${index}-${item.name}`}
               className={`cta-btn md:!text-sm !text-xs !px-4 md:!px-3 !shadow-none !flex !flex-row !items-center !justify-between md:!justify-start !font-normal !w-full !h-[2.6rem] !gap-1 ${
                 appTheme === item.name
-                  ? "!bg-blue-200 dark:!bg-gray-700"
+                  ? "!bg-gray-300 dark:!bg-gray-700"
                   : "!bg-transparent dark:!bg-neutral-dark-grey-dark"
               }}`}
               onClick={() => handleToggleTheme(item.name)}

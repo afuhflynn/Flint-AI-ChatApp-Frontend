@@ -85,7 +85,7 @@ const ConversationPage: React.FC = () => {
   }, []);
   return (
     <section className="flex flex-col items-center w-full h-full overflow-hidden">
-      <SharePopup />
+      {user && <SharePopup />}
       <SettingsPage />
       {!isAuthenticated && !user && <AccountLoginNotification />}
       <div

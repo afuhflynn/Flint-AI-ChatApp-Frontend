@@ -25,12 +25,12 @@ const SettingsPage = () => {
         isSettingsPopup === true ? "visible" : "hidden"
       }`}
     >
-      <main className="modal !flex !flex-col !items-start !justify-between !bg-primary-bg-light dark:!bg-neutral-dark-grey-dark !p-2 md:!w-[44rem] md:!h-[80%] !h-[82%] !w-[96%] !py-4">
+      <main className="modal !flex !flex-col !items-start !justify-between !bg-primary-bg-light dark:!bg-neutral-dark-grey-dark !p-2 md:!w-[44rem] md:!h-[80%] !h-auto !w-[96%] !py-4">
         <header className="custom-input !flex !flex-row !items-center !w-full !h-auto !justify-between  !border-x-0 !border-t-0 md:!px-2 !px-1 !py-0 !pb-6 !pt-1 !my-0 !rounded-[0px] !border-opacity-10">
           <ModalHeading text="Settings" className="!m-0 !text-left !text-md" />
           <button
             onClick={() => handleHideSettingsPopup(false)}
-            className="assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light"
+            className="assets-btn !w-[2rem] !h-[2rem] dark:text-text-primary-dark text-text-primary-light"
           >
             <X />
           </button>
