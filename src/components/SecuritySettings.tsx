@@ -12,7 +12,7 @@ const ShareChatHistory = ({
     <>
       <span>Share your chat history with us</span>{" "}
       <button
-        className="w-[1.2rem] h-[1.2rem] border-[1.4px] border-gray-500 dark:border-gray-400 rounded-sm flex flex-row items-center justify-center"
+        className="w-[1.2rem] h-[1.2rem] border-[1.4px] border-gray-500 dark:border-gray-400 rounded-sm flex flex-row items-center justify-center p-[0.1rem]"
         onClick={onClick}
       >
         {isChecked && <Check className="w-full h-full" />}
@@ -31,7 +31,7 @@ const ShareUsername = ({
     <>
       <span>Share your username with us</span>{" "}
       <button
-        className="w-[1.2rem] h-[1.2rem] border-[1.4px] border-gray-500 dark:border-gray-400 rounded-sm flex flex-row items-center justify-center"
+        className="w-[1.2rem] h-[1.2rem] border-[1.4px] border-gray-500 dark:border-gray-400 rounded-sm flex flex-row items-center justify-center p-[0.1rem]"
         onClick={onClick}
       >
         {isChecked && <Check className="w-full h-full" />}
