@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import { flintaiLogo } from "../assets/images";
+import { Camera } from "lucide-react";
 
 const DeleteAccount = () => {
   return (
@@ -101,7 +102,26 @@ const PersonalizedSettings: React.FC = () => {
   return (
     <div className="flex flex-col justify-start w-full h-full item-center">
       <section className="custom-input !flex !flex-col !items-start !w-full !h-auto !justify-between  !border-x-0 !border-t-0 !p-0 !my-0 !rounded-[0px] !border-opacity-10">
+        <div className="custom-input !flex !flex-row !items-start !w-full !h-auto !border-[1px] !border-x-0 !border-t-0 !px-1 !py-3 !m-0 !rounded-[0px] !border-opacity-1">
+          <button className="relative flex flex-row items-center justify-center h-[6rem] w-[5.6rem] border-[1px] border-gray-500 p-2 rounded-md hover:bg-black hover:bg-opacity-20">
+            <span>
+              <UserAvatar />
+            </span>
+            <div className="absolute bottom-0 flex flex-col items-center justify-center w-full bg-black bg-opacity-20 h-[50%] gap-1">
+              <Camera />
+              <span className="text-xs">Change avatar</span>
+            </div>
+          </button>
+        </div>
         <div className="custom-input !flex !flex-col !items-start !w-full !h-auto !justify-between !border-[1px] !border-x-0 !border-t-0 !px-1 !py-3 !m-0 !rounded-[0px] !border-opacity-10">
+          <button
+            type="button"
+            onClick={() => {}}
+            className={"cta-btn !w-[80%] md:!w-[60%] !h-[2.6rem] !shadow-none"}
+          >
+            Update Account Details
+          </button>
+          {show && <UpdateAccountDetails />}
           <span className="mb-2 font-semibold text-md">
             Forgot your password?
           </span>
@@ -112,23 +132,6 @@ const PersonalizedSettings: React.FC = () => {
           >
             Update Password
           </button>
-        </div>
-        <div className="custom-input !flex !flex-col !items-start !w-full !h-auto !justify-between !border-[1px] !border-x-0 !border-t-0 !px-1 !py-3 !m-0 !rounded-[0px] !border-opacity-10">
-          <span className="mb-2 font-semibold text-md">Profile Settings</span>
-          <div className="flex flex-col items-start justify-start w-full h-auto gap-2 py-2 md:py-3">
-            <button>
-              <UserAvatar />
-            </button>
-            <span>Update Profile Photo</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => {}}
-            className={"cta-btn !w-[80%] md:!w-[60%] !h-[2.6rem] !shadow-none"}
-          >
-            Update Account Details
-          </button>
-          {show && <UpdateAccountDetails />}
         </div>
       </section>
       <div className="custom-input !flex !flex-row !items-center !w-full !h-auto !justify-between !border-0 !px-1 !py-3 !m-0 !rounded-[0px] !border-t-0">
