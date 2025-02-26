@@ -272,6 +272,22 @@ export const mockUpData = [
       },
     ],
   },
+  {
+    role: "user",
+    parts: [
+      {
+        text: "Help me with bash code to upgrade deno",
+      },
+    ],
+  },
+  {
+    role: "model",
+    parts: [
+      {
+        text: "To upgrade deno, open the terminal:\n```bash\ndeno upgrade\n```",
+      },
+    ],
+  },
 ];
 
 export const settingsTabs = [
