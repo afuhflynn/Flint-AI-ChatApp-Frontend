@@ -8,7 +8,7 @@ import "katex/dist/katex.min.css";
 import "highlight.js/styles/github-dark.css";
 import Twemoji from "react-twemoji";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { dracula } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
   return (
@@ -20,7 +20,7 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
           components={{
             code({
               inline = false,
-              className,
+              className = "text-white bg-black code-font",
               children,
               ...props
             }: ComponentPropsWithoutRef<"code"> & { inline?: boolean }) {
@@ -33,7 +33,7 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
               console.log(children);
 
               return !inline && match ? (
-                <SyntaxHighlighter style={docco} language={language}>
+                <SyntaxHighlighter style={dracula} language={language}>
                   {`${String(children).replace("/\n/", "")}
                   console.log("Hello, world");
                   print("good morning")

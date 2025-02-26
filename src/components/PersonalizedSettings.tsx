@@ -132,7 +132,7 @@ const UserAvatar: React.FC = () => {
 //         <img
 //           src={user.preferences.avatarUrl}
 //           alt={`${user.username}'s avatar`}
-//           className="sm:w-[5rem] sm:h-[5rem] w-[4rem] h-[4rem]object-cover"
+//           className="sm:w-[5rem] sm:h-[5rem] w-[4rem] h-[4rem] object-cover rounded-0"
 //         />
 //       )}
 //     </>
