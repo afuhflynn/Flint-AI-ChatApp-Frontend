@@ -30,9 +30,22 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
                 ? children.map(String).join("")
                 : String(children);
 
+              console.log(children);
+
               return !inline && match ? (
-                <SyntaxHighlighter style={docco} language={language} {...props}>
-                  {String(children).replace(/\n$/, "")}
+                <SyntaxHighlighter style={docco} language={language}>
+                  {`${String(children).replace("/\n/", "")}
+                  console.log("Hello, world");
+                  print("good morning")
+
+                  #include <iostream>
+                  #include <stdbool.h>
+
+                  int main(int argc, char * argv[]){
+                    std::cout<<"Hello, world";
+                    return 0;
+                  }
+                  `}
                 </SyntaxHighlighter>
               ) : (
                 <code
@@ -47,54 +60,54 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
             },
             // Headings styling
             h1: ({ children }) => (
-              <h1 className="text-3xl font-bold mt-4 mb-2">{children}</h1>
+              <h1 className="mt-4 mb-2 text-3xl font-bold">{children}</h1>
             ),
             h2: ({ children }) => (
-              <h2 className="text-2xl font-semibold mt-3 mb-2">{children}</h2>
+              <h2 className="mt-3 mb-2 text-2xl font-semibold">{children}</h2>
             ),
             h3: ({ children }) => (
-              <h3 className="text-xl font-medium mt-3 mb-2">{children}</h3>
+              <h3 className="mt-3 mb-2 text-xl font-medium">{children}</h3>
             ),
             h4: ({ children }) => (
-              <h4 className="text-lg font-medium mt-2 mb-1">{children}</h4>
+              <h4 className="mt-2 mb-1 text-lg font-medium">{children}</h4>
             ),
             h5: ({ children }) => (
-              <h5 className="text-base font-semibold mt-2">{children}</h5>
+              <h5 className="mt-2 text-base font-semibold">{children}</h5>
             ),
             h6: ({ children }) => (
-              <h6 className="text-sm font-semibold mt-2">{children}</h6>
+              <h6 className="mt-2 text-sm font-semibold">{children}</h6>
             ),
             // Blockquote styling
             blockquote: ({ children }) => (
-              <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-600 dark:text-gray-400">
+              <blockquote className="pl-4 italic text-gray-600 border-l-4 border-blue-500 dark:text-gray-400">
                 {children}
               </blockquote>
             ),
             // List styling
             ul: ({ children }) => (
-              <ul className="list-disc list-inside space-y-1 my-1">
+              <ul className="my-1 space-y-1 list-disc list-inside">
                 {children}
               </ul>
             ),
             ol: ({ children }) => (
-              <ol className="list-decimal list-inside space-y-1 my-1">
+              <ol className="my-1 space-y-1 list-decimal list-inside">
                 {children}
               </ol>
             ),
             li: ({ children }) => <li className="ml-4">{children}</li>,
             // Table styling
             table: ({ children }) => (
-              <table className="table-auto border-collapse border border-gray-400 dark:border-gray-600 overflow-x-scroll overflow-y-hidden my-2">
+              <table className="my-2 overflow-x-scroll overflow-y-hidden border border-collapse border-gray-400 table-auto dark:border-gray-600">
                 {children}
               </table>
             ),
             th: ({ children }) => (
-              <th className="border border-gray-400 dark:border-gray-600 px-4 py-2 bg-gray-200 dark:bg-gray-700">
+              <th className="px-4 py-2 bg-gray-200 border border-gray-400 dark:border-gray-600 dark:bg-gray-700">
                 {children}
               </th>
             ),
             td: ({ children }) => (
-              <td className="border border-gray-400 dark:border-gray-600 px-4 py-2">
+              <td className="px-4 py-2 border border-gray-400 dark:border-gray-600">
                 {children}
               </td>
             ),
@@ -103,6 +116,7 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
               <span className="text-muted-text">{children}</span>
             ),
           }}
+          className={"code-font"}
         >
           {content}
         </ReactMarkdown>

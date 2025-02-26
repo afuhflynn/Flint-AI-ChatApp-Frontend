@@ -49,6 +49,7 @@ const ConversationPage: React.FC = () => {
     isSharePopup,
     isSettingsPopup,
     setPrevOrigin,
+    isSidebarActive,
   } = globalAppStore();
   const { user, isAuthenticated } = globalUserStore();
 
@@ -92,7 +93,11 @@ const ConversationPage: React.FC = () => {
         ref={chatContainerRef}
         className="overflow-x-hidden overflow-y-scroll h-[90%] flex flex-col items-center mb-1"
       >
-        <div className="md:w-[70%] w-[98%] grid grid-cols-1 grid-rows-auto gap-6">
+        <div
+          className={`md:w-[70%] ${
+            !isSidebarActive ? "md:w-[55%]" : ""
+          } w-[98%] grid grid-cols-1 grid-rows-auto gap-6`}
+        >
           {mockUpData.map((item, index) => {
             return (
               <div
@@ -151,7 +156,11 @@ const ConversationPage: React.FC = () => {
         </>
       )}
       <div className="flex flex-row items-center justify-center w-full h-auto mb-2 shadow-sm bg-primary-bg-light dark:bg-primary-bg-dark">
-        <div className="md:w-[68%] w-[96%] h-auto shadow-md rounded-[2rem]">
+        <div
+          className={`md:w-[68%] ${
+            !isSidebarActive ? "md:w-[56%]" : ""
+          } w-[96%] h-auto shadow-md rounded-[2rem]`}
+        >
           <ChatRoomInput startupPrompt="" />
         </div>
       </div>

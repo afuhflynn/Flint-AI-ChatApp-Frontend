@@ -24,7 +24,6 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
   const [rows, setRows] = useState(1);
   const maxHeight = 200;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
- 
 
   useEffect(() => {
     const handleInput = () => {
@@ -45,7 +44,7 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
   }, [prompt, maxRows]);
 
   useEffect(() => {
-    if (startupPrompt && startupPrompt.trim() !== "" || prompt.trim() !== "")
+    if ((startupPrompt && startupPrompt.trim() !== "") || prompt.trim() !== "")
       textareaRef?.current?.focus();
   }, [startupPrompt, prompt]);
 
@@ -58,7 +57,7 @@ const ResponsiveTextarea: React.FC<ResponsiveTextareaProps> = ({
       required
       rows={rows}
       maxLength={maxChatRoomMsgInput}
-      className="custom-input !my-2 focus:!ring-0 !border-0 !text-lg !px-2"
+      className="custom-input rounded-2xl !my-2 focus:!ring-0 !border-0 !text-md !px-2"
       ref={textareaRef}
     />
   );
@@ -70,7 +69,7 @@ interface chatRoomInputTypes {
 const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
   const [formData, setFormData] = useState({ prompt: "" });
   const { setPrompt } = globalAppStore();
-   const { user } = globalUserStore();
+  const { user } = globalUserStore();
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
@@ -102,9 +101,9 @@ const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
         {/* Display file picker, voicerecorder and internetsearch based on user account profile */}
         <div className="flex flex-row items-center justify-between gap-2 pl-2">
           {user && user.username && (
-            <>  
-            <FilePicker />
-            <VoiceInput txtInput={formData.prompt} />
+            <>
+              <FilePicker />
+              <VoiceInput txtInput={formData.prompt} />
             </>
           )}
           <InternetSearch />
@@ -112,23 +111,23 @@ const ChatRoomInput: React.FC<chatRoomInputTypes> = ({ startupPrompt }) => {
         <div className="flex flex-row items-center justify-between mb-1">
           <Tooltip title="Send Prompt" placement="right">
             <>
-          <button
-            type="submit"
-            className={`bg-primary-accent-blue-light outline-none rounded-full w-[2.4rem] h-[2.4rem] flex flex-row items-center justify-center p-0 ${
-              formData.prompt.trim() === ""
-                ? "bg-opacity-20 text-neutral-mid-grey-light"
-                : "hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  focus:ring-offset-CTA-hover-blue-dark text-text-primary-dark"
-            }`}
-            disabled={formData.prompt.trim() === ""}
-          >
-            <SendIcon
-              className={`h-[1.2rem] w-[1.2rem] ${
-                formData.prompt.trim() === ""
-                  ? "dark:text-text-secondary-dark text-text-secondary-light"
-                  : ""
-              } `}
-            />
-          </button>
+              <button
+                type="submit"
+                className={`bg-primary-accent-blue-light outline-none rounded-full w-[2.4rem] h-[2.4rem] flex flex-row items-center justify-center p-0 ${
+                  formData.prompt.trim() === ""
+                    ? "bg-opacity-20 text-neutral-mid-grey-light"
+                    : "hover:bg-CTA-hover-blue-dark dark:hover:bg-primary-accent-blue-light  focus:ring-offset-CTA-hover-blue-dark text-text-primary-dark"
+                }`}
+                disabled={formData.prompt.trim() === ""}
+              >
+                <SendIcon
+                  className={`h-[1.2rem] w-[1.2rem] ${
+                    formData.prompt.trim() === ""
+                      ? "dark:text-text-secondary-dark text-text-secondary-light"
+                      : ""
+                  } `}
+                />
+              </button>
             </>
           </Tooltip>
         </div>

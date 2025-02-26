@@ -10,7 +10,7 @@ const NewConversationPage: React.FC = () => {
   const [startupPrompt, setStartupPrompt] = useState("");
   const location = useLocation();
   const { isAuthenticated, user } = globalUserStore();
-  const { setIsNewChat, setPrevOrigin } = globalAppStore();
+  const { setIsNewChat, setPrevOrigin, isSidebarActive } = globalAppStore();
 
   const handleSetGreetings = (time: number) => {
     if (time < 12 && time >= 0) {
@@ -77,7 +77,11 @@ const NewConversationPage: React.FC = () => {
                 </button>
               ))}
             </div>
-            <div className="w-full h-auto mb-2">
+            <div
+              className={`w-full h-auto mb-2 ${
+                !isSidebarActive ? "md:w-[78%]" : ""
+              }`}
+            >
               <ChatRoomInput startupPrompt={startupPrompt} />
             </div>
           </section>

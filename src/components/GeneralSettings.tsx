@@ -1,9 +1,10 @@
 import { ChevronDown, ChevronUp, MoonIcon, SunIcon } from "lucide-react";
 import globalAppStore from "../store/app.store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import globalUserStore from "../store/user.store";
 import { toggleLocalTheme } from "../hooks";
+import { toast } from "react-toastify";
 
 const themeData = [
   {
@@ -72,20 +73,48 @@ const ThemeToggle = () => {
   );
 };
 const DeleteAllChats = () => {
+  const [acceptDeleteChat, setAcceptDeleteChat] = useState<boolean>(false);
+  const handleDeleteChats = () => {
+    const accepted = confirm(
+      "Are you sure you want to delete all chats? \nClick OK to proceed!"
+    );
+    if (accepted) setAcceptDeleteChat((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (acceptDeleteChat) toast.success("Chats deleted!");
+  }, [acceptDeleteChat]);
   return (
     <>
       <span>Delete all chats</span>{" "}
-      <button className="text-sm px-3 shadow-none rounded-[40px] flex flex-row items-center justify-center font-normal w-[6.2rem] h-[2.6rem] gap-1 bg-red-600 hover:bg-red-700 text-white">
+      <button
+        className="text-sm px-3 shadow-none rounded-[40px] flex flex-row items-center justify-center font-normal w-[6.2rem] h-[2.6rem] gap-1 bg-red-600 hover:bg-red-700 text-white"
+        onClick={handleDeleteChats}
+      >
         Delete all
       </button>
     </>
   );
 };
 const Logout = () => {
+  const [acceptLogout, setAcceptLogout] = useState<boolean>(false);
+  const handleLogout = () => {
+    const accepted = confirm(
+      "Are you sure you want to logout of your account? \nClick OK to proceed!"
+    );
+    if (accepted) setAcceptLogout((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (acceptLogout) toast.success("Logout successful!");
+  }, [acceptLogout]);
   return (
     <>
       <span>Log out on this device</span>{" "}
-      <button className="cta-btn !text-sm md:!text-md !px-3 !shadow-none !rounded-[40px] !flex !flex-row !items-center !justify-center !font-normal !w-[6.2rem] !h-[2.6rem] !gap-1 !border-red-700 !text-red-500 !bg-transparent hover:!bg-red-600 hover:!text-white !bg-opacity-20">
+      <button
+        className="cta-btn !text-sm md:!text-md !px-3 !shadow-none !rounded-[40px] !flex !flex-row !items-center !justify-center !font-normal !w-[6.2rem] !h-[2.6rem] !gap-1 !border-red-700 !text-red-500 !bg-transparent hover:!bg-red-600 hover:!text-white !bg-opacity-20"
+        onClick={handleLogout}
+      >
         Logout
       </button>
     </>

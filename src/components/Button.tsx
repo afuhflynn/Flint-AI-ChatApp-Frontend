@@ -19,7 +19,7 @@ const Button = ({
     <button
       disabled={disabled || isLoading}
       type={type}
-      className={`auth-btn !${className}`}
+      className={`auth-btn ${className}`}
       onClick={onClick}
     >
       {isLoading ? <CustomLoader1 /> : text}

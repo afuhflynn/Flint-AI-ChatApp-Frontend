@@ -236,7 +236,39 @@ export const mockUpData = [
     role: "model",
     parts: [
       {
-        text: "That's a great initiative!Build a personalized gamified platform for learning computer engineering concepts.Focus on gamification, collaboration, and practical projects to boost motivation and confidence.Partner with schools or institutions for a pilot program.Innovate with gamified assessment tools to promote active participation.Add a mentorship program to boost confidence and motivation.Host workshops to teach coding and gamification techniques.Use AI for personalized recommendations and skill assessments.Host competitions for students to showcase their skills.Develop a community ",
+        text: "That's a great initiative!Build a personalized gamified platform for learning computer engineering concepts.Focus on gamification, collaboration, and practical projects to boost motivation and confidence.Partner with schools or institutions for a pilot program.Innovate with gamified assessment tools to promote active participation.Add a mentorship program to boost confidence and motivation.Host workshops to teach coding and gamification techniques.Use AI for personalized recommendations and skill assessments.Host competitions for students to showcase their skills.Develop a community",
+      },
+    ],
+  },
+  {
+    role: "user",
+    parts: [
+      {
+        text: "Help me with a js, python and c++ code to tell my gf good night!",
+      },
+    ],
+  },
+  {
+    role: "model",
+    parts: [
+      {
+        text: "Js Code:\n ```javascript\nconsole.log('Good night babe!');```\n\nPython Code:\n ```python\nprint('Good night babe')```\n\nC++ Code:\n ```cpp\n#include<iostream>\n\nusing namespace std;\n\nint main()\n{\ncout<<'Good night babe';\nreturn 0;\n}",
+      },
+    ],
+  },
+  {
+    role: "user",
+    parts: [
+      {
+        text: "Help me with a simple maths or physics formula",
+      },
+    ],
+  },
+  {
+    role: "model",
+    parts: [
+      {
+        text: "# Speed = (Distance (d)/Time (t))\n, **You've got this!**\n Go ahead and get it done!\nThat's a great initiative!Build a personalized gamified platform for learning computer engineering concepts.Focus on gamification, collaboration, and practical projects to boost motivation and confidence.Partner with schools or institutions for a pilot program.Innovate with gamified assessment tools to promote active participation.Add a mentorship program to boost confidence and motivation.Host workshops to teach coding and gamification techniques.Use AI for personalized recommendations and skill assessments.Host competitions for students to showcase their skills.Develop a community",
       },
     ],
   },

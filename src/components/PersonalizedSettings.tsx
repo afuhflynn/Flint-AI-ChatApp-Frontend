@@ -1,3 +1,5 @@
+import { useState, FormEvent, useEffect } from "react";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import { flintaiLogo } from "../assets/images";
@@ -5,10 +7,24 @@ import { Camera } from "lucide-react";
 import Button from "./Button";
 
 const DeleteAccount = () => {
+  const [acceptDelete, setAcceptDelete] = useState<boolean>(false);
+  const handleDeleteAccount = () => {
+    const accepted = confirm(
+      "Are you sure you want to delete your account? \nClick OK to proceed!"
+    );
+    if (accepted) setAcceptDelete((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (acceptDelete) toast.success("Account deleted!");
+  }, [acceptDelete]);
   return (
     <>
       <span>Delete account</span>{" "}
-      <button className="cta-btn !text-sm md:!text-md !px-3 !shadow-none !rounded-[40px] !flex !flex-row !items-center !justify-center !font-normal !w-[6.2rem] !h-[2.6rem] !gap-1 !border-red-700 !text-red-500 !bg-transparent hover:!bg-red-600 hover:!text-white !bg-opacity-20">
+      <button
+        className="cta-btn !text-sm md:!text-md !px-3 !shadow-none !rounded-[40px] !flex !flex-row !items-center !justify-center !font-normal !w-[6.2rem] !h-[2.6rem] !gap-1 !border-red-700 !text-red-500 !bg-transparent hover:!bg-red-600 hover:!text-white !bg-opacity-20"
+        onClick={handleDeleteAccount}
+      >
         Delete
       </button>
     </>
@@ -16,44 +32,79 @@ const DeleteAccount = () => {
 };
 
 const UpdateAccountDetails = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    username: "",
+  });
+
+  const handleInputChange = (name: string, value: string) => {
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmitForm = async (event: FormEvent) => {
+    event.preventDefault();
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 6000));
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    if (!isLoading && Object.values(formData).join("").trim() !== "")
+      toast.success("Profile update successful");
+  }, [isLoading, formData]);
   return (
-    <form className="flex flex-row items-end justify-between w-full h-auto">
+    <form
+      className="flex flex-row items-end justify-between w-full h-auto"
+      onSubmit={handleSubmitForm}
+    >
       {/* Inputs section */}
       <div className="grid grid-cols-1 grid-rows-3 w-[70%] h-auto">
         <div className="input-row">
           <Input
             type="text"
             placeholder="Update Firstname"
-            value={""}
+            value={formData.firstname}
             name="firstname"
-            onChange={(name, value) => console.log(name, value)}
+            onChange={(name, value) => handleInputChange(name, value)}
           />
         </div>
         <div className="input-row">
           <Input
             type="text"
             placeholder="Update Lastname"
-            value={""}
+            value={formData.lastname}
             name="lastname"
-            onChange={(name, value) => console.log(name, value)}
+            onChange={(name, value) => handleInputChange(name, value)}
           />
         </div>
         <div className="input-row">
           <Input
             type="text"
             placeholder="Update Username"
-            value={""}
+            value={formData.username}
             name="username"
-            onChange={(name, value) => console.log(name, value)}
+            onChange={(name, value) => handleInputChange(name, value)}
           />
         </div>
       </div>
       {/* Button */}
       <Button
         text="Update"
-        onClick={() => {}}
         type="submit"
-        className="w-auto px-4 mb-4"
+        isLoading={isLoading}
+        disabled={
+          formData.firstname.trim() === "" ||
+          formData.lastname.trim() === "" ||
+          formData.username.trim() === ""
+        }
+        className={`!w-[4rem] !px-4 !mb-4 !text-body-text ${
+          (formData.firstname.trim() === "" ||
+            formData.username.trim() === "" ||
+            formData.lastname.trim() === "") &&
+          "opacity-50"
+        }`}
       />
     </form>
   );
