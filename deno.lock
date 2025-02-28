@@ -7,6 +7,7 @@
     "npm:@mui/icons-material@^6.2.1": "6.2.1_@mui+material@6.2.1__@emotion+react@11.14.0___react@18.3.1__@emotion+styled@11.14.0___@emotion+react@11.14.0____react@18.3.1___react@18.3.1__@types+react@18.3.14__react@18.3.1__react-dom@18.3.1___react@18.3.1_@types+react@18.3.14_react@18.3.1_@emotion+react@11.14.0__react@18.3.1_@emotion+styled@11.14.0__@emotion+react@11.14.0___react@18.3.1__react@18.3.1_react-dom@18.3.1__react@18.3.1",
     "npm:@mui/material@^6.2.1": "6.2.1_@emotion+react@11.14.0__react@18.3.1_@emotion+styled@11.14.0__@emotion+react@11.14.0___react@18.3.1__react@18.3.1_@types+react@18.3.14_react@18.3.1_react-dom@18.3.1__react@18.3.1",
     "npm:@types/react-dom@^18.3.1": "18.3.2",
+    "npm:@types/react-helmet@^6.1.11": "6.1.11",
     "npm:@types/react-syntax-highlighter@^15.5.13": "15.5.13",
     "npm:@types/react-twemoji@~0.4.3": "0.4.3",
     "npm:@types/react@^18.3.12": "18.3.14",
@@ -684,6 +685,12 @@
     },
     "@types/react-dom@18.3.2": {
       "integrity": "sha512-Fqp+rcvem9wEnGr3RY8dYNvSQ8PoLqjZ9HLgaPUOjJJD120uDyOxOjc/39M4Kddp9JQCxpGQbnhVQF0C0ncYVg==",
+      "dependencies": [
+        "@types/react"
+      ]
+    },
+    "@types/react-helmet@6.1.11": {
+      "integrity": "sha512-0QcdGLddTERotCXo3VFlUSWO3ztraw8nZ6e3zJSgG7apwV5xt+pJUS8ewPBqT4NYB1optGLprNQzFleIY84u/g==",
       "dependencies": [
         "@types/react"
       ]
@@ -3107,6 +3114,7 @@
         "npm:@mui/icons-material@^6.2.1",
         "npm:@mui/material@^6.2.1",
         "npm:@types/react-dom@^18.3.1",
+        "npm:@types/react-helmet@^6.1.11",
         "npm:@types/react-syntax-highlighter@^15.5.13",
         "npm:@types/react-twemoji@~0.4.3",
         "npm:@types/react@^18.3.12",

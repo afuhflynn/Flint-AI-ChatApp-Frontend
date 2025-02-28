@@ -20,7 +20,12 @@ const ChatRoomNav: React.FC = () => {
     setIsMobileSidebarActive,
   } = globalAppStore();
   const { user } = globalUserStore();
-  const { isNewChat, handleHideSharePopup } = globalAppStore();
+  const {
+    isNewChat,
+    handleHideSharePopup,
+    isUserProfilePopup,
+    handleHideUserProfilePopup,
+  } = globalAppStore();
   const navigate = useNavigate();
   const handleRouteUsers = (url: string) => {
     navigate(url);
@@ -97,11 +102,17 @@ const ChatRoomNav: React.FC = () => {
               </button>
             </Tooltip>
           )}
-          <button>
+          <button
+            onClick={() =>
+              handleHideUserProfilePopup(
+                isUserProfilePopup === true ? false : true
+              )
+            }
+          >
             <UserAvatar />
           </button>
           <div className="relative w-auto h-auto">
-            <DashboardPage />
+            {user && isUserProfilePopup && <DashboardPage />}
           </div>
         </div>
       )}

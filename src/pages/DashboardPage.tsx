@@ -1,7 +1,9 @@
 import { Logout, Settings, Share, Update } from "@mui/icons-material";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
+import globalAppStore from "../store/app.store";
 
 const DashboardPage = () => {
+  const { isUserProfilePopup } = globalAppStore();
   const handleToggleSettings = () => {};
   const handleCopySiteUrl = () => {};
   const handleLogout = () => {};
@@ -11,7 +13,10 @@ const DashboardPage = () => {
       initial={{ scale: 0, opacity: 0 }}
       transition={{ duration: 0.2, ease: "easeIn" }}
       animate={{ scale: 1, opacity: 1 }}
-      className="modal !bg-primary-bg-light dark:!bg-neutral-dark-grey-dark !p-4 !w-[16rem] !py-4 !pb-6 absolute right-[0.6rem] -top-[0.5rem] !shadow-md !flex !flex-col !items-center !gap-4 !shadow-black">
+      className={`modal !bg-primary-bg-light dark:!bg-neutral-dark-grey-dark !p-4 !w-[16rem] !py-4 !pb-6 absolute right-[0.6rem] -top-[0.5rem] !shadow-md !flex !flex-col !items-center !gap-4 !shadow-black ${
+        isUserProfilePopup ? "block" : "hidden"
+      }`}
+    >
       <button
         className={`cta-btn !text-sm !px-3 !shadow-none !flex !flex-row !items-center !font-normal !w-full !h-[2.6rem] !gap-1`}
         onClick={handleToggleSettings}

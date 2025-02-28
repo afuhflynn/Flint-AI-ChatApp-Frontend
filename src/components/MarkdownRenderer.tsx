@@ -30,7 +30,7 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
                 ? children.map(String).join("")
                 : String(children);
 
-              console.log(children);
+              // console.log(children);
 
               return !inline && match ? (
                 <SyntaxHighlighter style={dracula} language={language}>
