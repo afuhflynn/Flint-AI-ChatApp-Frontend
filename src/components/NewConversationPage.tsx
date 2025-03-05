@@ -66,7 +66,7 @@ const NewConversationPage: React.FC = () => {
             )}
           </div>
           <section className="flex w-full flex-col items-center justify-between md:justify-center gap-[8rem] md:gap-0 md:flex-col-reverse">
-            <div className="flex flex-row flex-wrap items-center justify-center w-full gap-3 text-primary-bg-dark dark:text-primary-bg-light md:mt-6">
+            <div className="flex flex-row flex-wrap items-center justify-center md:w-[80%] w-full gap-3 text-primary-bg-dark dark:text-primary-bg-light md:mt-6">
               {startUpPrompts.map((item, index) => (
                 <button
                   className="cta-btn !text-sm !px-3 !shadow-none !rounded-[40px] !h-[2.6rem] !font-normal"
@@ -78,7 +78,7 @@ const NewConversationPage: React.FC = () => {
               ))}
             </div>
             <div
-              className={`w-full h-auto mb-2 ${
+              className={`md:w-[80%] w-full h-auto mb-2 ${
                 !isSidebarActive ? "md:w-[78%]" : ""
               }`}
             >

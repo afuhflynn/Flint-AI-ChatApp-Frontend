@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import globalAppStore from "../store/app.store";
 import globalUserStore from "../store/user.store";
-import { UserAvatar } from "./";
+import { UserAvatar, AuthButtons } from "./";
 import { DashboardPage } from "../pages";
 
 const ChatRoomNav: React.FC = () => {
@@ -34,45 +34,66 @@ const ChatRoomNav: React.FC = () => {
     <nav
       className={`h-[70px] w-full flex flex-row items-center ${
         isSidebarActive ? "md:justify-end justify-between" : "justify-between"
-      } paddingX`}
+      } paddingX relative`}
     >
       {!isMobileSidebarActive && (
-        <div className="h-auto w-auto flex flex-row items-center gap-3 md:hidden">
-          <Tooltip title="Toggle Sidebar" placement="bottom">
-            <button
-              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
-              type="button"
-              onClick={() => setIsMobileSidebarActive(true)}
-            >
-              <Menu className="w-full h-full" />
-            </button>
-          </Tooltip>
-          <Tooltip
-            title="New Chat"
-            placement="right"
-            arrow
-            className="h-auto w-full"
+        <>
+          {user && (
+            <div className="h-auto w-auto flex flex-row items-center gap-3 md:hidden">
+              <Tooltip title="Toggle Sidebar" placement="bottom">
+                <button
+                  className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
+                  type="button"
+                  onClick={() => setIsMobileSidebarActive(true)}
+                >
+                  <Menu className="w-full h-full" />
+                </button>
+              </Tooltip>
+              <Tooltip
+                title="New Chat"
+                placement="right"
+                arrow
+                className="h-auto w-full"
+              >
+                <button
+                  className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
+                  onClick={() => handleRouteUsers("/chat-bot/chats/new-chat")}
+                >
+                  <LucideEdit />
+                </button>
+              </Tooltip>
+            </div>
+          )}
+        </>
+      )}
+      {!user && (
+        <Tooltip
+          title="New Chat"
+          placement="right"
+          arrow
+          className="h-auto w-auto md:absolute self-center md:left-[4rem] sm:left-[2rem] left-[1rem]"
+        >
+          <button
+            className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
+            onClick={() => handleRouteUsers("/chat-bot/chats/new-chat")}
           >
-            <button
-              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
-              onClick={() => handleRouteUsers("/chat-bot/chats/new-chat")}
-            >
-              <LucideEdit />
-            </button>
-          </Tooltip>
-        </div>
+            <LucideEdit />
+          </button>
+        </Tooltip>
       )}
       {!isSidebarActive && (
         <div className="h-auto w-auto flex-row items-center gap-3 hidden md:flex">
-          <Tooltip title="Toggle Menu" placement="bottom">
-            <button
-              type="button"
-              onClick={() => setIsSidebarActive(true)}
-              className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
-            >
-              <PanelsLeftBottomIcon />
-            </button>
-          </Tooltip>
+          {user && user.username && (
+            <Tooltip title="Toggle Menu" placement="bottom">
+              <button
+                type="button"
+                onClick={() => setIsSidebarActive(true)}
+                className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem] dark:text-text-primary-dark text-text-primary-light`}
+              >
+                <PanelsLeftBottomIcon />
+              </button>
+            </Tooltip>
+          )}
           <Tooltip
             title="New Chat"
             placement="right"
@@ -88,6 +109,7 @@ const ChatRoomNav: React.FC = () => {
           </Tooltip>
         </div>
       )}
+
       {user && user.username && (
         <div className="h-auto w-auto flex flex-row items-center gap-3">
           {!isNewChat && (
@@ -115,6 +137,12 @@ const ChatRoomNav: React.FC = () => {
             {user && isUserProfilePopup && <DashboardPage />}
           </div>
         </div>
+      )}
+      {!user && (
+        <AuthButtons
+          className={"gap-[1rem] md:visible m-0 flex flex-row items-center "}
+          btnClassName={"w-auto px-5 !h-[2.4rem] hover:scale-1"}
+        />
       )}
     </nav>
   );

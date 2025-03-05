@@ -19,19 +19,28 @@ interface scrollButtonTypes {
   handleClick: () => void;
 }
 const ScrollButton: React.FC<scrollButtonTypes> = ({ handleClick }) => {
+  const { user } = globalUserStore();
   return (
-    <Tooltip title="Go to bottom" placement="top" className="absolute bottom-0">
-      <motion.button
-        initial={{ scale: 0, opacity: 0 }}
-        transition={{ duration: 0.2, ease: "easeIn" }}
-        animate={{ scale: 1, opacity: 1 }}
-        className={`cta-btn !p-2 !text-xs !shadow-lg !rounded-full !flex !flex-row !items-center !justify-center !w-[2.2rem] !h-[2.2rem] !gap-1 !font-extralight`}
-        type="button"
-        onClick={() => handleClick()}
-      >
-        <ArrowDown className="w-[1.8rem] h-[1.8rem]" />
-      </motion.button>
-    </Tooltip>
+    <>
+      {user && user.username && (
+        <Tooltip
+          title="Go to bottom"
+          placement="top"
+          className="absolute bottom-0"
+        >
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeIn" }}
+            animate={{ scale: 1, opacity: 1 }}
+            className={`cta-btn !p-2 !text-xs !shadow-lg !rounded-full !flex !flex-row !items-center !justify-center !w-[2.2rem] !h-[2.2rem] !gap-1 !font-extralight`}
+            type="button"
+            onClick={() => handleClick()}
+          >
+            <ArrowDown className="w-[1.8rem] h-[1.8rem]" />
+          </motion.button>
+        </Tooltip>
+      )}
+    </>
   );
 };
 
@@ -94,7 +103,7 @@ const ConversationPage: React.FC = () => {
         className="overflow-x-hidden overflow-y-scroll h-[90%] flex flex-col items-center mb-1"
       >
         <div
-          className={`md:w-[70%] ${
+          className={`md:w-[60%] ${
             !isSidebarActive ? "md:w-[55%]" : ""
           } w-[98%] grid grid-cols-1 grid-rows-auto gap-6`}
         >
@@ -157,7 +166,7 @@ const ConversationPage: React.FC = () => {
       )}
       <div className="flex flex-row items-center justify-center w-full h-auto mb-2 shadow-sm bg-primary-bg-light dark:bg-primary-bg-dark">
         <div
-          className={`md:w-[68%] ${
+          className={`md:w-[60%] ${
             !isSidebarActive ? "md:w-[56%]" : ""
           } w-[96%] h-auto shadow-md rounded-[2rem]`}
         >
