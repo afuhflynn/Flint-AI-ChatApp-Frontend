@@ -10,8 +10,12 @@ import globalUserStore from "../store/user.store";
 
 const SideBar: React.FC = () => {
   const { user } = globalUserStore();
-  const { isSidebarActive, isMobileSidebarActive, setIsMobileSidebarActive } =
-    globalAppStore();
+  const {
+    isSidebarActive,
+    isMobileSidebarActive,
+    setIsMobileSidebarActive,
+    handleHideSettingsPopup,
+  } = globalAppStore();
   const navigate = useNavigate();
 
   const handleRouteUsers = (url: string) => {
@@ -29,24 +33,24 @@ const SideBar: React.FC = () => {
     <>
       {isSidebarActive && (
         <motion.section
-          className={`h-full hidden md:flex flex-col custom-input !border-opacity-10 !py-0 !m-0 !rounded-[0px] !border-y-0 !border-l-0  !px-4 !bg-neutral-dark-grey-light dark:!bg-neutral-dark-grey-dark w-[16rem] min-w-[20rem]`}
+          className={`h-full hidden md:flex flex-col custom-input !border-opacity-10 !py-0 !m-0 !rounded-[0px] !border-y-0 !border-l-0  !px-4 !bg-neutral-dark-grey-light dark:!bg-neutral-dark-grey-dark !w-[16rem] !min-w-[18rem]`}
           variants={animateVariance}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <SidebarNav />
           <div className="h-[100%] flex flex-col items-center justify-between w-full">
             <section></section>
-            <section className="h-auto flex flex-col items-center w-full gap-6 pb-8">
+            <section className="flex flex-col items-center w-full h-auto gap-6 pb-8">
               <div className="h-auto w-full custom-input !border-x-0 !border-b-0 !px-0 !py-0 !pt-4 !my-0 !rounded-[0px] !border-opacity-10">
                 <Tooltip
                   title="New Chat"
                   placement="right"
                   arrow
-                  className="h-auto w-full"
+                  className="w-full h-auto"
                 >
                   <button
                     className="w-full cta-btn !flex !flex-row !items-center !justify-center !gap-2 !h-[3rem] !rounded-3xl !shadow-md"
-                    onClick={() => handleRouteUsers("/chat-bot/chats/new-chat")}
+                    onClick={() => handleRouteUsers("/c/new-chat")}
                   >
                     <LucideEdit />
                     <span>New Chat</span>
@@ -59,10 +63,13 @@ const SideBar: React.FC = () => {
                     title="Settings"
                     placement="right"
                     arrow
-                    className="h-auto w-full"
+                    className="w-full h-auto"
                   >
-                    <button className="w-full user-btn bg-opacity-20 !justify-between !px-3 !h-[4rem]">
-                      <span className="w-auto h-auto flex flex-row items-center justify-center gap-2">
+                    <button
+                      className="w-full user-btn bg-opacity-20 !justify-between !px-3 !h-[4rem]"
+                      onClick={() => handleHideSettingsPopup(true)}
+                    >
+                      <span className="flex flex-row items-center justify-center w-auto h-auto gap-2">
                         <UserAvatar />
                         <span className="text-lg">Settings</span>
                       </span>
@@ -77,7 +84,7 @@ const SideBar: React.FC = () => {
       )}
       {isMobileSidebarActive && (
         <motion.div
-          className="md:hidden w-screen fixed h-full flex flex-row items-center justify-start bg-black bg-opacity-80"
+          className="fixed flex flex-row items-center justify-start w-screen h-full bg-black md:hidden bg-opacity-80"
           variants={animateVariance}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
@@ -87,18 +94,18 @@ const SideBar: React.FC = () => {
             <SidebarNav />
             <div className="h-[100%] flex flex-col items-center justify-between w-full">
               <section></section>
-              <section className="h-auto flex flex-col items-center w-full gap-6 pb-8">
+              <section className="flex flex-col items-center w-full h-auto gap-6 pb-8">
                 <div className="h-auto w-full custom-input !border-x-0 !border-b-0 !px-0 !py-0 !pt-4 !my-0 !rounded-[0px] !border-opacity-10">
                   <Tooltip
                     title="New Chat"
                     placement="right"
                     arrow
-                    className="h-auto w-full"
+                    className="w-full h-auto"
                   >
                     <button
                       className="w-full cta-btn !flex !flex-row !items-center !justify-center !gap-2 !h-[3rem] !rounded-3xl !shadow-md"
                       onClick={() => {
-                        handleRouteUsers("/chat-bot/chats/new-chat");
+                        handleRouteUsers("/c/new-chat");
                         handleToggleMobileSidebar();
                       }}
                     >
@@ -113,15 +120,16 @@ const SideBar: React.FC = () => {
                       title="Settings"
                       placement="right"
                       arrow
-                      className="h-auto w-full"
+                      className="w-full h-auto"
                     >
                       <button
                         className="w-full user-btn bg-opacity-20 !justify-between !px-3 !h-[4rem]"
                         onClick={() => {
                           handleToggleMobileSidebar();
+                          handleHideSettingsPopup(true);
                         }}
                       >
-                        <span className="w-auto h-auto flex flex-row items-center justify-center gap-2">
+                        <span className="flex flex-row items-center justify-center w-auto h-auto gap-2">
                           <UserAvatar />
                           <span className="text-lg">Settings</span>
                         </span>

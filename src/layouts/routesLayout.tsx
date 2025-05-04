@@ -108,11 +108,11 @@ export const router = createBrowserRouter([
             element: <ChatRoom />,
             children: [
               {
-                path: "/chat-bot/chats/new-chat",
+                path: "/c/new-chat",
                 element: <NewConversationPage />,
               },
               {
-                path: "/chat-bot/chats/:chatID",
+                path: "/c/:chatID",
                 element: <ConversationPage />,
               },
             ],

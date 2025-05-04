@@ -2,13 +2,14 @@ import React, { useState, useEffect, FormEvent } from "react";
 import { Button, ErrorPanel, Input, ModalHeading } from "../components";
 import globalUserStore from "../store/user.store";
 import { toast } from "react-toastify";
-import { routeUsers } from "../utils";
+import { useNavigate } from "react-router-dom";
 
 const ResendVerificationEmail: React.FC = () => {
   const [email, setEmail] = useState("");
   const [verify, setVerify] = useState(false); // Just to ensure that the user clicks the button to submit. Because token will always be available
   const { isLoading, error, resendVerificationCode, message, setError } =
     globalUserStore();
+  const navigate = useNavigate();
 
   const handleResendEmail = (event: FormEvent) => {
     event.preventDefault();
@@ -24,15 +25,15 @@ const ResendVerificationEmail: React.FC = () => {
       } else {
         toast.success(message);
         setTimeout(() => {
-          routeUsers("/auth/confirm-email-code/z2eHDqrspy637kjdwoflintai");
+          navigate("/auth/confirm-email-code/z2eHDqrspy637kjdwoflintai");
         }, 1500);
       }
     }
-  }, [isLoading, error, message, email, verify, routeUsers]);
+  }, [isLoading, error, message, email, verify, navigate]);
 
   useEffect(() => {
     setError("");
-  }, []);
+  }, [setError]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background text-text">

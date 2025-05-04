@@ -5,14 +5,14 @@ import {
   SharePopup,
   AccountLoginNotification,
 } from "./";
-import globalAppStore from "../store/app.store";
+import globalAppStore from "@/store/app.store";
 import { Tooltip } from "@mui/material";
 import { ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
-import { mockUpData } from "../constants/constants";
-import { flintaiLogo } from "../assets/images";
-import globalUserStore from "../store/user.store";
-import { SettingsPage } from "../pages";
+import { mockUpData } from "@/constants/constants";
+import { flintaiLogo } from "@/assets/images";
+import globalUserStore from "@/store/user.store";
+import { SettingsPage } from "@/pages";
 import { useLocation } from "react-router-dom";
 
 interface scrollButtonTypes {
@@ -95,8 +95,12 @@ const ConversationPage: React.FC = () => {
   }, []);
   return (
     <section className="flex flex-col items-center w-full h-full overflow-hidden">
-      {user && <SharePopup />}
-      <SettingsPage />
+      {user && (
+        <>
+          <SettingsPage />
+          <SharePopup />{" "}
+        </>
+      )}
       {!isAuthenticated && !user && <AccountLoginNotification />}
       <div
         ref={chatContainerRef}

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import {
   Button,
   ErrorPanel,
@@ -9,7 +9,6 @@ import {
 import { FormEvent, useEffect, useState } from "react";
 import globalUserStore from "../store/user.store";
 import { toast } from "react-toastify";
-import { routeUsers } from "../utils";
 import globalAppStore from "../store/app.store";
 
 const LoginPage = () => {
@@ -20,6 +19,7 @@ const LoginPage = () => {
   });
   const { isLoading, error, logIn, message, setError } = globalUserStore();
   const { prevOrigin } = globalAppStore();
+  const navigate = useNavigate();
 
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
@@ -37,11 +37,11 @@ const LoginPage = () => {
         toast.error(error);
       } else if (message) {
         toast.success(message);
-        if (prevOrigin) routeUsers(prevOrigin);
-        else routeUsers("/chat-bot/chats/new-chat");
+        if (prevOrigin) navigate(prevOrigin);
+        else redirect("/c/new-chat");
       }
     }
-  }, [isLoading, error, message, login, prevOrigin]);
+  }, [isLoading, error, message, login, prevOrigin, navigate]);
   useEffect(() => {
     setError("");
     console.log(

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Button,
   ErrorPanel,
@@ -11,7 +11,6 @@ import {
 import { FormEvent, useEffect, useState } from "react";
 import globalAppStore from "../store/app.store";
 import globalUserStore from "../store/user.store";
-import { routeUsers } from "../utils";
 import { toast } from "react-toastify";
 
 const SignupPage = () => {
@@ -27,6 +26,7 @@ const SignupPage = () => {
   const handleInputChange = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
   };
+  const navigate = useNavigate();
 
   const handleShowPassword = () => {
     setPasswordType(passwordType === "password" ? "string" : "password");
@@ -47,14 +47,14 @@ const SignupPage = () => {
         toast.error(error);
       } else if (message) {
         toast.success(message);
-        routeUsers("/auth/confirm-email-code/z2eHDqrspy637kjdwoflintai");
+        navigate("/auth/confirm-email-code/z2eHDqrspy637kjdwoflintai");
       }
     }
-  }, [isLoading, error, message]);
+  }, [isLoading, error, message, navigate]);
 
   useEffect(() => {
     setError("");
-  }, []);
+  }, [setError]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-background text-text">

@@ -4,6 +4,7 @@ import { AccountLoginNotification, ChatRoomInput } from "./";
 import globalUserStore from "../store/user.store";
 import globalAppStore from "../store/app.store";
 import { useLocation } from "react-router-dom";
+import { SettingsPage } from "@/pages";
 
 const NewConversationPage: React.FC = () => {
   const [greetings, setGreetings] = useState<string>("");
@@ -44,10 +45,15 @@ const NewConversationPage: React.FC = () => {
 
   return (
     <section className="flex flex-col items-center justify-between w-full h-full">
+      {user && <SettingsPage />}
       {!isAuthenticated && !user && <AccountLoginNotification />}
       <div className="flex flex-col items-center justify-center w-full h-full gap-6">
         <div className="md:w-[68%] w-[96%] h-full flex flex-col items-center justify-end md:justify-center gap-1">
-          <div className="text-primary-bg-dark dark:text-primary-bg-light text-left w-[90%] md:w-[94%]">
+          <div
+            className={`text-primary-bg-dark dark:text-primary-bg-light text-left w-[90%]  md:w-[86%] h-auto mb-2 ${
+              !isSidebarActive ? "md:w-[78%]" : ""
+            }`}
+          >
             {user ? (
               <div className="mb-10 md:mb-8">
                 {/* Display greetings and user name if the user exist */}
@@ -78,7 +84,7 @@ const NewConversationPage: React.FC = () => {
               ))}
             </div>
             <div
-              className={`md:w-[80%] w-full h-auto mb-2 ${
+              className={`md:w-[86%] w-full h-auto mb-2 ${
                 !isSidebarActive ? "md:w-[78%]" : ""
               }`}
             >

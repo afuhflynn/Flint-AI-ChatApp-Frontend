@@ -23,15 +23,17 @@ const SidebarNav: React.FC = () => {
         <h2 className="text-[18px]">Flint AI</h2>
       </Link>
       <div className="flex flex-row items-center gap-2 w-auto h-auto">
-        {user && user.username && isAuthenticated && <Tooltip
-          title="Search a chat"
-          placement="bottom"
-          className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
-        >
-          <button type="button">
-            <SearchIcon />
-          </button>
-        </Tooltip>}
+        {user && user.username && isAuthenticated && (
+          <Tooltip
+            title="Search a chat"
+            placement="bottom"
+            className={`assets-btn !w-[2rem] !h-[2rem] !p-[0.2rem]`}
+          >
+            <button type="button">
+              <SearchIcon />
+            </button>
+          </Tooltip>
+        )}
         <Tooltip
           title="Toggle Menu"
           placement="right"

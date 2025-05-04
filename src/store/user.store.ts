@@ -11,7 +11,7 @@ import { privateAxios } from "../config/axios.config";
 // A helper function to pause execution for a given number of milliseconds
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const globalUserStore = create<userStoreTypes>((set) => ({
+const globalUserStore = create<userStoreTypes>((set, get) => ({
   prefersTheme: "",
   isLoading: false,
   message: "",
@@ -183,6 +183,9 @@ const globalUserStore = create<userStoreTypes>((set) => ({
     }
   },
   getUserProfile: async () => {
+    // Reduce the number of calls made to the api end point if there is user object
+    const user = get().user;
+    if (user) return;
     const maxAttempts = 2;
     let attempt = 0;
     set({ isCheckingAuth: true, error: "", isAuthenticated: false });
@@ -202,57 +205,23 @@ const globalUserStore = create<userStoreTypes>((set) => ({
         return;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        // Optionally, you could check if the error is due to an expired access token
-        const shouldRefreshToken =
-          /* logic to decide if refresh is needed, e.g.: */
-          axios.isAxiosError(error) && error.response?.status !== 200;
-
-        if (!shouldRefreshToken) {
-          // For non-refreshable errors, exit immediately.
-          set({
-            isCheckingAuth: false,
-            isAuthenticated: true,
-          });
-          return;
-        }
-
-        // Try to refresh the token
-        try {
+        console.error("Error fetching user profile:", error);
+        // Re-attempt request
+        if (attempt < maxAttempts) {
           set({ isLoading: true });
-          await privateAxios.post<responseWithUserTypes>(
-            `${authBackendBaseUrl}/refresh-token`
-          );
-          // Wait for 2 seconds after refreshing the token
-          await sleep(2000);
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } catch (refreshError: any) {
-          console.error("Token refresh failed:", refreshError);
-          // error.message will be used if there are other errors not coming from the server.
-          set({
-            error: error.message
-              ? `${error.message}. Please check your internet connection!`
-              : error.response?.data?.message ||
-                "Error getting your profile. Please log-in or sign-up.",
-            isLoading: false,
-          });
-          return;
+        } else {
+          set({ isLoading: true });
         }
+        // Wait for 2 seconds after refreshing the token
+        await sleep(2000);
 
         // Increment the attempt counter after a failed try-and-refresh cycle
         attempt++;
       } finally {
         // Reset any flags if necessary; here we keep isCheckingAuth true until we exit the loop successfully or after max attempts.
-        set({ isCheckingAuth: false });
+        set({ isCheckingAuth: false, isLoading: false });
       }
     }
-
-    // If we exit the loop without success, set an error message.
-    set({
-      isAuthenticated: false,
-      error: "Could not fetch user profile after refreshing the token.",
-      isLoading: false,
-      isCheckingAuth: false,
-    });
   },
   sendPasswordResetRequest: async (email) => {
     // Use trycatch instead

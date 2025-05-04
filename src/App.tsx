@@ -19,7 +19,7 @@ const App: React.FC = () => {
       getUserProfile();
     };
     handleGetUserProfile();
-  }, []);
+  }, [getUserProfile]);
 
   // Modify app theme based on user theme if the user exists
   useEffect(() => {
@@ -30,7 +30,7 @@ const App: React.FC = () => {
     setprefersTheme(newTheme);
     toggleLocalTheme(newTheme);
     setAppTheme(newTheme);
-  }, []);
+  }, [setAppTheme, setprefersTheme, user]);
 
   useEffect(() => {
     if (!isCheckingAuth) {
@@ -40,7 +40,7 @@ const App: React.FC = () => {
         });
       }
     }
-  }, [isCheckingAuth]);
+  }, [isCheckingAuth, error]);
 
   return (
     <main className="w-screen h-screen overflow-x-hidden bg-primary-bg-light dark:bg-primary-bg-dark">
